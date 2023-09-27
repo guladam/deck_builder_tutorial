@@ -36,6 +36,11 @@ right_mouse={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="cards"
+2d_physics/layer_2="card_targets"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://xshdy81nwkcb"]
+
+[ext_resource type="Script" path="res://scenes/card/card.gd" id="1_7ara8"]
+[ext_resource type="FontFile" uid="uid://dskmdk146n4rq" path="res://art/pixel_rpg.ttf" id="1_qq08q"]
+[ext_resource type="Script" path="res://scenes/card/card_state_machine.gd" id="3_2nmlt"]
+[ext_resource type="PackedScene" uid="uid://cxlg1sj22we6j" path="res://scenes/card/states/card_base_state.tscn" id="4_7x6ft"]
+[ext_resource type="PackedScene" uid="uid://oxjq5uxjgrbe" path="res://scenes/card/states/card_clicked_state.tscn" id="5_f72sk"]
+[ext_resource type="PackedScene" uid="uid://do3r1tfwh1vnf" path="res://scenes/card/states/card_dragging_state.tscn" id="6_kjdll"]
+[ext_resource type="PackedScene" uid="uid://be1k8ypeawdab" path="res://scenes/card/states/card_released_state.tscn" id="7_5mlll"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mw5gt"]
+size = Vector2(25, 30)
+
+[node name="Card" type="Control"]
+custom_minimum_size = Vector2(25, 30)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_7ara8")
+
+[node name="Color" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.262745, 0.494118, 0.427451, 1)
+
+[node name="Status" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_qq08q")
+theme_override_font_sizes/font_size = 6
+text = "drawn"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DropPointDetector" type="Area2D" parent="."]
+collision_mask = 2
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DropPointDetector"]
+position = Vector2(12.5, 15)
+shape = SubResource("RectangleShape2D_mw5gt")
+
+[node name="CardStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_2nmlt")
+initial_state = NodePath("CardBaseState")
+
+[node name="CardBaseState" parent="CardStateMachine" instance=ExtResource("4_7x6ft")]
+
+[node name="CardClickedState" parent="CardStateMachine" instance=ExtResource("5_f72sk")]
+
+[node name="CardDraggingState" parent="CardStateMachine" instance=ExtResource("6_kjdll")]
+
+[node name="CardReleasedState" parent="CardStateMachine" instance=ExtResource("7_5mlll")]
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="area_entered" from="DropPointDetector" to="." method="_on_drop_point_detector_area_entered"]
+[connection signal="area_exited" from="DropPointDetector" to="." method="_on_drop_point_detector_area_exited"]
