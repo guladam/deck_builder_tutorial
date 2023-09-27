@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgsmvxf4i8ofs"]
+
+[ext_resource type="Texture2D" uid="uid://cp4iq5fd6j8be" path="res://art/background.png" id="1_a3o7p"]
+
+[node name="Battle" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+self_modulate = Color(0.321569, 0.321569, 0.321569, 1)
+texture = ExtResource("1_a3o7p")
+centered = false
