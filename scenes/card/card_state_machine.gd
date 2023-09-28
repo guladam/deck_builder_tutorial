@@ -5,6 +5,7 @@ extends Node
 var current_state: CardState
 var states := {}
 
+
 func _ready() -> void:
 	for child in get_children():
 		if child is CardState:
@@ -37,6 +38,8 @@ func _on_transition_requested(from: CardState, to: String) -> void:
 	
 	if current_state:
 		current_state.exit()
+		current_state.set_physics_process(false)
 	
 	new_state.enter()
 	current_state = new_state
+	current_state.set_physics_process(true)

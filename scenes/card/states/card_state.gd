@@ -5,6 +5,7 @@ signal transition_requested(from: CardState, to: String)
 
 var card: Card
 
+
 func enter() -> void:
 	pass
 

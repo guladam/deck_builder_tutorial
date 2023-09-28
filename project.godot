@@ -15,6 +15,10 @@ run/main_scene="res://scenes/battle/battle.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Events="*res://global/events.gd"
+
 [display]
 
 window/size/viewport_width=256
@@ -38,8 +42,9 @@ right_mouse={
 
 [layer_names]
 
-2d_physics/layer_1="cards"
-2d_physics/layer_2="card_targets"
+2d_physics/layer_1="card_targetter"
+2d_physics/layer_2="card_drop_area"
+2d_physics/layer_3="enemies"
 
 [rendering]
 

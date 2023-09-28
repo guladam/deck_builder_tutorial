@@ -4,10 +4,7 @@ extends CardState
 func enter() -> void:
 	card.status.text = "CLICK"
 	card.color.color = Color.ORANGE
-
-
-func exit() -> void:
-	pass
+	card.drop_point_detector.monitoring = true
 
 
 func on_input(event: InputEvent) -> void:

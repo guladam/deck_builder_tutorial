@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://cp4iq5fd6j8be" path="res://art/background.png" id="1_a3o7p"]
 [ext_resource type="Texture2D" uid="uid://1u3b3hwqd8yh" path="res://art/tile_0110.png" id="2_k7d20"]
 [ext_resource type="PackedScene" uid="uid://xshdy81nwkcb" path="res://scenes/card/card.tscn" id="2_usika"]
-[ext_resource type="PackedScene" uid="uid://ddx60wg62pe5s" path="res://scenes/card_target_selector/card_target_selector.tscn" id="3_fhpt1"]
-[ext_resource type="Resource" uid="uid://c1gk6gjmij66m" path="res://data/cards/warrior_axe_attack.tres" id="5_e5qin"]
+[ext_resource type="PackedScene" uid="uid://c3u7x224et34u" path="res://scenes/card_arc.tscn" id="3_065bq"]
+[ext_resource type="Resource" uid="uid://c1gk6gjmij66m" path="res://data/cards/test_attack.tres" id="5_udykf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_605o1"]
 size = Vector2(256, 100)
@@ -32,13 +32,13 @@ position = Vector2(206, 76)
 texture = ExtResource("2_k7d20")
 
 [node name="CardTarget" type="Area2D" parent="MockEnemy"]
-collision_layer = 4
+collision_layer = 2
 input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MockEnemy/CardTarget"]
 shape = SubResource("RectangleShape2D_s0ai5")
 
-[node name="CardTargetSelector" parent="." instance=ExtResource("3_fhpt1")]
+[node name="CardArc" parent="." instance=ExtResource("3_065bq")]
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -58,12 +58,12 @@ alignment = 1
 
 [node name="Card" parent="UI/Hand" instance=ExtResource("2_usika")]
 layout_mode = 2
-data = ExtResource("5_e5qin")
+data = ExtResource("5_udykf")
 
 [node name="Card2" parent="UI/Hand" instance=ExtResource("2_usika")]
 layout_mode = 2
-data = ExtResource("5_e5qin")
+data = ExtResource("5_udykf")
 
 [node name="Card3" parent="UI/Hand" instance=ExtResource("2_usika")]
 layout_mode = 2
-data = ExtResource("5_e5qin")
+data = ExtResource("5_udykf")
