@@ -7,6 +7,6 @@
 script = ExtResource("2_4ye80")
 id = "axe_attack"
 type = 0
-target = 0
+target = 1
 cost = 1
 icon = ExtResource("1_lxh2a")

@@ -1,15 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://cgsmvxf4i8ofs"]
+[gd_scene load_steps=9 format=3 uid="uid://cgsmvxf4i8ofs"]
 
 [ext_resource type="Texture2D" uid="uid://cp4iq5fd6j8be" path="res://art/background.png" id="1_a3o7p"]
-[ext_resource type="Texture2D" uid="uid://1u3b3hwqd8yh" path="res://art/tile_0110.png" id="2_k7d20"]
+[ext_resource type="PackedScene" uid="uid://01dt4efxkgtf" path="res://scenes/enemy/enemy.tscn" id="2_hrd7x"]
 [ext_resource type="PackedScene" uid="uid://xshdy81nwkcb" path="res://scenes/card/card.tscn" id="2_usika"]
+[ext_resource type="Resource" uid="uid://cn0koms0fw6ck" path="res://data/stats/enemies/crab_enemy.tres" id="3_2iabj"]
 [ext_resource type="PackedScene" uid="uid://ddx60wg62pe5s" path="res://scenes/card_target_selector/card_target_selector.tscn" id="3_fhpt1"]
 [ext_resource type="Resource" uid="uid://c1gk6gjmij66m" path="res://data/cards/warrior_axe_attack.tres" id="5_e5qin"]
+[ext_resource type="PackedScene" uid="uid://cqx0b3eecq8el" path="res://scenes/player/player.tscn" id="7_wd30m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_605o1"]
 size = Vector2(256, 100)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s0ai5"]
 
 [node name="Battle" type="Node2D"]
 
@@ -27,16 +27,12 @@ position = Vector2(128, 50)
 shape = SubResource("RectangleShape2D_605o1")
 debug_color = Color(0, 0.6, 0.701961, 0.14902)
 
-[node name="MockEnemy" type="Sprite2D" parent="."]
-position = Vector2(206, 76)
-texture = ExtResource("2_k7d20")
+[node name="Player" parent="." instance=ExtResource("7_wd30m")]
+position = Vector2(45, 75)
 
-[node name="CardTarget" type="Area2D" parent="MockEnemy"]
-collision_layer = 4
-input_pickable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MockEnemy/CardTarget"]
-shape = SubResource("RectangleShape2D_s0ai5")
+[node name="CrabEnemy" parent="." instance=ExtResource("2_hrd7x")]
+position = Vector2(190, 75)
+stats = ExtResource("3_2iabj")
 
 [node name="CardTargetSelector" parent="." instance=ExtResource("3_fhpt1")]
 

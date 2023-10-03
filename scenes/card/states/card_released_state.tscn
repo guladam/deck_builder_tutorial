@@ -4,3 +4,4 @@
 
 [node name="CardReleasedState" type="Node"]
 script = ExtResource("1_2wi1j")
+state = 3

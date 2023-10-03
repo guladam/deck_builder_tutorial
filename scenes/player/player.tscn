@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqx0b3eecq8el"]
+
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_i1con"]
+[ext_resource type="Resource" uid="uid://dp630ejwgv50u" path="res://data/stats/characters/warrior.tres" id="2_jspqj"]
+[ext_resource type="Texture2D" uid="uid://cpydvk8mq66o5" path="res://art/tile_0087.png" id="3_6d5v1"]
+[ext_resource type="PackedScene" uid="uid://dmouqvt3cl12v" path="res://scenes/ui/stats_ui.tscn" id="3_tfsfr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xfhq4"]
+
+[node name="Player" type="Area2D" groups=["player"]]
+collision_layer = 8
+collision_mask = 0
+input_pickable = false
+script = ExtResource("1_i1con")
+char_stats = ExtResource("2_jspqj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_6d5v1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xfhq4")
+
+[node name="StatsUI" parent="." instance=ExtResource("3_tfsfr")]
+offset_left = -21.5
+offset_top = 6.0
+offset_right = 21.5
+offset_bottom = 22.0
+alignment = 1

@@ -4,3 +4,4 @@
 
 [node name="CardDraggingState" type="Node"]
 script = ExtResource("1_8uqpn")
+state = 2

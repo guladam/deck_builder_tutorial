@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://01dt4efxkgtf"]
+
+[ext_resource type="Texture2D" uid="uid://1u3b3hwqd8yh" path="res://art/tile_0110.png" id="1_8v2b5"]
+[ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_edoni"]
+[ext_resource type="PackedScene" uid="uid://dmouqvt3cl12v" path="res://scenes/ui/stats_ui.tscn" id="3_y3po5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xfhq4"]
+
+[node name="Enemy" type="Area2D" groups=["enemies"]]
+collision_layer = 4
+input_pickable = false
+script = ExtResource("1_edoni")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8v2b5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xfhq4")
+
+[node name="StatsUI" parent="." instance=ExtResource("3_y3po5")]
+offset_left = -21.5
+offset_top = 6.0
+offset_right = 21.5
+offset_bottom = 22.0
+alignment = 1

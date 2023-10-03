@@ -4,3 +4,4 @@
 
 [node name="CardClickedState" type="Node"]
 script = ExtResource("1_mifjf")
+state = 1

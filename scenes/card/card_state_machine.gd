@@ -9,7 +9,7 @@ var states := {}
 func _ready() -> void:
 	for child in get_children():
 		if child is CardState:
-			states[child.name.to_lower()] = child
+			states[child.state] = child
 			child.transition_requested.connect(_on_transition_requested)
 			child.card = get_parent()
 	
@@ -28,11 +28,11 @@ func on_gui_input(event: InputEvent) -> void:
 		current_state.on_gui_input(event)
 
 
-func _on_transition_requested(from: CardState, to: String) -> void:
+func _on_transition_requested(from: CardState, to: CardState.State) -> void:
 	if from != current_state:
 		return
 		
-	var new_state: CardState = states[to.to_lower()]
+	var new_state: CardState = states[to]
 	if not new_state:
 		return
 	

@@ -21,8 +21,8 @@ func on_input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("right_mouse"):
 		Events.card_drag_ended.emit(card)
-		transition_requested.emit(self, "CardBaseState")
+		transition_requested.emit(self, CardState.State.BASE)
 		return
 
 	elif event.is_action_released("left_mouse") or event.is_action_pressed("left_mouse"):
-		transition_requested.emit(self, "CardReleasedState")
+		transition_requested.emit(self, CardState.State.RELEASED)
