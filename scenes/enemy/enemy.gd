@@ -5,6 +5,7 @@ extends Area2D
 @export var stats: Stats : set = set_enemy_stats
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var stats_ui: HBoxContainer = $StatsUI
+@onready var arrow: Sprite2D = $Arrow
 
 
 func _ready() -> void:
@@ -38,3 +39,11 @@ func update_stats() -> void:
 
 func _on_stats_changed() -> void:
 	update_stats()
+
+
+func _on_area_entered(_area: Area2D) -> void:
+	arrow.show()
+
+
+func _on_area_exited(_area: Area2D) -> void:
+	arrow.hide()
