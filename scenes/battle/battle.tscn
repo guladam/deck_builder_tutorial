@@ -1,12 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgsmvxf4i8ofs"]
+[gd_scene load_steps=13 format=3 uid="uid://cgsmvxf4i8ofs"]
 
 [ext_resource type="Texture2D" uid="uid://cp4iq5fd6j8be" path="res://art/background.png" id="1_a3o7p"]
 [ext_resource type="PackedScene" uid="uid://01dt4efxkgtf" path="res://scenes/enemy/enemy.tscn" id="2_hrd7x"]
-[ext_resource type="PackedScene" uid="uid://xshdy81nwkcb" path="res://scenes/card/card.tscn" id="2_usika"]
+[ext_resource type="PackedScene" uid="uid://xshdy81nwkcb" path="res://scenes/card/card_ui.tscn" id="2_usika"]
 [ext_resource type="Resource" uid="uid://cn0koms0fw6ck" path="res://data/stats/enemies/crab_enemy.tres" id="3_2iabj"]
+[ext_resource type="Resource" uid="uid://dp630ejwgv50u" path="res://data/stats/characters/warrior.tres" id="3_15wo8"]
 [ext_resource type="PackedScene" uid="uid://ddx60wg62pe5s" path="res://scenes/card_target_selector/card_target_selector.tscn" id="3_fhpt1"]
-[ext_resource type="Resource" uid="uid://c1gk6gjmij66m" path="res://data/cards/warrior_axe_attack.tres" id="5_e5qin"]
+[ext_resource type="Script" path="res://scenes/ui/hand.gd" id="7_a57ua"]
 [ext_resource type="PackedScene" uid="uid://cqx0b3eecq8el" path="res://scenes/player/player.tscn" id="7_wd30m"]
+[ext_resource type="Resource" uid="uid://c1gk6gjmij66m" path="res://data/cards/warrior_axe_attack.tres" id="8_rvfqe"]
+[ext_resource type="Resource" uid="uid://cwj6y7ido1dx3" path="res://data/cards/warrior_block.tres" id="9_cyqov"]
+[ext_resource type="PackedScene" uid="uid://bc31rnkiojx7w" path="res://scenes/ui/mana_ui.tscn" id="10_x51xg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_605o1"]
 size = Vector2(256, 100)
@@ -17,10 +21,12 @@ size = Vector2(256, 100)
 self_modulate = Color(0.321569, 0.321569, 0.321569, 1)
 texture = ExtResource("1_a3o7p")
 centered = false
+metadata/_edit_lock_ = true
 
 [node name="CardDropArea" type="Area2D" parent="."]
 collision_layer = 2
 input_pickable = false
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CardDropArea"]
 position = Vector2(128, 50)
@@ -29,6 +35,7 @@ debug_color = Color(0, 0.6, 0.701961, 0.14902)
 
 [node name="Player" parent="." instance=ExtResource("7_wd30m")]
 position = Vector2(45, 75)
+stats = ExtResource("3_15wo8")
 
 [node name="CrabEnemy" parent="." instance=ExtResource("2_hrd7x")]
 position = Vector2(190, 75)
@@ -51,15 +58,28 @@ grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(75, 30)
 alignment = 1
+script = ExtResource("7_a57ua")
+char_stats = ExtResource("3_15wo8")
 
 [node name="Card" parent="UI/Hand" instance=ExtResource("2_usika")]
 layout_mode = 2
-data = ExtResource("5_e5qin")
+card = ExtResource("8_rvfqe")
 
 [node name="Card2" parent="UI/Hand" instance=ExtResource("2_usika")]
 layout_mode = 2
-data = ExtResource("5_e5qin")
+card = ExtResource("8_rvfqe")
+
+[node name="Card5" parent="UI/Hand" instance=ExtResource("2_usika")]
+layout_mode = 2
+card = ExtResource("8_rvfqe")
 
 [node name="Card3" parent="UI/Hand" instance=ExtResource("2_usika")]
 layout_mode = 2
-data = ExtResource("5_e5qin")
+card = ExtResource("9_cyqov")
+
+[node name="Card4" parent="UI/Hand" instance=ExtResource("2_usika")]
+layout_mode = 2
+card = ExtResource("9_cyqov")
+
+[node name="ManaUI" parent="UI" instance=ExtResource("10_x51xg")]
+char_stats = ExtResource("3_15wo8")

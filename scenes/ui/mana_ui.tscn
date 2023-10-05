@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://bc31rnkiojx7w"]
+
+[ext_resource type="Theme" uid="uid://c5r7a5e4xy5se" path="res://game_theme.tres" id="1_ywjp3"]
+[ext_resource type="Script" path="res://scenes/ui/mana_ui.gd" id="2_b6hdg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gy2xl"]
+bg_color = Color(0.631373, 0.34902, 0.321569, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.701961, 0.701961, 0.701961, 1)
+anti_aliasing = false
+
+[node name="ManaUI" type="Panel"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = -6.0
+grow_vertical = 0
+theme = ExtResource("1_ywjp3")
+theme_override_styles/panel = SubResource("StyleBoxFlat_gy2xl")
+script = ExtResource("2_b6hdg")
+
+[node name="ManaLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "3/3"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -12,11 +12,16 @@ script = ExtResource("1_jrqyi")
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 4
 input_pickable = false
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_i6ne2")
 
-[node name="CardArc" parent="." instance=ExtResource("1_5xwp4")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="CardArc" parent="CanvasLayer" instance=ExtResource("1_5xwp4")]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

@@ -1,13 +1,13 @@
 extends Node2D
 
 @onready var area_2d: Area2D = $Area2D
-@onready var card_arc: Line2D = $CardArc
-var current_card: Card
+@onready var card_arc: Line2D = $CanvasLayer/CardArc
+var current_card: CardUI
 var targeting := false
 
 
 func _ready() -> void:
-	Events.card_drag_started.connect(_on_card_drag_started)
+	Events.card_aim_started.connect(_on_card_aim_started)
 	Events.card_drag_ended.connect(_on_card_drag_ended)
 
 
@@ -21,7 +21,8 @@ func _process(_delta: float) -> void:
 
 func _get_points() -> Array:
 	var points := []
-	var start := current_card.global_position + (current_card.size / 2)
+	var start := current_card.global_position
+	start.x += (current_card.size.x / 2)
 	var target := get_local_mouse_position()
 	var pts := 8
 	var distance := (target - start)
@@ -41,20 +42,22 @@ func ease_out_cubic(number : float) -> float:
 	return 1.0 - pow(1.0 - number, 3.0)
 
 
-func _on_card_drag_started(card: Card) -> void:
-	if not card.data.is_single_targeted():
+func _on_card_aim_started(card: CardUI) -> void:
+	if not card.card.is_single_targeted():
 		return
 	
 	targeting = true
 	area_2d.monitoring = true
+	area_2d.monitorable = true
 	current_card = card
 
 
-func _on_card_drag_ended(_card: Card) -> void:
+func _on_card_drag_ended(_card: CardUI) -> void:
 	targeting = false
 	card_arc.clear_points()
 	area_2d.position = Vector2.ZERO
 	area_2d.monitoring = false
+	area_2d.monitorable = false
 	current_card = null
 
 

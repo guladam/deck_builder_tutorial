@@ -5,4 +5,4 @@
 
 [resource]
 script = ExtResource("1_mj32k")
-cards = Array[Resource("res://data/cards/card_data.gd")]([ExtResource("1_8yccd"), ExtResource("1_8yccd"), ExtResource("1_8yccd"), ExtResource("1_8yccd"), ExtResource("1_8yccd"), ExtResource("1_8yccd"), ExtResource("1_8yccd"), ExtResource("1_8yccd"), ExtResource("1_8yccd"), ExtResource("1_8yccd")])
+cards = Array[Resource("res://data/cards/card.gd")]([ExtResource("1_8yccd"), ExtResource("1_8yccd"), ExtResource("1_8yccd"), ExtResource("1_8yccd"), ExtResource("1_8yccd"), ExtResource("1_8yccd"), ExtResource("1_8yccd"), ExtResource("1_8yccd"), ExtResource("1_8yccd"), ExtResource("1_8yccd")])

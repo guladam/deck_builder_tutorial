@@ -11,7 +11,7 @@ func _ready() -> void:
 		if child is CardState:
 			states[child.state] = child
 			child.transition_requested.connect(_on_transition_requested)
-			child.card = get_parent()
+			child.card_ui = get_parent()
 	
 	if initial_state:
 		initial_state.enter()
@@ -26,6 +26,16 @@ func on_input(event: InputEvent) -> void:
 func on_gui_input(event: InputEvent) -> void:
 	if current_state:
 		current_state.on_gui_input(event)
+
+
+func on_mouse_entered() -> void:
+	if current_state:
+		current_state.on_mouse_entered()
+
+
+func on_mouse_exited() -> void:
+	if current_state:
+		current_state.on_mouse_exited()
 
 
 func _on_transition_requested(from: CardState, to: CardState.State) -> void:

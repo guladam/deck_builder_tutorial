@@ -12,12 +12,12 @@ var block: int : set = set_block
 
 func set_health(value : int) -> void:
 	health = clamp(value, 0, max_health)
-	emit_signal("stats_changed")
+	stats_changed.emit()
 
 
 func set_block(value : int) -> void:
 	block = max(value, 0)
-	emit_signal("stats_changed")
+	stats_changed.emit()
 
 
 func take_damage(damage : int) -> void:

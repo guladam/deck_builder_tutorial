@@ -2,14 +2,12 @@ extends CardState
 
 
 func enter() -> void:
-	card.status.text = "RELEASED"
-	card.color.color = Color.DARK_VIOLET
-	Events.card_drag_ended.emit(card)
+	Events.card_drag_ended.emit(card_ui)
 
 
 func _physics_process(_delta: float) -> void:
-	if not card.targets.is_empty():
-		print("targets:", card.targets)
+	if not card_ui.targets.is_empty():
+		card_ui.play()
 	else:
 		transition_requested.emit(self, CardState.State.BASE)
 	
