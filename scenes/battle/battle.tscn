@@ -1,21 +1,25 @@
-[gd_scene load_steps=13 format=3 uid="uid://cgsmvxf4i8ofs"]
+[gd_scene load_steps=15 format=3 uid="uid://cgsmvxf4i8ofs"]
 
 [ext_resource type="Texture2D" uid="uid://cp4iq5fd6j8be" path="res://art/background.png" id="1_a3o7p"]
+[ext_resource type="Script" path="res://scenes/battle/battle.gd" id="1_ij55q"]
 [ext_resource type="PackedScene" uid="uid://01dt4efxkgtf" path="res://scenes/enemy/enemy.tscn" id="2_hrd7x"]
-[ext_resource type="PackedScene" uid="uid://xshdy81nwkcb" path="res://scenes/card/card_ui.tscn" id="2_usika"]
 [ext_resource type="Resource" uid="uid://cn0koms0fw6ck" path="res://data/stats/enemies/crab_enemy.tres" id="3_2iabj"]
 [ext_resource type="Resource" uid="uid://dp630ejwgv50u" path="res://data/stats/characters/warrior.tres" id="3_15wo8"]
 [ext_resource type="PackedScene" uid="uid://ddx60wg62pe5s" path="res://scenes/card_target_selector/card_target_selector.tscn" id="3_fhpt1"]
 [ext_resource type="Script" path="res://scenes/ui/hand.gd" id="7_a57ua"]
 [ext_resource type="PackedScene" uid="uid://cqx0b3eecq8el" path="res://scenes/player/player.tscn" id="7_wd30m"]
-[ext_resource type="Resource" uid="uid://c1gk6gjmij66m" path="res://data/cards/warrior_axe_attack.tres" id="8_rvfqe"]
-[ext_resource type="Resource" uid="uid://cwj6y7ido1dx3" path="res://data/cards/warrior_block.tres" id="9_cyqov"]
+[ext_resource type="PackedScene" uid="uid://q0tcwk782ye8" path="res://scenes/player/player_handler.tscn" id="8_ufq0f"]
 [ext_resource type="PackedScene" uid="uid://bc31rnkiojx7w" path="res://scenes/ui/mana_ui.tscn" id="10_x51xg"]
+[ext_resource type="StyleBox" uid="uid://clbi30wcngx86" path="res://scenes/ui/ui_base_stylebox.tres" id="11_ecibu"]
+[ext_resource type="Theme" uid="uid://c5r7a5e4xy5se" path="res://game_theme.tres" id="11_j5jfs"]
+[ext_resource type="PackedScene" uid="uid://b8a8uad4upmsl" path="res://scenes/ui/tooltip.tscn" id="13_f0sws"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_605o1"]
 size = Vector2(256, 100)
 
 [node name="Battle" type="Node2D"]
+script = ExtResource("1_ij55q")
+char_stats = ExtResource("3_15wo8")
 
 [node name="Background" type="Sprite2D" parent="."]
 self_modulate = Color(0.321569, 0.321569, 0.321569, 1)
@@ -43,9 +47,14 @@ stats = ExtResource("3_2iabj")
 
 [node name="CardTargetSelector" parent="." instance=ExtResource("3_fhpt1")]
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="PlayerHandler" parent="." node_paths=PackedStringArray("hand") instance=ExtResource("8_ufq0f")]
+hand = NodePath("../UI/Hand")
+
+[node name="UI" type="CanvasLayer" parent="." groups=["ui_layer"]]
+layer = 0
 
 [node name="Hand" type="HBoxContainer" parent="UI"]
+unique_name_in_owner = true
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -61,25 +70,25 @@ alignment = 1
 script = ExtResource("7_a57ua")
 char_stats = ExtResource("3_15wo8")
 
-[node name="Card" parent="UI/Hand" instance=ExtResource("2_usika")]
-layout_mode = 2
-card = ExtResource("8_rvfqe")
-
-[node name="Card2" parent="UI/Hand" instance=ExtResource("2_usika")]
-layout_mode = 2
-card = ExtResource("8_rvfqe")
-
-[node name="Card5" parent="UI/Hand" instance=ExtResource("2_usika")]
-layout_mode = 2
-card = ExtResource("8_rvfqe")
-
-[node name="Card3" parent="UI/Hand" instance=ExtResource("2_usika")]
-layout_mode = 2
-card = ExtResource("9_cyqov")
-
-[node name="Card4" parent="UI/Hand" instance=ExtResource("2_usika")]
-layout_mode = 2
-card = ExtResource("9_cyqov")
-
 [node name="ManaUI" parent="UI" instance=ExtResource("10_x51xg")]
-char_stats = ExtResource("3_15wo8")
+unique_name_in_owner = true
+theme_override_styles/panel = ExtResource("11_ecibu")
+
+[node name="EndTurnButton" type="Button" parent="UI"]
+unique_name_in_owner = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -46.0
+offset_top = -20.0
+offset_right = -6.0
+offset_bottom = -6.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("11_j5jfs")
+text = "End Turn"
+
+[node name="CardTooltip" parent="UI" instance=ExtResource("13_f0sws")]
+unique_name_in_owner = true

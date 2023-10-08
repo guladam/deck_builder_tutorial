@@ -10,8 +10,9 @@ enum Target {SELF, SINGLE_ENEMY, ALL_ENEMIES, EVERYONE}
 @export var target: Target
 @export var cost: int
 
-@export_group("Card Art")
+@export_group("Card Visuals")
 @export var icon: Texture
+@export_multiline var tooltip_text: String
 
 
 func _get_targets(targets: Array[Node]) -> Array[Node]:
@@ -35,8 +36,9 @@ func is_single_targeted() -> bool:
 	return target == Target.SINGLE_ENEMY
 
 
-func play(targets: Array[Node]) -> void:
+func play(targets: Array[Node], char_stats: CharacterStats) -> void:
 	Events.card_played.emit(self)
+	char_stats.mana -= cost
 	
 	if is_single_targeted():
 		apply_effects(targets)

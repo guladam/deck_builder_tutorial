@@ -6,7 +6,6 @@ _data = [Vector2(0, 0.2), 0.0, 1.26, 0, 0, Vector2(0.926573, 1), 0.0, 0.0, 0, 0,
 point_count = 3
 
 [node name="CardArc" type="Line2D"]
-z_index = 100
 width = 4.0
 width_curve = SubResource("1")
 joint_mode = 2

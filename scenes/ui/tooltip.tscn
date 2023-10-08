@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8a8uad4upmsl"]
+
+[ext_resource type="Theme" uid="uid://c5r7a5e4xy5se" path="res://game_theme.tres" id="1_k4rka"]
+[ext_resource type="StyleBox" uid="uid://cxwuj72o6b343" path="res://scenes/card/card_base_stylebox.tres" id="2_2nfau"]
+[ext_resource type="Texture2D" uid="uid://ck1t4hdip6xrl" path="res://art/tile_0119.png" id="3_3gkaq"]
+[ext_resource type="Script" path="res://scenes/ui/tooltip.gd" id="3_vit3a"]
+
+[node name="Tooltip" type="PanelContainer"]
+self_modulate = Color(1, 1, 1, 0.839216)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -55.0
+offset_top = 4.0
+offset_right = 55.0
+offset_bottom = 34.0
+grow_horizontal = 2
+theme = ExtResource("1_k4rka")
+theme_override_styles/panel = ExtResource("2_2nfau")
+script = ExtResource("3_vit3a")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TooltipIcon" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+texture = ExtResource("3_3gkaq")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TooltipText" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[center]Deals [color=\"ff0000\"]6[/color] damage.[/center]"

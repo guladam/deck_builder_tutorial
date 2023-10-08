@@ -4,18 +4,9 @@ extends Panel
 
 @onready var mana_label: Label = $ManaLabel
 
-
-func _ready() -> void:
-	if char_stats:
-		char_stats.stats_changed.connect(_on_stats_changed)
-
-
+## TODO fix this in a proper way
 func set_char_stats(value: CharacterStats) -> void:
-	if char_stats:
-		char_stats.stats_changed.disconnect(_on_stats_changed)
-	
 	char_stats = value
-	char_stats.stats_changed.connect(_on_stats_changed)
 	_on_stats_changed()
 
 

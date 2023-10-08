@@ -8,7 +8,7 @@ var targeting := false
 
 func _ready() -> void:
 	Events.card_aim_started.connect(_on_card_aim_started)
-	Events.card_drag_ended.connect(_on_card_drag_ended)
+	Events.card_aim_ended.connect(_on_card_aim_ended)
 
 
 func _process(_delta: float) -> void:
@@ -52,7 +52,7 @@ func _on_card_aim_started(card: CardUI) -> void:
 	current_card = card
 
 
-func _on_card_drag_ended(_card: CardUI) -> void:
+func _on_card_aim_ended(_card: CardUI) -> void:
 	targeting = false
 	card_arc.clear_points()
 	area_2d.position = Vector2.ZERO

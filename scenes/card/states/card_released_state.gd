@@ -1,14 +1,19 @@
 extends CardState
 
 
+var played: bool
+
+
 func enter() -> void:
-	Events.card_drag_ended.emit(card_ui)
-
-
-func _physics_process(_delta: float) -> void:
+	played = false
+	
 	if not card_ui.targets.is_empty():
 		card_ui.play()
-	else:
-		transition_requested.emit(self, CardState.State.BASE)
-	
-	set_physics_process(false)
+		played = true
+
+
+func on_input(_event: InputEvent) -> void:
+	if played:
+		return
+
+	transition_requested.emit(self, CardState.State.BASE)

@@ -1,4 +1,4 @@
-class_name CardEffect
+class_name Effect
 extends RefCounted
 
 

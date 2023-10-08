@@ -6,14 +6,9 @@ extends Area2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var stats_ui: HBoxContainer = $StatsUI
 
-
-func _ready() -> void:
-	update_player()
-	stats.stats_changed.connect(_on_stats_changed)
-
-
+## TODO fix this in a proper way
 func set_character_stats(value: CharacterStats) -> void:
-	stats = value.create_instance()
+	stats = value
 	update_player()
 
 
@@ -34,7 +29,3 @@ func take_damage(damage: int) -> void:
 
 func update_stats() -> void:
 	stats_ui.update_stats(stats)
-
-
-func _on_stats_changed() -> void:
-	update_stats()
