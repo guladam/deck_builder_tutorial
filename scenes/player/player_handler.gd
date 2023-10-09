@@ -11,14 +11,12 @@ var character: CharacterStats
 
 func start_battle(char_stats: CharacterStats) -> void:
 	character = char_stats
-	hand.char_stats = character
 	character.draw_pile = character.deck.duplicate(true)
 	character.discard = CardPile.new()
 	start_turn()
 
 
 func start_turn() -> void:
-	print(character.block)
 	character.block = 0
 	character.reset_mana()
 	draw_cards(character.cards_per_turn)

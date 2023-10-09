@@ -19,8 +19,11 @@ texture = ExtResource("3_6d5v1")
 shape = SubResource("RectangleShape2D_xfhq4")
 
 [node name="StatsUI" parent="." instance=ExtResource("3_tfsfr")]
+anchors_preset = 7
+anchor_top = 1.0
+anchor_bottom = 1.0
 offset_left = -21.5
-offset_top = 6.0
+offset_top = 7.0
 offset_right = 21.5
-offset_bottom = 22.0
-alignment = 1
+offset_bottom = 23.0
+grow_vertical = 0

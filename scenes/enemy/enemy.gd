@@ -1,10 +1,10 @@
 class_name Enemy
 extends Area2D
 
-
 @export var stats: Stats : set = set_enemy_stats
+
 @onready var sprite_2d: Sprite2D = $Sprite2D
-@onready var stats_ui: HBoxContainer = $StatsUI
+@onready var stats_ui: StatsUI = $StatsUI
 @onready var arrow: Sprite2D = $Arrow
 
 

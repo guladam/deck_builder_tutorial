@@ -2,6 +2,7 @@ class_name CardStateMachine
 extends Node
 
 @export var initial_state: CardState
+
 var current_state: CardState
 var states := {}
 

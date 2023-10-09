@@ -6,13 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://oe7v35ii8vrs" path="res://art/tile_0102.png" id="3_s0ny5"]
 
 [node name="StatsUI" type="HBoxContainer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -45.0
+offset_right = 45.0
+offset_bottom = 16.0
 grow_horizontal = 2
-grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("1_viyq1")
+alignment = 1
 script = ExtResource("2_0cc0f")
 
 [node name="Block" type="HBoxContainer" parent="."]

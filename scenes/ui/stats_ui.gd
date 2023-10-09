@@ -1,5 +1,5 @@
+class_name StatsUI
 extends HBoxContainer
-
 
 @onready var block: HBoxContainer = $Block
 @onready var block_label: Label = %BlockLabel

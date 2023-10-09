@@ -1,10 +1,10 @@
 class_name Hand
 extends HBoxContainer
 
-
-@export var char_stats: CharacterStats
+@export var char_stats: CharacterStats : set = _set_char_stats
 
 @onready var card_ui := preload("res://scenes/card/card_ui.tscn")
+
 var cards_played_this_turn := 0
 
 
@@ -39,3 +39,7 @@ func _on_card_ui_reparent_requested(child: CardUI, index: int) -> void:
 	child.reparent(self)
 	var new_index := clampi(index - cards_played_this_turn, 0, get_child_count())
 	move_child.call_deferred(child, new_index)
+
+
+func _set_char_stats(value: CharacterStats) -> void:
+	char_stats = value

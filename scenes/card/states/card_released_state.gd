@@ -1,6 +1,5 @@
 extends CardState
 
-
 var played: bool
 
 

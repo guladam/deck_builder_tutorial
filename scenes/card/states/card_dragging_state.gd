@@ -1,6 +1,7 @@
 extends CardState
 
 const DRAG_MINIMUM_THRESHOLD := 0.05
+
 var minimum_drag_time_elapsed := false
 
 

@@ -1,3 +1,4 @@
+class_name Tooltip
 extends PanelContainer
 
 @export var fade_seconds := 0.2
