@@ -4,10 +4,11 @@ extends EnemyAction
 
 
 func perform_action() -> void:
+	print("attack this turn")
 	if not enemy or not target:
 		return
 	
 	var damage_effect := DamageEffect.new()
 	damage_effect.amount = damage
 	damage_effect.execute([target])
-	action_completed.emit()
+	Events.enemy_action_completed.emit(enemy)

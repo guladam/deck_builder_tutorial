@@ -3,8 +3,6 @@ extends Node
 
 enum Type {CONDITIONAL, CHANCE_BASED}
 
-signal action_completed
-
 @export var type: Type
 @export_range(0.0, 10.0) var chance_weight := 0.0
 

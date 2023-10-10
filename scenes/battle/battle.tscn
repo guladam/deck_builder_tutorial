@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://cgsmvxf4i8ofs"]
+[gd_scene load_steps=17 format=3 uid="uid://cgsmvxf4i8ofs"]
 
 [ext_resource type="Texture2D" uid="uid://cp4iq5fd6j8be" path="res://art/background.png" id="1_a3o7p"]
 [ext_resource type="Script" path="res://scenes/battle/battle.gd" id="1_ij55q"]
 [ext_resource type="PackedScene" uid="uid://01dt4efxkgtf" path="res://scenes/enemy/enemy.tscn" id="2_hrd7x"]
 [ext_resource type="Resource" uid="uid://dp630ejwgv50u" path="res://characters/warrior/warrior.tres" id="3_15wo8"]
 [ext_resource type="PackedScene" uid="uid://ddx60wg62pe5s" path="res://scenes/card_target_selector/card_target_selector.tscn" id="3_fhpt1"]
+[ext_resource type="PackedScene" uid="uid://bcbvcl06l3s5n" path="res://scenes/enemy/enemy_handler.tscn" id="5_r3bub"]
 [ext_resource type="Resource" uid="uid://cn0koms0fw6ck" path="res://enemies/crab/crab_enemy.tres" id="6_flypy"]
 [ext_resource type="Script" path="res://scenes/ui/hand.gd" id="7_a57ua"]
 [ext_resource type="PackedScene" uid="uid://cqx0b3eecq8el" path="res://scenes/player/player.tscn" id="7_wd30m"]
@@ -28,6 +29,15 @@ texture = ExtResource("1_a3o7p")
 centered = false
 metadata/_edit_lock_ = true
 
+[node name="Player" parent="." instance=ExtResource("7_wd30m")]
+position = Vector2(45, 75)
+
+[node name="EnemyHandler" parent="." instance=ExtResource("5_r3bub")]
+
+[node name="CrabEnemy" parent="EnemyHandler" instance=ExtResource("2_hrd7x")]
+position = Vector2(190, 75)
+stats = ExtResource("6_flypy")
+
 [node name="CardDropArea" type="Area2D" parent="."]
 collision_layer = 2
 input_pickable = false
@@ -37,13 +47,6 @@ metadata/_edit_lock_ = true
 position = Vector2(128, 50)
 shape = SubResource("RectangleShape2D_605o1")
 debug_color = Color(0, 0.6, 0.701961, 0.14902)
-
-[node name="Player" parent="." instance=ExtResource("7_wd30m")]
-position = Vector2(45, 75)
-
-[node name="CrabEnemy" parent="." instance=ExtResource("2_hrd7x")]
-position = Vector2(190, 75)
-stats = ExtResource("6_flypy")
 
 [node name="CardTargetSelector" parent="." instance=ExtResource("3_fhpt1")]
 
@@ -87,6 +90,7 @@ offset_bottom = -6.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("11_j5jfs")
+disabled = true
 text = "End Turn"
 
 [node name="CardTooltip" parent="BattleUI" instance=ExtResource("13_f0sws")]

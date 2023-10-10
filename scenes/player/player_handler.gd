@@ -32,6 +32,9 @@ func draw_cards(amount: int) -> void:
 	for i in range(amount):
 		tween.tween_callback(draw_card)
 		tween.tween_interval(HAND_DRAW_INTERVAL)
+	tween.finished.connect(
+		func(): Events.player_hand_drawn.emit()
+	)
 
 
 func draw_card() -> void:
@@ -45,7 +48,9 @@ func discard_cards() -> void:
 	for card_ui in hand.get_children():
 		tween.tween_callback(hand.discard_card.bind(card_ui))
 		tween.tween_interval(HAND_DISCARD_INTERVAL)
-	tween.finished.connect(start_turn, CONNECT_ONE_SHOT)
+	tween.finished.connect(
+		func(): Events.player_hand_discarded.emit()
+	)
 
 
 func reshuffle_deck_from_discard() -> void:

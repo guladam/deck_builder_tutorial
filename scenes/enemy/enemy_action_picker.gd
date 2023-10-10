@@ -8,6 +8,7 @@ extends Node
 
 
 func _ready() -> void:
+	target = get_tree().get_first_node_in_group("player")
 	setup_chances()
 
 
