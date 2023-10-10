@@ -6,6 +6,14 @@ func _ready() -> void:
 	Events.enemy_action_completed.connect(_on_enemy_action_completed)
 
 
+func reset_enemy_actions() -> void:
+	var enemy: Enemy
+	for child in get_children():
+		enemy = child as Enemy
+		enemy.current_action = null
+		enemy.update_action()
+
+
 func start_turn() -> void:
 	if get_child_count() == 0:
 		return

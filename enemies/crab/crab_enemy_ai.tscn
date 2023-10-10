@@ -1,10 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://or4lmg1cepf0"]
+[gd_scene load_steps=12 format=3 uid="uid://or4lmg1cepf0"]
 
 [ext_resource type="Script" path="res://scenes/enemy/enemy_action_picker.gd" id="1_n310e"]
 [ext_resource type="PackedScene" uid="uid://bplgbrigesa6h" path="res://scenes/enemy/enemy_action.tscn" id="2_0kvqo"]
 [ext_resource type="Script" path="res://enemies/crab/crab_attack_action.gd" id="3_c8jcb"]
+[ext_resource type="Texture2D" uid="uid://bfvi02kojsa00" path="res://art/tile_0103.png" id="4_kvxtb"]
 [ext_resource type="Script" path="res://enemies/crab/crab_block_action.gd" id="4_stcee"]
 [ext_resource type="Script" path="res://enemies/crab/crab_mega_block_action.gd" id="5_15gpv"]
+[ext_resource type="Script" path="res://custom_resources/intent.gd" id="5_or3b3"]
+[ext_resource type="Texture2D" uid="uid://oe7v35ii8vrs" path="res://art/tile_0102.png" id="7_nmjd0"]
+
+[sub_resource type="Resource" id="Resource_4e54v"]
+script = ExtResource("5_or3b3")
+number = "7"
+icon = ExtResource("4_kvxtb")
+
+[sub_resource type="Resource" id="Resource_lrsui"]
+script = ExtResource("5_or3b3")
+number = ""
+icon = ExtResource("7_nmjd0")
+
+[sub_resource type="Resource" id="Resource_kkpw8"]
+script = ExtResource("5_or3b3")
+number = ""
+icon = ExtResource("7_nmjd0")
 
 [node name="CrabEnemyAI" type="Node"]
 script = ExtResource("1_n310e")
@@ -12,12 +30,14 @@ script = ExtResource("1_n310e")
 [node name="AttackAction" parent="." instance=ExtResource("2_0kvqo")]
 script = ExtResource("3_c8jcb")
 damage = 7
+intent = SubResource("Resource_4e54v")
 type = 1
 chance_weight = 1.0
 
 [node name="BlockAction" parent="." instance=ExtResource("2_0kvqo")]
 script = ExtResource("4_stcee")
 block = 6
+intent = SubResource("Resource_lrsui")
 type = 1
 chance_weight = 1.0
 
@@ -25,3 +45,4 @@ chance_weight = 1.0
 script = ExtResource("5_15gpv")
 block = 15
 hp_threshold = 6
+intent = SubResource("Resource_kkpw8")

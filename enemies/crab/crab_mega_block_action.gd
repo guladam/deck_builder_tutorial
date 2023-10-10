@@ -17,7 +17,6 @@ func is_performable() -> bool:
 
 
 func perform_action() -> void:
-	print("megablock this turn")
 	if not enemy or not target:
 		return
 	

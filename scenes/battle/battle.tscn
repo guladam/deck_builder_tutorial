@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cgsmvxf4i8ofs"]
+[gd_scene load_steps=19 format=3 uid="uid://cgsmvxf4i8ofs"]
 
 [ext_resource type="Texture2D" uid="uid://cp4iq5fd6j8be" path="res://art/background.png" id="1_a3o7p"]
 [ext_resource type="Script" path="res://scenes/battle/battle.gd" id="1_ij55q"]
@@ -6,11 +6,13 @@
 [ext_resource type="Resource" uid="uid://dp630ejwgv50u" path="res://characters/warrior/warrior.tres" id="3_15wo8"]
 [ext_resource type="PackedScene" uid="uid://ddx60wg62pe5s" path="res://scenes/card_target_selector/card_target_selector.tscn" id="3_fhpt1"]
 [ext_resource type="PackedScene" uid="uid://bcbvcl06l3s5n" path="res://scenes/enemy/enemy_handler.tscn" id="5_r3bub"]
-[ext_resource type="Resource" uid="uid://cn0koms0fw6ck" path="res://enemies/crab/crab_enemy.tres" id="6_flypy"]
 [ext_resource type="Script" path="res://scenes/ui/hand.gd" id="7_a57ua"]
+[ext_resource type="Resource" uid="uid://b3srkon2tmm8h" path="res://enemies/bat/bat_enemy.tres" id="7_r8o2s"]
 [ext_resource type="PackedScene" uid="uid://cqx0b3eecq8el" path="res://scenes/player/player.tscn" id="7_wd30m"]
+[ext_resource type="Resource" uid="uid://cn0koms0fw6ck" path="res://enemies/crab/crab_enemy.tres" id="8_dgm7u"]
 [ext_resource type="PackedScene" uid="uid://q0tcwk782ye8" path="res://scenes/player/player_handler.tscn" id="8_ufq0f"]
 [ext_resource type="Script" path="res://scenes/battle/battle_ui.gd" id="9_t02pp"]
+[ext_resource type="Script" path="res://scenes/ui/red_flash.gd" id="10_f4ivk"]
 [ext_resource type="PackedScene" uid="uid://bc31rnkiojx7w" path="res://scenes/ui/mana_ui.tscn" id="10_x51xg"]
 [ext_resource type="StyleBox" uid="uid://clbi30wcngx86" path="res://scenes/ui/ui_base_stylebox.tres" id="11_ecibu"]
 [ext_resource type="Theme" uid="uid://c5r7a5e4xy5se" path="res://game_theme.tres" id="11_j5jfs"]
@@ -34,9 +36,17 @@ position = Vector2(45, 75)
 
 [node name="EnemyHandler" parent="." instance=ExtResource("5_r3bub")]
 
+[node name="BatEnemy" parent="EnemyHandler" instance=ExtResource("2_hrd7x")]
+position = Vector2(157, 60)
+stats = ExtResource("7_r8o2s")
+
 [node name="CrabEnemy" parent="EnemyHandler" instance=ExtResource("2_hrd7x")]
 position = Vector2(190, 75)
-stats = ExtResource("6_flypy")
+stats = ExtResource("8_dgm7u")
+
+[node name="BatEnemy2" parent="EnemyHandler" instance=ExtResource("2_hrd7x")]
+position = Vector2(223, 60)
+stats = ExtResource("7_r8o2s")
 
 [node name="CardDropArea" type="Area2D" parent="."]
 collision_layer = 2
@@ -52,6 +62,22 @@ debug_color = Color(0, 0.6, 0.701961, 0.14902)
 
 [node name="PlayerHandler" parent="." node_paths=PackedStringArray("hand") instance=ExtResource("8_ufq0f")]
 hand = NodePath("../BattleUI/Hand")
+
+[node name="RedFlash" type="CanvasLayer" parent="."]
+script = ExtResource("10_f4ivk")
+
+[node name="ColorRect" type="ColorRect" parent="RedFlash"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0.443137, 0.443137, 0)
+
+[node name="Timer" type="Timer" parent="RedFlash"]
+wait_time = 0.1
+one_shot = true
 
 [node name="BattleUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
 layer = 0

@@ -12,6 +12,7 @@ var character: CharacterStats
 func start_battle(char_stats: CharacterStats) -> void:
 	character = char_stats
 	character.draw_pile = character.deck.duplicate(true)
+	character.draw_pile.shuffle()
 	character.discard = CardPile.new()
 	start_turn()
 

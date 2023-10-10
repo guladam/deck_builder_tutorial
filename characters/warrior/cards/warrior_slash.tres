@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c4472rgaelqxw"]
+
+[ext_resource type="Script" path="res://characters/warrior/cards/warrior_slash.gd" id="1_p7oj4"]
+[ext_resource type="Texture2D" uid="uid://cqcal03735mv8" path="res://art/tile_0118.png" id="1_v6njq"]
+
+[resource]
+script = ExtResource("1_p7oj4")
+id = "warrior_slash"
+type = 0
+target = 2
+cost = 2
+icon = ExtResource("1_v6njq")
+tooltip_text = "[center]Deal [color=\"ff0000\"]4[/color] damage
+to all enemies.[/center]"

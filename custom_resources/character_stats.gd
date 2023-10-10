@@ -17,8 +17,10 @@ func set_mana(value: int) -> void:
 
 
 func take_damage(damage: int) -> void:
+	var initial_health := health
 	super.take_damage(damage)
-	Events.player_hit.emit()
+	if initial_health > health:
+		Events.player_hit.emit()
 
 
 func reset_mana() -> void:

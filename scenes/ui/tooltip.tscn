@@ -42,5 +42,9 @@ stretch_mode = 5
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/line_separation = 2
 bbcode_enabled = true
-text = "[center]Deals [color=\"ff0000\"]6[/color] damage.[/center]"
+text = "[center]Deal [color=\"ff0000\"]4[/color] damage
+to all enemies.[/center]"
+fit_content = true
+scroll_active = false

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://01dt4efxkgtf"]
+[gd_scene load_steps=7 format=3 uid="uid://01dt4efxkgtf"]
 
-[ext_resource type="Texture2D" uid="uid://1u3b3hwqd8yh" path="res://art/tile_0110.png" id="1_8v2b5"]
 [ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_edoni"]
+[ext_resource type="Texture2D" uid="uid://con6y7mc74c5a" path="res://art/tile_0120.png" id="2_47bu0"]
 [ext_resource type="Texture2D" uid="uid://bb3rcs5nqntir" path="res://art/arrow.png" id="2_2705y"]
 [ext_resource type="PackedScene" uid="uid://dmouqvt3cl12v" path="res://scenes/ui/stats_ui.tscn" id="3_y3po5"]
+[ext_resource type="PackedScene" uid="uid://b030ojdwf0uxl" path="res://scenes/ui/intent_ui.tscn" id="5_fpbq0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xfhq4"]
 
@@ -13,12 +14,12 @@ input_pickable = false
 script = ExtResource("1_edoni")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_8v2b5")
+texture = ExtResource("2_47bu0")
 
 [node name="Arrow" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(0, -16)
-rotation = -3.14159
+position = Vector2(-14, -13)
+rotation = -3.92699
 texture = ExtResource("2_2705y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -29,6 +30,12 @@ offset_left = -21.5
 offset_top = 6.0
 offset_right = 21.5
 offset_bottom = 22.0
+
+[node name="IntentUI" parent="." instance=ExtResource("5_fpbq0")]
+offset_left = -8.5
+offset_top = -22.0
+offset_right = 8.5
+offset_bottom = -10.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
