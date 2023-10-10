@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://01dt4efxkgtf"]
+[gd_scene load_steps=7 format=3 uid="uid://01dt4efxkgtf"]
 
 [ext_resource type="Texture2D" uid="uid://1u3b3hwqd8yh" path="res://art/tile_0110.png" id="1_8v2b5"]
 [ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_edoni"]
 [ext_resource type="Texture2D" uid="uid://bb3rcs5nqntir" path="res://art/arrow.png" id="2_2705y"]
 [ext_resource type="PackedScene" uid="uid://dmouqvt3cl12v" path="res://scenes/ui/stats_ui.tscn" id="3_y3po5"]
+[ext_resource type="PackedScene" uid="uid://dubh225tlprdk" path="res://scenes/enemy/enemy_action_picker.tscn" id="5_ojnic"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xfhq4"]
 
@@ -29,7 +30,9 @@ offset_left = -21.5
 offset_top = 6.0
 offset_right = 21.5
 offset_bottom = 22.0
-alignment = 1
+
+[node name="EnemyActionPicker" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("5_ojnic")]
+enemy = NodePath("..")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

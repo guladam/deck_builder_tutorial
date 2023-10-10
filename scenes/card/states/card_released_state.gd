@@ -7,8 +7,9 @@ func enter() -> void:
 	played = false
 	
 	if not card_ui.targets.is_empty():
-		card_ui.play()
+		Events.tooltip_hide_requested.emit()
 		played = true
+		card_ui.play()
 
 
 func on_input(_event: InputEvent) -> void:

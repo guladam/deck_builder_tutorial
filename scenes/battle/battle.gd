@@ -15,6 +15,7 @@ func _ready() -> void:
 	
 	player.stats = new_stats
 	battle_ui.char_stats = new_stats
+	# TODO disable end turn button while enemy turn
 	battle_ui.end_turn_button.pressed.connect(player_handler.end_turn)
 	player_handler.character = new_stats
 	player_handler.start_battle(new_stats)

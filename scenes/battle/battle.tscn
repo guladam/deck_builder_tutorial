@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://cp4iq5fd6j8be" path="res://art/background.png" id="1_a3o7p"]
 [ext_resource type="Script" path="res://scenes/battle/battle.gd" id="1_ij55q"]
 [ext_resource type="PackedScene" uid="uid://01dt4efxkgtf" path="res://scenes/enemy/enemy.tscn" id="2_hrd7x"]
-[ext_resource type="Resource" uid="uid://cn0koms0fw6ck" path="res://data/stats/enemies/crab_enemy.tres" id="3_2iabj"]
-[ext_resource type="Resource" uid="uid://dp630ejwgv50u" path="res://data/stats/characters/warrior.tres" id="3_15wo8"]
+[ext_resource type="Resource" uid="uid://dp630ejwgv50u" path="res://characters/warrior/warrior.tres" id="3_15wo8"]
 [ext_resource type="PackedScene" uid="uid://ddx60wg62pe5s" path="res://scenes/card_target_selector/card_target_selector.tscn" id="3_fhpt1"]
+[ext_resource type="Resource" uid="uid://cn0koms0fw6ck" path="res://enemies/crab/crab_enemy.tres" id="6_flypy"]
 [ext_resource type="Script" path="res://scenes/ui/hand.gd" id="7_a57ua"]
 [ext_resource type="PackedScene" uid="uid://cqx0b3eecq8el" path="res://scenes/player/player.tscn" id="7_wd30m"]
 [ext_resource type="PackedScene" uid="uid://q0tcwk782ye8" path="res://scenes/player/player_handler.tscn" id="8_ufq0f"]
@@ -40,11 +40,10 @@ debug_color = Color(0, 0.6, 0.701961, 0.14902)
 
 [node name="Player" parent="." instance=ExtResource("7_wd30m")]
 position = Vector2(45, 75)
-stats = ExtResource("3_15wo8")
 
 [node name="CrabEnemy" parent="." instance=ExtResource("2_hrd7x")]
 position = Vector2(190, 75)
-stats = ExtResource("3_2iabj")
+stats = ExtResource("6_flypy")
 
 [node name="CardTargetSelector" parent="." instance=ExtResource("3_fhpt1")]
 
@@ -69,7 +68,6 @@ grow_vertical = 0
 pivot_offset = Vector2(75, 30)
 alignment = 1
 script = ExtResource("7_a57ua")
-char_stats = ExtResource("3_15wo8")
 
 [node name="ManaUI" parent="BattleUI" instance=ExtResource("10_x51xg")]
 unique_name_in_owner = true

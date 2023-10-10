@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bplgbrigesa6h"]
+
+[ext_resource type="Script" path="res://scenes/enemy/enemy_action.gd" id="1_csh2l"]
+
+[node name="EnemyAction" type="Node"]
+script = ExtResource("1_csh2l")

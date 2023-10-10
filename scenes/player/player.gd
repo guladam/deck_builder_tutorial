@@ -17,10 +17,11 @@ func set_character_stats(value: CharacterStats) -> void:
 
 
 func update_player() -> void:
-	if not is_inside_tree(): 
-		return
 	if not stats is CharacterStats: 
 		return
+	if not is_inside_tree(): 
+		await ready
+
 	sprite_2d.texture = stats.art
 	update_stats()
 

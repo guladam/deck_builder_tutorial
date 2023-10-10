@@ -8,9 +8,11 @@ func enter() -> void:
 	if card_ui.tween and card_ui.tween.is_running():
 		card_ui.tween.kill()
 
+
 	card_ui.panel.set("theme_override_styles/panel", card_ui.BASE_STYLEBOX)
 	card_ui.reparent_requested.emit(card_ui, card_ui.original_index)
 	card_ui.pivot_offset = Vector2.ZERO
+	Events.tooltip_hide_requested.emit()
 
 
 func on_gui_input(event: InputEvent) -> void:
