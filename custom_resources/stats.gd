@@ -24,8 +24,8 @@ func take_damage(damage : int) -> void:
 	if damage <= 0:
 		return
 	var initial_damage = damage
-	damage -= block
-	self.block = clamp(block - initial_damage, 0, block)
+	damage = clampi(damage - block, 0, damage)
+	self.block = clampi(block - initial_damage, 0, block)
 	self.health -= damage
 
 

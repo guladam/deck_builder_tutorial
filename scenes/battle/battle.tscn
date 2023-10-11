@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://cgsmvxf4i8ofs"]
+[gd_scene load_steps=21 format=3 uid="uid://cgsmvxf4i8ofs"]
 
 [ext_resource type="Texture2D" uid="uid://cp4iq5fd6j8be" path="res://art/background.png" id="1_a3o7p"]
 [ext_resource type="Script" path="res://scenes/battle/battle.gd" id="1_ij55q"]
 [ext_resource type="PackedScene" uid="uid://01dt4efxkgtf" path="res://scenes/enemy/enemy.tscn" id="2_hrd7x"]
 [ext_resource type="Resource" uid="uid://dp630ejwgv50u" path="res://characters/warrior/warrior.tres" id="3_15wo8"]
 [ext_resource type="PackedScene" uid="uid://ddx60wg62pe5s" path="res://scenes/card_target_selector/card_target_selector.tscn" id="3_fhpt1"]
+[ext_resource type="AudioStream" uid="uid://dpdenqqbovwfq" path="res://art/8_bit_iced_village_lofi.mp3" id="3_olr55"]
 [ext_resource type="PackedScene" uid="uid://bcbvcl06l3s5n" path="res://scenes/enemy/enemy_handler.tscn" id="5_r3bub"]
 [ext_resource type="Script" path="res://scenes/ui/hand.gd" id="7_a57ua"]
 [ext_resource type="Resource" uid="uid://b3srkon2tmm8h" path="res://enemies/bat/bat_enemy.tres" id="7_r8o2s"]
@@ -17,6 +18,7 @@
 [ext_resource type="StyleBox" uid="uid://clbi30wcngx86" path="res://scenes/ui/ui_base_stylebox.tres" id="11_ecibu"]
 [ext_resource type="Theme" uid="uid://c5r7a5e4xy5se" path="res://game_theme.tres" id="11_j5jfs"]
 [ext_resource type="PackedScene" uid="uid://b8a8uad4upmsl" path="res://scenes/ui/tooltip.tscn" id="13_f0sws"]
+[ext_resource type="PackedScene" uid="uid://dcb6j1kql73t3" path="res://scenes/ui/battle_over_panel.tscn" id="19_nrf75"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_605o1"]
 size = Vector2(256, 100)
@@ -24,6 +26,7 @@ size = Vector2(256, 100)
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_ij55q")
 char_stats = ExtResource("3_15wo8")
+music = ExtResource("3_olr55")
 
 [node name="Background" type="Sprite2D" parent="."]
 self_modulate = Color(0.321569, 0.321569, 0.321569, 1)
@@ -121,3 +124,9 @@ text = "End Turn"
 
 [node name="CardTooltip" parent="BattleUI" instance=ExtResource("13_f0sws")]
 unique_name_in_owner = true
+
+[node name="BattleOverLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="BattleOverPanel" parent="BattleOverLayer" instance=ExtResource("19_nrf75")]
+visible = false

@@ -1,6 +1,7 @@
 extends EnemyAction
 
 @export var block := 6
+@export var sound: AudioStream
 
 
 func perform_action() -> void:
@@ -9,5 +10,9 @@ func perform_action() -> void:
 	
 	var block_effect := BlockEffect.new()
 	block_effect.amount = block
+	block_effect.sound = sound
 	block_effect.execute([enemy])
-	Events.enemy_action_completed.emit(enemy)
+	get_tree().create_timer(0.6, false).timeout.connect(
+		func():
+			Events.enemy_action_completed.emit(enemy)
+	)

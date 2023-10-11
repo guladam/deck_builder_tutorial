@@ -64,6 +64,9 @@ func update_enemy() -> void:
 
 
 func take_damage(damage: int) -> void:
+	if stats.health <= 0:
+		return
+	
 	sprite_2d.material = WHITE_SPRITE_MATERIAL
 	
 	var tween := create_tween()

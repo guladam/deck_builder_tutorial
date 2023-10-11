@@ -2,7 +2,7 @@
 # meta-description: An action which can be performed by an enemy during its turn.
 extends EnemyAction
 
-@export var export_variable := 4
+@export var sound: AudioStream
 
 
 func perform_action() -> void:
@@ -13,6 +13,6 @@ func perform_action() -> void:
 	var start := enemy.global_position
 	var end := target.global_position + Vector2.RIGHT * 32
 	
-	print("Do my awesome action with a number %s!" % export_variable)
+	SFXPlayer.play(sound)
 
 	Events.enemy_action_completed.emit(enemy)

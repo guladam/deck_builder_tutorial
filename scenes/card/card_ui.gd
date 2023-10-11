@@ -16,9 +16,9 @@ const HOVER_STYLEBOX := preload("res://scenes/card/card_hover_stylebox.tres")
 @onready var drop_point_detector: Area2D = $DropPointDetector
 @onready var card_state_machine: CardStateMachine = $CardStateMachine
 @onready var original_index := self.get_index()
-@onready var parent := self.get_parent()
 @onready var targets: Array[Node] = []
 
+var parent: Control
 var tween: Tween
 var playable: bool = true : set = _set_playable
 var disabled: bool = false
@@ -29,6 +29,7 @@ func _ready() -> void:
 	Events.card_drag_started.connect(_on_card_drag_or_aiming_started)
 	Events.card_drag_ended.connect(_on_card_drag_or_aim_ended)
 	Events.card_aim_ended.connect(_on_card_drag_or_aim_ended)
+	card_state_machine.init(self)
 
 
 func _input(event: InputEvent) -> void:

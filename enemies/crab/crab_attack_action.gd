@@ -1,6 +1,7 @@
 extends EnemyAction
 
 @export var damage := 7
+@export var sound: AudioStream
 
 
 func perform_action() -> void:
@@ -12,7 +13,8 @@ func perform_action() -> void:
 	var end := target.global_position + Vector2.RIGHT * 32
 	var damage_effect := DamageEffect.new()
 	var target_array: Array[Node] = [target]
-	damage_effect.amount = damage	
+	damage_effect.amount = damage
+	damage_effect.sound = sound
 	
 	tween.tween_property(enemy, "global_position", end, 0.4)
 	tween.tween_callback(damage_effect.execute.bind(target_array))

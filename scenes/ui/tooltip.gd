@@ -32,7 +32,7 @@ func hide_tooltip() -> void:
 	if tween:
 		tween.kill()
 
-	get_tree().create_timer(0.2).timeout.connect(hide_animation)
+	get_tree().create_timer(0.2, false).timeout.connect(hide_animation)
 
 
 func hide_animation() -> void:

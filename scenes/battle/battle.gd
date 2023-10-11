@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var char_stats: CharacterStats
+@export var music: AudioStream
 
 @onready var player: Player = $Player
 @onready var player_handler: PlayerHandler = $PlayerHandler
@@ -21,14 +22,21 @@ func _ready() -> void:
 	Events.player_turn_ended.connect(player_handler.end_turn)
 	Events.player_hand_discarded.connect(enemy_handler.start_turn)
 	Events.player_died.connect(_on_player_died)
-	
-	player_handler.start_battle(new_stats)
+	start_battle(new_stats)
+
+
+func start_battle(stats: CharacterStats) -> void:
 	enemy_handler.reset_enemy_actions()
+	MusicPlayer.play(music, true)
+	get_tree().paused = false
+	get_tree().create_timer(0.75, false).timeout.connect(
+		player_handler.start_battle.bind(stats)
+	)
 
 
 func _on_enemies_child_order_changed() -> void:
 	if enemy_handler.get_child_count() == 0:
-		print("won battle!")
+		Events.battle_over_screen_requested.emit("Victorious!", BattleOverPanel.Type.WIN)
 
 
 func _on_enemy_turn_ended() -> void:
@@ -37,4 +45,4 @@ func _on_enemy_turn_ended() -> void:
 
 
 func _on_player_died() -> void:
-	print("game over!")
+	Events.battle_over_screen_requested.emit("Game Over!", BattleOverPanel.Type.LOSE)

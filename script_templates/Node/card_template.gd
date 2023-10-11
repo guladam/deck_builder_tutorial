@@ -2,7 +2,7 @@
 # meta-description: What happens when a card is played.
 extends Card
 
-@export var optional_extra_export_var: int
+@export var optional_sound: AudioStream
 
 
 func apply_effects(targets: Array[Node]) -> void:

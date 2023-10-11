@@ -1,10 +1,12 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c4472rgaelqxw"]
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://c4472rgaelqxw"]
 
 [ext_resource type="Script" path="res://characters/warrior/cards/warrior_slash.gd" id="1_p7oj4"]
 [ext_resource type="Texture2D" uid="uid://cqcal03735mv8" path="res://art/tile_0118.png" id="1_v6njq"]
+[ext_resource type="AudioStream" uid="uid://dixklg6g4jnsq" path="res://art/slash.ogg" id="3_1b548"]
 
 [resource]
 script = ExtResource("1_p7oj4")
+sound = ExtResource("3_1b548")
 id = "warrior_slash"
 type = 0
 target = 2
