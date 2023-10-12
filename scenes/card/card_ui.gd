@@ -21,7 +21,7 @@ const HOVER_STYLEBOX := preload("res://scenes/card/card_hover_stylebox.tres")
 var parent: Control
 var tween: Tween
 var playable: bool = true : set = _set_playable
-var disabled: bool = false
+var disabled := false
 
 
 func _ready() -> void:

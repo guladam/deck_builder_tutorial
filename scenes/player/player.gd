@@ -28,6 +28,10 @@ func update_player() -> void:
 	update_stats()
 
 
+func update_stats() -> void:
+	stats_ui.update_stats(stats)
+
+
 func take_damage(damage: int) -> void:
 	if stats.health <= 0:
 		return
@@ -45,7 +49,3 @@ func take_damage(damage: int) -> void:
 				Events.player_died.emit()
 				queue_free()
 	)
-
-
-func update_stats() -> void:
-	stats_ui.update_stats(stats)

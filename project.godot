@@ -13,7 +13,7 @@ config_version=5
 config/name="Deck Builder Tutorial"
 run/main_scene="res://scenes/battle/battle.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
 
 [autoload]
 
@@ -26,6 +26,7 @@ SFXPlayer="*res://global/sfx_player.tscn"
 
 window/size/viewport_width=256
 window/size/viewport_height=144
+window/size/mode=2
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"

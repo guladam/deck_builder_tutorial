@@ -42,7 +42,7 @@ func _on_card_ui_reparent_requested(child: CardUI, index: int) -> void:
 	var new_index := clampi(index - cards_played_this_turn, 0, get_child_count())
 	move_child.call_deferred(child, new_index)
 	child.set_deferred("disabled", false)
-	
+
 
 func _set_char_stats(value: CharacterStats) -> void:
 	char_stats = value

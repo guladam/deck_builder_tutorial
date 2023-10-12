@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://c5r7a5e4xy5se" path="res://game_theme.tres" id="1_mkx8d"]
 [ext_resource type="Script" path="res://scenes/ui/intent_ui.gd" id="2_jxn7y"]
-[ext_resource type="Texture2D" uid="uid://bfvi02kojsa00" path="res://art/tile_0103.png" id="3_kaoji"]
+[ext_resource type="Texture2D" uid="uid://oe7v35ii8vrs" path="res://art/tile_0102.png" id="3_j6tj2"]
 
 [node name="IntentUI" type="HBoxContainer"]
 custom_minimum_size = Vector2(40, 0)
@@ -16,15 +16,14 @@ alignment = 1
 script = ExtResource("2_jxn7y")
 
 [node name="Icon" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(12, 12)
+custom_minimum_size = Vector2(14, 14)
 layout_mode = 2
-texture = ExtResource("3_kaoji")
+texture = ExtResource("3_j6tj2")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="Number" type="Label" parent="."]
 layout_mode = 2
-size_flags_vertical = 8
 text = "6"
 horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 2

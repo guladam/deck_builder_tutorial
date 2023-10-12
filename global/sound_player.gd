@@ -3,8 +3,8 @@ extends Node
 @onready var players: Node = $Players
 
 
-func play(sfx: AudioStream, single=false) -> void:
-	if not sfx:
+func play(audio: AudioStream, single=false) -> void:
+	if not audio:
 		return
 		
 	if single:
@@ -12,7 +12,7 @@ func play(sfx: AudioStream, single=false) -> void:
 
 	for player in players.get_children():
 		if not player.playing:
-			player.stream = sfx
+			player.stream = audio
 			player.play()
 			break
 

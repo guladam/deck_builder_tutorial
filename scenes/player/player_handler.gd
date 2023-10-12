@@ -28,6 +28,12 @@ func end_turn() -> void:
 	discard_cards()
 
 
+func draw_card() -> void:
+	reshuffle_deck_from_discard()
+	hand.add_card(character.draw_pile.draw_card())
+	reshuffle_deck_from_discard()
+
+
 func draw_cards(amount: int) -> void:
 	var tween := create_tween()
 	for i in range(amount):
@@ -36,12 +42,6 @@ func draw_cards(amount: int) -> void:
 	tween.finished.connect(
 		func(): Events.player_hand_drawn.emit()
 	)
-
-
-func draw_card() -> void:
-	reshuffle_deck_from_discard()
-	hand.add_card(character.draw_pile.draw_card())
-	reshuffle_deck_from_discard()
 
 
 func discard_cards() -> void:
