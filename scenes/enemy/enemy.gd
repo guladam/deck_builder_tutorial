@@ -1,6 +1,7 @@
 class_name Enemy
 extends Area2D
 
+const ARROW_OFFSET := 5
 const WHITE_SPRITE_MATERIAL := preload("res://art/white_sprite_material.tres")
 
 @export var stats: EnemyStats : set = set_enemy_stats
@@ -64,6 +65,7 @@ func update_enemy() -> void:
 		await ready
 	
 	sprite_2d.texture = stats.art
+	arrow.position = Vector2.RIGHT * (sprite_2d.get_rect().size.x / 2 + ARROW_OFFSET)
 	setup_ai()
 	update_stats()
 

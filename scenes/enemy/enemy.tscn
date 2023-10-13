@@ -18,8 +18,8 @@ texture = ExtResource("2_47bu0")
 
 [node name="Arrow" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(-14, -13)
-rotation = -3.92699
+position = Vector2(16, 0)
+rotation = -1.5708
 texture = ExtResource("2_2705y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
