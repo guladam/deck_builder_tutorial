@@ -27,6 +27,7 @@ size = Vector2(256, 100)
 script = ExtResource("1_ij55q")
 char_stats = ExtResource("3_15wo8")
 music = ExtResource("3_olr55")
+metadata/_edit_lock_ = true
 
 [node name="Background" type="Sprite2D" parent="."]
 self_modulate = Color(0.321569, 0.321569, 0.321569, 1)
@@ -77,6 +78,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(1, 0.443137, 0.443137, 0)
+metadata/_edit_lock_ = true
 
 [node name="Timer" type="Timer" parent="RedFlash"]
 wait_time = 0.1
