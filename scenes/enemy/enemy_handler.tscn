@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bcbvcl06l3s5n"]
-
-[ext_resource type="Script" path="res://scenes/enemy/enemy_handler.gd" id="1_llaqo"]
-
-[node name="EnemyHandler" type="Node2D"]
-script = ExtResource("1_llaqo")

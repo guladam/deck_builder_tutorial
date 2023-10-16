@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://be1k8ypeawdab"]
-
-[ext_resource type="Script" path="res://scenes/card/states/card_released_state.gd" id="1_2wi1j"]
-
-[node name="CardReleasedState" type="Node"]
-script = ExtResource("1_2wi1j")
-state = 3

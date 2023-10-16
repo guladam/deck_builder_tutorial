@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://q0tcwk782ye8"]
-
-[ext_resource type="Script" path="res://scenes/player/player_handler.gd" id="1_gh2kx"]
-
-[node name="PlayerHandler" type="Node"]
-script = ExtResource("1_gh2kx")
