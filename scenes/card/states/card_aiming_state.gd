@@ -23,5 +23,5 @@ func on_input(event: InputEvent) -> void:
 	if (mouse_motion and mouse_at_bottom) or event.is_action_pressed("right_mouse"):
 		transition_requested.emit(self, CardState.State.BASE)
 	elif event.is_action_released("left_mouse") or event.is_action_pressed("left_mouse"):
-		transition_requested.emit(self, CardState.State.RELEASED)
 		get_viewport().set_input_as_handled()
+		transition_requested.emit(self, CardState.State.RELEASED)
