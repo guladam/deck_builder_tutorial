@@ -2,6 +2,8 @@
 A roguelike deckbuilder tutorial project made in Godot 4.
 This branch only contains the art for the game.
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/M4M0RXV24)
+
 ### This is the completed version of the project. If you want to follow along check out the starter-project branch.
 
 ### Credits
