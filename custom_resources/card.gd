@@ -1,7 +1,7 @@
 class_name Card
 extends Resource
 
-enum Type {ATTACK, DEFEND, POWER}
+enum Type {ATTACK, SKILL, POWER}
 enum Target {SELF, SINGLE_ENEMY, ALL_ENEMIES, EVERYONE}
 
 @export_group("Card Attributes")
@@ -13,6 +13,11 @@ enum Target {SELF, SINGLE_ENEMY, ALL_ENEMIES, EVERYONE}
 @export_group("Card Visuals")
 @export var icon: Texture
 @export_multiline var tooltip_text: String
+@export var sound: AudioStream
+
+
+func is_single_targeted() -> bool:
+	return target == Target.SINGLE_ENEMY
 
 
 func _get_targets(targets: Array[Node]) -> Array[Node]:
@@ -29,11 +34,7 @@ func _get_targets(targets: Array[Node]) -> Array[Node]:
 		Target.EVERYONE:
 			return tree.get_nodes_in_group("player") + tree.get_nodes_in_group("enemies")
 		_:
-			return targets
-
-
-func is_single_targeted() -> bool:
-	return target == Target.SINGLE_ENEMY
+			return []
 
 
 func play(targets: Array[Node], char_stats: CharacterStats) -> void:
@@ -48,3 +49,4 @@ func play(targets: Array[Node], char_stats: CharacterStats) -> void:
 
 func apply_effects(_targets: Array[Node]) -> void:
 	pass
+	

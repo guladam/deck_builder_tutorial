@@ -1,7 +1,5 @@
 extends Card
 
-@export var sound: AudioStream
-
 
 func apply_effects(targets: Array[Node]) -> void:
 	var block_effect := BlockEffect.new()

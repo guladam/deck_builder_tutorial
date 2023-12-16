@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Deck Builder Tutorial"
+config/name="Deck Builder Game"
 run/main_scene="res://scenes/battle/battle.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 config/icon="res://icon.png"
@@ -26,10 +26,13 @@ SFXPlayer="*res://global/sfx_player.tscn"
 
 window/size/viewport_width=256
 window/size/viewport_height=144
-window/size/mode=2
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"
+
+[gui]
+
+theme/custom="res://main_theme.tres"
 
 [input]
 
@@ -49,7 +52,6 @@ right_mouse={
 2d_physics/layer_1="card_target_selector"
 2d_physics/layer_2="card_drop_area"
 2d_physics/layer_3="enemies"
-2d_physics/layer_4="player"
 
 [rendering]
 

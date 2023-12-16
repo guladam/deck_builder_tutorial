@@ -1,40 +1,35 @@
-[gd_scene load_steps=7 format=3 uid="uid://01dt4efxkgtf"]
+[gd_scene load_steps=7 format=3 uid="uid://d0efyathkfg74"]
 
-[ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_edoni"]
-[ext_resource type="Texture2D" uid="uid://con6y7mc74c5a" path="res://art/tile_0120.png" id="2_47bu0"]
-[ext_resource type="Texture2D" uid="uid://bb3rcs5nqntir" path="res://art/arrow.png" id="2_2705y"]
-[ext_resource type="PackedScene" uid="uid://dmouqvt3cl12v" path="res://scenes/ui/stats_ui.tscn" id="3_y3po5"]
-[ext_resource type="PackedScene" uid="uid://b030ojdwf0uxl" path="res://scenes/ui/intent_ui.tscn" id="5_fpbq0"]
+[ext_resource type="Texture2D" uid="uid://1u3b3hwqd8yh" path="res://art/tile_0110.png" id="1_exhc0"]
+[ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_ogp3w"]
+[ext_resource type="Texture2D" uid="uid://bb3rcs5nqntir" path="res://art/arrow.png" id="2_x2iwj"]
+[ext_resource type="PackedScene" uid="uid://ph0oi5od64u5" path="res://scenes/ui/stats_ui.tscn" id="3_qiomm"]
+[ext_resource type="PackedScene" uid="uid://b6p08ajglydq8" path="res://scenes/ui/intent_ui.tscn" id="5_xytk4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xfhq4"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gsft"]
 
 [node name="Enemy" type="Area2D" groups=["enemies"]]
 collision_layer = 4
-input_pickable = false
-script = ExtResource("1_edoni")
+script = ExtResource("1_ogp3w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_47bu0")
+texture = ExtResource("1_exhc0")
 
 [node name="Arrow" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(16, 0)
 rotation = -1.5708
-texture = ExtResource("2_2705y")
+texture = ExtResource("2_x2iwj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_xfhq4")
+shape = SubResource("RectangleShape2D_3gsft")
 
-[node name="StatsUI" parent="." instance=ExtResource("3_y3po5")]
-offset_left = -21.5
-offset_top = 6.0
-offset_right = 21.5
-offset_bottom = 22.0
+[node name="StatsUI" parent="." instance=ExtResource("3_qiomm")]
+offset_top = 7.0
+offset_bottom = 23.0
 
-[node name="IntentUI" parent="." instance=ExtResource("5_fpbq0")]
-offset_left = -8.5
-offset_top = -22.0
-offset_right = 8.5
+[node name="IntentUI" parent="." instance=ExtResource("5_xytk4")]
+offset_top = -24.0
 offset_bottom = -10.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

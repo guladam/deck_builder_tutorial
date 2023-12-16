@@ -1,7 +1,6 @@
 extends EnemyAction
 
 @export var damage := 4
-@export var sound: AudioStream
 
 
 func perform_action() -> void:
@@ -22,6 +21,7 @@ func perform_action() -> void:
 	tween.tween_callback(damage_effect.execute.bind(target_array))
 	tween.tween_interval(0.25)
 	tween.tween_property(enemy, "global_position", start, 0.4)
+	
 	tween.finished.connect(
 		func():
 			Events.enemy_action_completed.emit(enemy)

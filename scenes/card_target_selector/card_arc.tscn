@@ -1,13 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3u7x224et34u"]
+[gd_scene load_steps=2 format=3 uid="uid://d3j4xcg8ufof6"]
 
-[sub_resource type="Curve" id="1"]
+[sub_resource type="Curve" id="Curve_tt5d5"]
 min_value = 0.2
-_data = [Vector2(0, 0.2), 0.0, 1.26, 0, 0, Vector2(0.926573, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.2), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.2), 0.0, 0.0, 0, 0, Vector2(0.947369, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.2), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [node name="CardArc" type="Line2D"]
 width = 4.0
-width_curve = SubResource("1")
-joint_mode = 2
-sharp_limit = 1.0
-round_precision = 2
+width_curve = SubResource("Curve_tt5d5")

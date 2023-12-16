@@ -12,6 +12,9 @@ func _set_char_stats(value: CharacterStats) -> void:
 	if not char_stats.stats_changed.is_connected(_on_stats_changed):
 		char_stats.stats_changed.connect(_on_stats_changed)
 
+	if not is_node_ready():
+		await ready
+
 	_on_stats_changed()
 
 

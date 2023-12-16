@@ -1,6 +1,7 @@
 class_name IntentUI
 extends HBoxContainer
 
+
 @onready var icon: TextureRect = $Icon
 @onready var number: Label = $Number
 

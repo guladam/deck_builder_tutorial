@@ -11,6 +11,8 @@ var is_visible := false
 
 
 func _ready() -> void:
+	Events.card_tooltip_requested.connect(show_tooltip)
+	Events.tooltip_hide_requested.connect(hide_tooltip)
 	modulate = Color.TRANSPARENT
 	hide()
 
@@ -32,7 +34,7 @@ func hide_tooltip() -> void:
 	if tween:
 		tween.kill()
 
-	get_tree().create_timer(0.2, false).timeout.connect(hide_animation)
+	get_tree().create_timer(fade_seconds, false).timeout.connect(hide_animation)
 
 
 func hide_animation() -> void:

@@ -1,13 +1,13 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=4 format=3 uid="uid://dp630ejwgv50u"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=4 format=3 uid="uid://sbkc4o401k4l"]
 
-[ext_resource type="Texture2D" uid="uid://cpydvk8mq66o5" path="res://art/tile_0087.png" id="1_catbq"]
-[ext_resource type="Script" path="res://custom_resources/character_stats.gd" id="1_nnyi0"]
-[ext_resource type="Resource" uid="uid://b8laywbcq07cf" path="res://characters/warrior/warrior_starting_deck.tres" id="3_uckup"]
+[ext_resource type="Texture2D" uid="uid://cpydvk8mq66o5" path="res://art/tile_0087.png" id="1_8jkdb"]
+[ext_resource type="Script" path="res://custom_resources/character_stats.gd" id="1_d8ou5"]
+[ext_resource type="Resource" uid="uid://dyyfi3rcfxyug" path="res://characters/warrior/warrior_starting_deck.tres" id="3_d68oj"]
 
 [resource]
-script = ExtResource("1_nnyi0")
-starting_deck = ExtResource("3_uckup")
+script = ExtResource("1_d8ou5")
+starting_deck = ExtResource("3_d68oj")
 cards_per_turn = 4
 max_mana = 3
 max_health = 35
-art = ExtResource("1_catbq")
+art = ExtResource("1_8jkdb")

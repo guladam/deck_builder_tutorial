@@ -8,8 +8,8 @@ const WHITE_SPRITE_MATERIAL := preload("res://art/white_sprite_material.tres")
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var arrow: Sprite2D = $Arrow
-@onready var stats_ui: StatsUI = $StatsUI
-@onready var intent_ui: IntentUI = $IntentUI
+@onready var stats_ui: StatsUI = $StatsUI as StatsUI
+@onready var intent_ui: IntentUI = $IntentUI as IntentUI
 
 var enemy_action_picker: EnemyActionPicker
 var current_action: EnemyAction : set = set_current_action
@@ -59,7 +59,7 @@ func update_action() -> void:
 
 
 func update_enemy() -> void:
-	if not stats is EnemyStats: 
+	if not stats is Stats: 
 		return
 	if not is_inside_tree(): 
 		await ready
@@ -70,25 +70,6 @@ func update_enemy() -> void:
 	update_stats()
 
 
-func take_damage(damage: int) -> void:
-	if stats.health <= 0:
-		return
-	
-	sprite_2d.material = WHITE_SPRITE_MATERIAL
-	
-	var tween := create_tween()
-	tween.tween_callback(Shaker.shake.bind(self, 4, 0.15))
-	tween.tween_callback(stats.take_damage.bind(damage))
-	tween.tween_interval(0.15) 
-	
-	tween.finished.connect(
-		func():
-			sprite_2d.material = null
-			if stats.health <= 0:
-				queue_free()
-	)
-
-
 func do_turn() -> void:
 	stats.block = 0
 	
@@ -96,6 +77,26 @@ func do_turn() -> void:
 		return
 	
 	current_action.perform_action()
+
+
+func take_damage(damage: int) -> void:
+	if stats.health <= 0:
+		return
+	
+	sprite_2d.material = WHITE_SPRITE_MATERIAL
+	
+	var tween := create_tween()
+	tween.tween_callback(Shaker.shake.bind(self, 16, 0.15))
+	tween.tween_callback(stats.take_damage.bind(damage))
+	tween.tween_interval(0.17)
+
+	tween.finished.connect(
+		func():
+			sprite_2d.material = null
+			
+			if stats.health <= 0:
+				queue_free()
+	)
 
 
 func _on_area_entered(_area: Area2D) -> void:

@@ -1,7 +1,5 @@
 extends Node
 
-@onready var players: Node = $Players
-
 
 func play(audio: AudioStream, single=false) -> void:
 	if not audio:
@@ -10,7 +8,9 @@ func play(audio: AudioStream, single=false) -> void:
 	if single:
 		stop()
 
-	for player in players.get_children():
+	for player in get_children():
+		player = player as AudioStreamPlayer
+		
 		if not player.playing:
 			player.stream = audio
 			player.play()
@@ -18,5 +18,6 @@ func play(audio: AudioStream, single=false) -> void:
 
 
 func stop() -> void:
-	for player in players.get_children():
+	for player in get_children():
+		player = player as AudioStreamPlayer
 		player.stop()
