@@ -104,6 +104,7 @@ offset_bottom = -6.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("13_523u4")
+disabled = true
 text = "End Turn"
 
 [node name="RedFlash" type="CanvasLayer" parent="."]
