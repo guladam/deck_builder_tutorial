@@ -8,12 +8,13 @@ const MAP_SCENE := preload("res://scenes/map/map.tscn")
 const SHOP_SCENE := preload("res://scenes/shop/shop.tscn")
 
 @onready var current_view: Node = $CurrentView
-
 @onready var map_button: Button = %MapButton
 @onready var campfire_button: Button = %CampfireButton
 @onready var shop_button: Button = %ShopButton
 @onready var battle_reward_button: Button = %BattleRewardButton
 @onready var battle_button: Button = %BattleButton
+@onready var deck_button: CardPileOpener = %DeckButton
+@onready var deck_view: CardPileView = %DeckView
 
 var floors_climbed: int
 var character: CharacterStats
@@ -28,6 +29,7 @@ func _ready() -> void:
 
 func start_run() -> void:
 	floors_climbed = 0
+	_setup_top_bar()
 	_setup_event_connections()
 	print("TODO: procedurally generate map")
 	_change_view(MAP_SCENE)
@@ -40,6 +42,12 @@ func _change_view(scene: PackedScene) -> void:
 	get_tree().paused = false # need this because of the battle over panel!
 	var new_view := scene.instantiate()
 	current_view.add_child(new_view)
+
+
+func _setup_top_bar() -> void:
+	deck_button.card_pile = character.deck
+	deck_view.card_pile = character.deck
+	deck_button.pressed.connect(deck_view.show_current_view.bind("Deck"))
 
 
 func _setup_event_connections() -> void:

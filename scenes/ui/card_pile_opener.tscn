@@ -1,0 +1,24 @@
+[gd_scene load_steps=7 format=3 uid="uid://bcdmoid8212ip"]
+
+[ext_resource type="Script" path="res://scenes/ui/card_pile_opener.gd" id="1_3w7hx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j3m7o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tyt6g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2a37f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fqg53"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bmyte"]
+
+[node name="CardPileOpener" type="Button"]
+custom_minimum_size = Vector2(16, 16)
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_j3m7o")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tyt6g")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2a37f")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_fqg53")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bmyte")
+script = ExtResource("1_3w7hx")

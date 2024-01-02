@@ -32,6 +32,7 @@ func start_battle(stats: CharacterStats) -> void:
 	MusicPlayer.play(music, true)
 	enemy_handler.reset_enemy_actions()
 	player_handler.start_battle(stats)
+	battle_ui.initialize_card_pile_ui()
 
 
 func _on_enemies_child_order_changed() -> void:

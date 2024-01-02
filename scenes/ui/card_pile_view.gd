@@ -1,8 +1,6 @@
 class_name CardPileView
 extends Control
 
-signal closed
-
 const CARD_MENU_UI_SCENE := preload("res://scenes/ui/card_menu_ui.tscn")
 
 @export var card_pile: CardPile
@@ -16,6 +14,8 @@ const CARD_MENU_UI_SCENE := preload("res://scenes/ui/card_menu_ui.tscn")
 
 
 func _ready() -> void:
+	back_button.pressed.connect(hide)
+	
 	for card in cards.get_children():
 		card.queue_free()
 
@@ -23,13 +23,23 @@ func _ready() -> void:
 		card.queue_free()
 	
 	_hide_tooltip()
-	
-	show_current_view("Deck")
 
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
-		_hide_tooltip()
+		if tooltip_popup.visible:
+			_hide_tooltip()
+		else:
+			hide()
+
+
+func show_current_view(new_title: String) -> void:
+	for card in cards.get_children():
+		card.queue_free()
+		
+	_hide_tooltip()
+	title.text = new_title
+	_update_view.call_deferred()
 
 
 func _update_view() -> void:
@@ -41,15 +51,8 @@ func _update_view() -> void:
 		cards.add_child(new_card)
 		new_card.card = card
 		new_card.tooltip_requested.connect(_show_tooltip)
-
-
-func show_current_view(new_title: String) -> void:
-	for card in cards.get_children():
-		card.queue_free()
 		
-	_hide_tooltip()
-	title.text = new_title
-	_update_view.call_deferred()
+	show()
 
 
 func _show_tooltip(card: Card) -> void:

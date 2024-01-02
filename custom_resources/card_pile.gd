@@ -1,7 +1,7 @@
 class_name CardPile
 extends Resource
 
-signal card_pile_size_changed(cards_amount)
+signal card_pile_size_changed(cards_amount: int)
 
 @export var cards: Array[Card] = []
 
