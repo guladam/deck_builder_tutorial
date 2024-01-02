@@ -7,7 +7,7 @@ extends PanelContainer
 @onready var tooltip_text_label: RichTextLabel = %TooltipText
 
 var tween: Tween
-var is_visible := false
+var is_visible_now := false
 
 
 func _ready() -> void:
@@ -18,7 +18,7 @@ func _ready() -> void:
 
 
 func show_tooltip(icon: Texture, text: String) -> void:
-	is_visible = true
+	is_visible_now = true
 	if tween:
 		tween.kill()
 	
@@ -30,7 +30,7 @@ func show_tooltip(icon: Texture, text: String) -> void:
 
 
 func hide_tooltip() -> void:
-	is_visible = false
+	is_visible_now = false
 	if tween:
 		tween.kill()
 
@@ -38,7 +38,7 @@ func hide_tooltip() -> void:
 
 
 func hide_animation() -> void:
-	if not is_visible:
+	if not is_visible_now:
 		tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 		tween.tween_property(self, "modulate", Color.TRANSPARENT, fade_seconds)
 		tween.tween_callback(hide)
