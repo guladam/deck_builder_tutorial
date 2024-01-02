@@ -21,15 +21,14 @@ var character: CharacterStats
 
 func _ready() -> void:
 	if not character:
-		start_run(load("res://characters/warrior/warrior.tres"))
+		var warrior := load("res://characters/warrior/warrior.tres")
+		character = warrior.create_instance()
+		start_run()
 
 
-func start_run(selected_character: CharacterStats) -> void:
-	character = selected_character.create_instance()
+func start_run() -> void:
 	floors_climbed = 0
-	
 	_setup_event_connections()
-	
 	print("TODO: procedurally generate map")
 	_change_view(MAP_SCENE)
 
