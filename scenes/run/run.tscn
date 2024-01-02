@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://btoadxo20jn4"]
+
+[ext_resource type="Script" path="res://scenes/run/run.gd" id="1_y8ss3"]
+
+[node name="Run" type="Node"]
+script = ExtResource("1_y8ss3")
+
+[node name="CurrentView" type="Node" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(50, 0)
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+alignment = 1
+
+[node name="MapButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
+text = "Go to Map"
+
+[node name="CampfireButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
+text = "Go to 
+Campfire"
+
+[node name="ShopButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
+text = "Go to Shop"
+
+[node name="BattleRewardButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
+text = "Go to Battle
+Reward"
+
+[node name="BattleButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
+text = "Go to Battle"
