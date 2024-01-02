@@ -252,8 +252,9 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 mouse_filter = 2
+theme_override_constants/line_separation = 3
 bbcode_enabled = true
-text = "Card description"
+text = "Card description Card description Card description Card description Card description"
 fit_content = true
 scroll_active = false
 

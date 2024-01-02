@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://covniifh0ij4j"]
+[gd_scene load_steps=6 format=3 uid="uid://covniifh0ij4j"]
 
 [ext_resource type="Theme" uid="uid://c8cqncsqlplyu" path="res://main_theme.tres" id="1_qhgeg"]
 [ext_resource type="Script" path="res://scenes/ui/card_menu_ui.gd" id="2_krans"]
 [ext_resource type="StyleBox" uid="uid://b4b3e0d14kvmi" path="res://scenes/card_ui/card_base_stylebox.tres" id="3_dyg5d"]
 [ext_resource type="Texture2D" uid="uid://c6rme2o6dyaoj" path="res://art/tile_0104.png" id="4_m3nvx"]
+[ext_resource type="Texture2D" uid="uid://cpmy5std4fafh" path="res://art/rarity.png" id="5_k2hhm"]
 
 [node name="CardMenuUI" type="CenterContainer"]
 offset_right = 25.0
@@ -50,6 +51,21 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("4_m3nvx")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Rarity" type="TextureRect" parent="Visuals"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -8.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 8.0
+grow_horizontal = 0
+mouse_filter = 2
+texture = ExtResource("5_k2hhm")
 expand_mode = 1
 stretch_mode = 5
 

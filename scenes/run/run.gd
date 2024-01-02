@@ -15,8 +15,10 @@ const SHOP_SCENE := preload("res://scenes/shop/shop.tscn")
 @onready var battle_button: Button = %BattleButton
 @onready var deck_button: CardPileOpener = %DeckButton
 @onready var deck_view: CardPileView = %DeckView
+@onready var gold_ui: GoldUI = %GoldUI
 
 var floors_climbed: int
+var stats: RunStats
 var character: CharacterStats
 
 
@@ -25,9 +27,13 @@ func _ready() -> void:
 		var warrior := load("res://characters/warrior/warrior.tres")
 		character = warrior.create_instance()
 		start_run()
+		
+	await get_tree().create_timer(2).timeout
+	stats.gold += 57
 
 
 func start_run() -> void:
+	stats = RunStats.new()
 	floors_climbed = 0
 	_setup_top_bar()
 	_setup_event_connections()
@@ -45,6 +51,7 @@ func _change_view(scene: PackedScene) -> void:
 
 
 func _setup_top_bar() -> void:
+	gold_ui.run_stats = stats
 	deck_button.card_pile = character.deck
 	deck_view.card_pile = character.deck
 	deck_button.pressed.connect(deck_view.show_current_view.bind("Deck"))

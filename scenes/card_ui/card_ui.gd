@@ -6,13 +6,19 @@ signal reparent_requested(which_card_ui: CardUI)
 const BASE_STYLEBOX := preload("res://scenes/card_ui/card_base_stylebox.tres")
 const DRAG_STYLEBOX := preload("res://scenes/card_ui/card_drag_stylebox.tres")
 const HOVER_STYLEBOX := preload("res://scenes/card_ui/card_hover_stylebox.tres")
+const RARITY_COLORS := {
+	Card.Rarity.COMMON: Color.GRAY,
+	Card.Rarity.UNCOMMON: Color.CORNFLOWER_BLUE,
+	Card.Rarity.RARE: Color.GOLD,
+}
 
-@export var card: Card : set = _set_card
-@export var char_stats: CharacterStats : set = _set_char_stats
+@export var card: Card : set = set_card
+@export var char_stats: CharacterStats : set = set_char_stats
 
 @onready var panel: Panel = $Panel
 @onready var cost: Label = $Cost
 @onready var icon: TextureRect = $Icon
+@onready var rarity: TextureRect = $Rarity
 @onready var drop_point_detector: Area2D = $DropPointDetector
 @onready var card_state_machine: CardStateMachine = $CardStateMachine as CardStateMachine
 @onready var targets: Array[Node] = []
@@ -20,7 +26,7 @@ const HOVER_STYLEBOX := preload("res://scenes/card_ui/card_hover_stylebox.tres")
 var original_index := 0
 var parent: Control
 var tween: Tween
-var playable := true : set = _set_playable
+var playable := true : set = set_playable
 var disabled := false
 
 
@@ -29,7 +35,6 @@ func _ready() -> void:
 	Events.card_drag_started.connect(_on_card_drag_or_aiming_started)
 	Events.card_drag_ended.connect(_on_card_drag_or_aim_ended)
 	Events.card_aim_ended.connect(_on_card_drag_or_aim_ended)
-	
 	card_state_machine.init(self)
 
 
@@ -50,6 +55,31 @@ func play() -> void:
 	queue_free()
 
 
+func set_card(value: Card) -> void:
+	if not is_node_ready():
+		await ready
+
+	card = value
+	cost.text = str(card.cost)
+	icon.texture = card.icon
+	rarity.modulate = RARITY_COLORS[card.rarity]
+
+
+func set_char_stats(value: CharacterStats) -> void:
+	char_stats = value
+	char_stats.stats_changed.connect(_on_char_stats_changed)
+
+
+func set_playable(value: bool) -> void:
+	playable = value
+	if not playable:
+		cost.add_theme_color_override("font_color", Color.RED)
+		icon.modulate = Color(1, 1, 1, 0.5)
+	else:
+		cost.remove_theme_color_override("font_color")
+		icon.modulate = Color(1, 1, 1, 1)
+
+
 func _on_gui_input(event: InputEvent) -> void:
 	card_state_machine.on_gui_input(event)
 
@@ -60,30 +90,6 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	card_state_machine.on_mouse_exited()
-
-
-func _set_card(value: Card) -> void:
-	if not is_node_ready():
-		await ready
-
-	card = value
-	cost.text = str(card.cost)
-	icon.texture = card.icon
-
-
-func _set_playable(value: bool) -> void:
-	playable = value
-	if not playable:
-		cost.add_theme_color_override("font_color", Color.RED)
-		icon.modulate = Color(1, 1, 1, 0.5)
-	else:
-		cost.remove_theme_color_override("font_color")
-		icon.modulate = Color(1, 1, 1, 1)
-
-
-func _set_char_stats(value: CharacterStats) -> void:
-	char_stats = value
-	char_stats.stats_changed.connect(_on_char_stats_changed)
 
 
 func _on_drop_point_detector_area_entered(area: Area2D) -> void:
