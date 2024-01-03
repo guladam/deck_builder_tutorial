@@ -53,25 +53,18 @@ func _show_card_rewards() -> void:
 	var card_reward_array: Array[Card] = []
 	var available_cards := character_stats.draftable_cards.cards.duplicate(true)
 	
-	print(available_cards)
-	
 	for i in range(run_stats.card_rewards):
 		_setup_card_chances()
 		var roll := randf_range(0.0, card_reward_total_weight)
 		
-		print(card_rarity_weights)
-		
 		for rarity: Card.Rarity in card_rarity_weights:
 			if card_rarity_weights[rarity] > roll:
-				print("roll: %s | %s" % [roll, rarity])
 				_modify_weights(rarity)
 				var picked_card := _get_random_available_card(available_cards, rarity)
 				card_reward_array.append(picked_card)
 				available_cards.erase(picked_card)
 				break
 
-	print(card_reward_array)
-	print(available_cards)
 	card_rewards.rewards = card_reward_array
 	card_rewards.show()
 	
