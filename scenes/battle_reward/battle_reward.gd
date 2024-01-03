@@ -37,14 +37,22 @@ func _add_card_reward() -> void:
 	var card_reward := REWARD_BUTTON.instantiate() as RewardButton
 	card_reward.reward_icon = REWARD_BUTTON_DATA[Type.NEW_CARD][0]
 	card_reward.reward_text = REWARD_BUTTON_DATA[Type.NEW_CARD][1]
+	card_reward.pressed.connect(_show_card_rewards)
 	rewards.add_child.call_deferred(card_reward)
 
 
+func _show_card_rewards() -> void:
+	if not run_stats:
+		return
+
+	
+
+
 func _on_gold_reward_taken(amount: int) -> void:
-	if run_stats:
-		print(run_stats.gold)
-		run_stats.gold += amount
-		print(run_stats.gold)
+	if not run_stats:
+		return
+	
+	run_stats.gold += amount
 
 
 func _on_back_button_pressed() -> void:
