@@ -52,3 +52,6 @@ func play(targets: Array[Node], char_stats: CharacterStats) -> void:
 func apply_effects(_targets: Array[Node]) -> void:
 	pass
 	
+
+func _to_string() -> String:
+	return id

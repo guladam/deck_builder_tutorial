@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bb4xo4pwrm8r8"]
+[gd_scene load_steps=11 format=3 uid="uid://bb4xo4pwrm8r8"]
 
 [ext_resource type="Script" path="res://scenes/battle_reward/battle_reward.gd" id="1_h878h"]
 [ext_resource type="Script" path="res://custom_resources/run_stats.gd" id="2_udvhp"]
 [ext_resource type="Texture2D" uid="uid://cp4iq5fd6j8be" path="res://art/background.png" id="2_ypkif"]
 [ext_resource type="PackedScene" uid="uid://bibn5odjy7ko0" path="res://scenes/ui/reward_button.tscn" id="3_mwu8a"]
+[ext_resource type="Resource" uid="uid://sbkc4o401k4l" path="res://characters/warrior/warrior.tres" id="3_q4mom"]
 [ext_resource type="Texture2D" uid="uid://cpmy5std4fafh" path="res://art/rarity.png" id="4_ibeje"]
 [ext_resource type="PackedScene" uid="uid://cduitbid2yqlr" path="res://scenes/ui/card_rewards.tscn" id="6_tq7ug"]
 
@@ -31,6 +32,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_h878h")
 run_stats = SubResource("Resource_ndagj")
+character_stats = ExtResource("3_q4mom")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -104,11 +106,8 @@ text = "Continue"
 
 [node name="CardRewards" parent="." instance=ExtResource("6_tq7ug")]
 unique_name_in_owner = true
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+visible = false
+layout_mode = 1
+rewards = Array[Resource("res://custom_resources/card.gd")]([])
 
 [connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

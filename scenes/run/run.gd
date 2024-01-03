@@ -27,9 +27,6 @@ func _ready() -> void:
 		var warrior := load("res://characters/warrior/warrior.tres")
 		character = warrior.create_instance()
 		start_run()
-		
-	await get_tree().create_timer(2).timeout
-	stats.gold += 57
 
 
 func start_run() -> void:
@@ -41,13 +38,15 @@ func start_run() -> void:
 	_change_view(MAP_SCENE)
 
 
-func _change_view(scene: PackedScene) -> void:
+func _change_view(scene: PackedScene) -> Node:
 	if current_view.get_child_count() > 0:
 		current_view.get_child(0).queue_free()
 	
 	get_tree().paused = false # need this because of the battle over panel!
 	var new_view := scene.instantiate()
 	current_view.add_child(new_view)
+	
+	return new_view
 
 
 func _setup_top_bar() -> void:
@@ -58,7 +57,7 @@ func _setup_top_bar() -> void:
 
 
 func _setup_event_connections() -> void:
-	Events.battle_won.connect(_change_view.bind(BATTLE_REWARD_SCENE))
+	Events.battle_won.connect(_on_battle_won)
 	Events.battle_reward_exited.connect(_change_view.bind(MAP_SCENE))
 	Events.campfire_exited.connect(_change_view.bind(MAP_SCENE))
 	Events.shop_exited.connect(_change_view.bind(MAP_SCENE))
@@ -69,6 +68,17 @@ func _setup_event_connections() -> void:
 	shop_button.pressed.connect(_change_view.bind(SHOP_SCENE))
 	battle_reward_button.pressed.connect(_change_view.bind(BATTLE_REWARD_SCENE))
 	battle_button.pressed.connect(_change_view.bind(BATTLE_SCENE))
+
+
+func _on_battle_won() -> void:
+	var reward_scene := _change_view(BATTLE_REWARD_SCENE) as BattleReward
+	reward_scene.run_stats = stats
+	reward_scene.character_stats = character
+	
+	# this is temp. code, it will come from real battle encounter data
+	# as a dependency
+	reward_scene._add_gold_reward(77)
+	reward_scene._add_card_reward()
 
 
 func _on_map_exited() -> void:

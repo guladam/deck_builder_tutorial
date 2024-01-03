@@ -24,13 +24,13 @@ func _ready() -> void:
 	take_button.pressed.connect(
 		func(): 
 			card_reward_selected.emit(selected_card)
-			print("selected: %s" % selected_card.id)
+			queue_free()
 	)
 	
 	skip_card_reward.pressed.connect(
 		func(): 
 			card_reward_selected.emit(null)
-			print("skipped reward")
+			queue_free()
 	)
 
 

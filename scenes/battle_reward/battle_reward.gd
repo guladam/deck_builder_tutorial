@@ -13,16 +13,21 @@ const REWARD_BUTTON_DATA := {
 @export var character_stats: CharacterStats
 
 @onready var rewards: VBoxContainer = %Rewards
+@onready var card_rewards: CardRewards = %CardRewards
+
+var card_reward_total_weight := 0.0
+var card_rarity_weights := {
+	Card.Rarity.COMMON: 0.0,
+	Card.Rarity.UNCOMMON: 0.0,
+	Card.Rarity.RARE: 0.0
+}
 
 
 func _ready() -> void:
 	for node in rewards.get_children():
 		node.queue_free()
 	
-	# this is temp. code, it will come from real battle encounter data
-	# as a dependency
-	_add_gold_reward(77)
-	_add_card_reward()
+	card_rewards.card_reward_selected.connect(_on_card_reward_taken)
 
 
 func _add_gold_reward(amount: int) -> void:
@@ -42,10 +47,55 @@ func _add_card_reward() -> void:
 
 
 func _show_card_rewards() -> void:
-	if not run_stats:
+	if not run_stats or not character_stats:
 		return
-
 	
+	var card_reward_array: Array[Card] = []
+	var available_cards := character_stats.draftable_cards.cards.duplicate(true)
+	
+	print(available_cards)
+	
+	for i in range(run_stats.card_rewards):
+		_setup_card_chances()
+		var roll := randf_range(0.0, card_reward_total_weight)
+		
+		print(card_rarity_weights)
+		
+		for rarity: Card.Rarity in card_rarity_weights:
+			if card_rarity_weights[rarity] > roll:
+				print("roll: %s | %s" % [roll, rarity])
+				_modify_weights(rarity)
+				var picked_card := _get_random_available_card(available_cards, rarity)
+				card_reward_array.append(picked_card)
+				available_cards.erase(picked_card)
+				break
+
+	print(card_reward_array)
+	print(available_cards)
+	card_rewards.rewards = card_reward_array
+	card_rewards.show()
+	
+
+func _setup_card_chances() -> void:
+	card_reward_total_weight = run_stats.common_weight + run_stats.uncommon_weight + run_stats.rare_weight
+	card_rarity_weights[Card.Rarity.COMMON] = run_stats.common_weight
+	card_rarity_weights[Card.Rarity.UNCOMMON] = run_stats.common_weight + run_stats.uncommon_weight
+	card_rarity_weights[Card.Rarity.RARE] = card_reward_total_weight
+
+
+func _modify_weights(rarity_rolled: Card.Rarity) -> void:
+	if rarity_rolled == Card.Rarity.RARE:
+		run_stats.rare_weight = RunStats.BASE_RARE_WEIGHT
+	else:
+		run_stats.rare_weight = clampf(run_stats.rare_weight + 0.3, run_stats.BASE_RARE_WEIGHT, 5.0)
+
+
+func _get_random_available_card(available_cards: Array[Card], with_rarity: Card.Rarity) -> Card:
+	var all_possible_cards := available_cards.filter(
+		func(card: Card):
+			return card.rarity == with_rarity
+	)
+	return all_possible_cards.pick_random()
 
 
 func _on_gold_reward_taken(amount: int) -> void:
@@ -53,6 +103,13 @@ func _on_gold_reward_taken(amount: int) -> void:
 		return
 	
 	run_stats.gold += amount
+
+
+func _on_card_reward_taken(card: Card) -> void:
+	if not character_stats or not card:
+		return
+		
+	character_stats.deck.add_card(card)
 
 
 func _on_back_button_pressed() -> void:
