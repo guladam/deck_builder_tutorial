@@ -33,20 +33,24 @@ func _input(event: InputEvent) -> void:
 			hide()
 
 
-func show_current_view(new_title: String) -> void:
+func show_current_view(new_title: String, randomized: bool = false) -> void:
 	for card in cards.get_children():
 		card.queue_free()
 		
 	_hide_tooltip()
 	title.text = new_title
-	_update_view.call_deferred()
+	_update_view.call_deferred(randomized)
 
 
-func _update_view() -> void:
+func _update_view(randomized: bool) -> void:
 	if not card_pile:
 		return
-		
-	for card: Card in card_pile.cards:
+	
+	var all_cards := card_pile.cards.duplicate()
+	if randomized:
+		all_cards.shuffle()
+	
+	for card: Card in all_cards:
 		var new_card := CARD_MENU_UI_SCENE.instantiate() as CardMenuUI
 		cards.add_child(new_card)
 		new_card.card = card
