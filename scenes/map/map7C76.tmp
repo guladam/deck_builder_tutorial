@@ -16,6 +16,7 @@ unique_name_in_owner = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(128, 72)
+position_smoothing_enabled = true
 position_smoothing_speed = 36.0
 
 [node name="MapGenerator" parent="." instance=ExtResource("2_5qslq")]

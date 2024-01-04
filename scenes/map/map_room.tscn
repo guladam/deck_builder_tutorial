@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnf4nkps0t7e1"]
+
+[ext_resource type="Texture2D" uid="uid://bfvi02kojsa00" path="res://art/tile_0103.png" id="1_7mh4m"]
+[ext_resource type="Script" path="res://scenes/map/map_room.gd" id="1_82ug5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2n2wc"]
+radius = 8.0
+
+[node name="MapRoom" type="Area2D"]
+script = ExtResource("1_82ug5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7mh4m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2n2wc")
