@@ -73,6 +73,11 @@ func  _on_battle_room_entered(room: Room) -> void:
 	battle_scene.start_battle()
 
 
+func _on_campfire_entered() -> void:
+	var campfire := _change_view(CAMPFIRE_SCENE) as Campfire
+	campfire.char_stats = character
+
+
 func _on_battle_won() -> void:
 	var reward_scene := _change_view(BATTLE_REWARD_SCENE) as BattleReward
 	reward_scene.run_stats = stats
@@ -89,7 +94,7 @@ func _on_map_exited(room: Room) -> void:
 		Room.Type.TREASURE:
 			print("treasure found!")
 		Room.Type.CAMPFIRE:
-			_change_view(CAMPFIRE_SCENE)
+			_on_campfire_entered()
 		Room.Type.SHOP:
 			_change_view(SHOP_SCENE)
 		Room.Type.BOSS:
