@@ -8,3 +8,4 @@ var row: int
 var column: int
 var position: Vector2
 var next_rooms: Array[Room]
+var selected := false

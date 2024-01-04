@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://btoadxo20jn4"]
+[gd_scene load_steps=7 format=3 uid="uid://btoadxo20jn4"]
 
 [ext_resource type="Script" path="res://scenes/run/run.gd" id="1_y8ss3"]
+[ext_resource type="PackedScene" uid="uid://bi6nnwqbl0qqo" path="res://scenes/map/map.tscn" id="2_rq6d4"]
 [ext_resource type="PackedScene" uid="uid://bcdmoid8212ip" path="res://scenes/ui/card_pile_opener.tscn" id="2_ua7jt"]
 [ext_resource type="Texture2D" uid="uid://ss5c04pnvfbq" path="res://art/deck.png" id="3_kwf1m"]
 [ext_resource type="PackedScene" uid="uid://dws7irhbqmomu" path="res://scenes/ui/card_pile_view.tscn" id="4_56bxr"]
@@ -8,6 +9,8 @@
 
 [node name="Run" type="Node"]
 script = ExtResource("1_y8ss3")
+
+[node name="Map" parent="." instance=ExtResource("2_rq6d4")]
 
 [node name="CurrentView" type="Node" parent="."]
 
@@ -57,42 +60,3 @@ visible = false
 
 [node name="GoldUI" parent="TopBar" instance=ExtResource("5_ybtdt")]
 unique_name_in_owner = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-custom_minimum_size = Vector2(50, 0)
-anchors_preset = 9
-anchor_bottom = 1.0
-grow_vertical = 2
-alignment = 1
-
-[node name="MapButton" type="Button" parent="VBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 14)
-layout_mode = 2
-text = "Go to Map"
-
-[node name="CampfireButton" type="Button" parent="VBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 14)
-layout_mode = 2
-text = "Go to 
-Campfire"
-
-[node name="ShopButton" type="Button" parent="VBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 14)
-layout_mode = 2
-text = "Go to Shop"
-
-[node name="BattleRewardButton" type="Button" parent="VBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 14)
-layout_mode = 2
-text = "Go to Battle
-Reward"
-
-[node name="BattleButton" type="Button" parent="VBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 14)
-layout_mode = 2
-text = "Go to Battle"
