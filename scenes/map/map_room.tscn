@@ -4,12 +4,12 @@
 [ext_resource type="Script" path="res://scenes/map/map_room.gd" id="1_82ug5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2n2wc"]
-radius = 8.0
 
 [node name="MapRoom" type="Area2D"]
 script = ExtResource("1_82ug5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("1_7mh4m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
