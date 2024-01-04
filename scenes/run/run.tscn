@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://btoadxo20jn4"]
+[gd_scene load_steps=9 format=3 uid="uid://btoadxo20jn4"]
 
 [ext_resource type="Script" path="res://scenes/run/run.gd" id="1_y8ss3"]
 [ext_resource type="PackedScene" uid="uid://bi6nnwqbl0qqo" path="res://scenes/map/map.tscn" id="2_rq6d4"]
@@ -7,10 +7,28 @@
 [ext_resource type="PackedScene" uid="uid://dws7irhbqmomu" path="res://scenes/ui/card_pile_view.tscn" id="4_56bxr"]
 [ext_resource type="PackedScene" uid="uid://6uus0vr6amco" path="res://scenes/ui/gold_ui.tscn" id="5_ybtdt"]
 
+[sub_resource type="Gradient" id="Gradient_lhw2h"]
+colors = PackedColorArray(0.215902, 0.215902, 0.215902, 1, 0.4, 0.220333, 0.204, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3hdle"]
+gradient = SubResource("Gradient_lhw2h")
+width = 50
+
 [node name="Run" type="Node"]
 script = ExtResource("1_y8ss3")
 
 [node name="Map" parent="." instance=ExtResource("2_rq6d4")]
+
+[node name="MapBackgroundLayer" type="CanvasLayer" parent="Map"]
+layer = -1
+
+[node name="MapBackground" type="TextureRect" parent="Map/MapBackgroundLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_3hdle")
 
 [node name="CurrentView" type="Node" parent="."]
 

@@ -30,7 +30,7 @@ func _ready() -> void:
 	card_rewards.card_reward_selected.connect(_on_card_reward_taken)
 
 
-func _add_gold_reward(amount: int) -> void:
+func add_gold_reward(amount: int) -> void:
 	var gold_reward := REWARD_BUTTON.instantiate() as RewardButton
 	gold_reward.reward_icon = REWARD_BUTTON_DATA[Type.GOLD][0]
 	gold_reward.reward_text = REWARD_BUTTON_DATA[Type.GOLD][1] % amount
@@ -38,7 +38,7 @@ func _add_gold_reward(amount: int) -> void:
 	rewards.add_child.call_deferred(gold_reward)
 
 
-func _add_card_reward() -> void:
+func add_card_reward() -> void:
 	var card_reward := REWARD_BUTTON.instantiate() as RewardButton
 	card_reward.reward_icon = REWARD_BUTTON_DATA[Type.NEW_CARD][0]
 	card_reward.reward_text = REWARD_BUTTON_DATA[Type.NEW_CARD][1]
