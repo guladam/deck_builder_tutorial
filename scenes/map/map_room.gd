@@ -43,5 +43,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 
 	room.selected = true
 	animation_player.play("select")
-	await animation_player.animation_finished
+
+
+func _on_map_room_selected() -> void:
 	selected.emit(room)
