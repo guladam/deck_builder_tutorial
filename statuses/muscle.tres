@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Status" load_steps=3 format=3 uid="uid://cta2q0boeetka"]
+
+[ext_resource type="Texture2D" uid="uid://dojlh80rte165" path="res://art/tile_0107.png" id="1_7wi1q"]
+[ext_resource type="Script" path="res://custom_resources/status.gd" id="1_ndgn5"]
+
+[resource]
+script = ExtResource("1_ndgn5")
+id = "muscle"
+icon = ExtResource("1_7wi1q")
+type = 0
+stack_type = 1
+can_expire = false
+duration = 0
+stacks = 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://btoadxo20jn4"]
+[gd_scene load_steps=10 format=3 uid="uid://btoadxo20jn4"]
 
 [ext_resource type="Script" path="res://scenes/run/run.gd" id="1_y8ss3"]
 [ext_resource type="PackedScene" uid="uid://bi6nnwqbl0qqo" path="res://scenes/map/map.tscn" id="2_rq6d4"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ss5c04pnvfbq" path="res://art/deck.png" id="3_kwf1m"]
 [ext_resource type="PackedScene" uid="uid://dws7irhbqmomu" path="res://scenes/ui/card_pile_view.tscn" id="4_56bxr"]
 [ext_resource type="PackedScene" uid="uid://6uus0vr6amco" path="res://scenes/ui/gold_ui.tscn" id="5_ybtdt"]
+[ext_resource type="PackedScene" uid="uid://bgv2atk5gusnu" path="res://scenes/ui/health_ui.tscn" id="6_7uaii"]
 
 [sub_resource type="Gradient" id="Gradient_lhw2h"]
 colors = PackedColorArray(0.215902, 0.215902, 0.215902, 1, 0.4, 0.220333, 0.204, 1)
@@ -76,5 +77,17 @@ vertical_alignment = 1
 unique_name_in_owner = true
 visible = false
 
-[node name="GoldUI" parent="TopBar" instance=ExtResource("5_ybtdt")]
+[node name="Stats" type="HBoxContainer" parent="TopBar"]
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 3.0
+offset_bottom = 2.0
+
+[node name="HealthUI" parent="TopBar/Stats" instance=ExtResource("6_7uaii")]
 unique_name_in_owner = true
+layout_mode = 2
+show_max_hp = true
+
+[node name="GoldUI" parent="TopBar/Stats" instance=ExtResource("5_ybtdt")]
+unique_name_in_owner = true
+layout_mode = 2

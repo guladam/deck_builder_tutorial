@@ -13,6 +13,7 @@ const ICONS := {
 }
 
 @onready var sprite_2d: Sprite2D = $Visuals/Sprite2D
+@onready var line_2d: Line2D = $Visuals/Line2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var available := false : set = set_available
@@ -31,6 +32,7 @@ func set_available(new_value: bool) -> void:
 func set_room(new_data: Room) -> void:
 	room = new_data
 	position = room.position
+	line_2d.rotation_degrees = randi_range(0, 360)
 	sprite_2d.texture = ICONS[room.type][0]
 	sprite_2d.scale = ICONS[room.type][1]
 

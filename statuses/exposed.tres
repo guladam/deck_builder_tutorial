@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Status" load_steps=3 format=3 uid="uid://bi6g0rtcvhnib"]
+
+[ext_resource type="Texture2D" uid="uid://d0edy7thj8ce6" path="res://art/heart.png" id="1_uuu47"]
+[ext_resource type="Script" path="res://custom_resources/status.gd" id="1_wnb7w"]
+
+[resource]
+script = ExtResource("1_wnb7w")
+id = "exposed"
+icon = ExtResource("1_uuu47")
+type = 0
+stack_type = 2
+can_expire = true
+duration = 1
+stacks = 0

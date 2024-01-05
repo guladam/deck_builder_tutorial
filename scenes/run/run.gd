@@ -9,6 +9,7 @@ const SHOP_SCENE := preload("res://scenes/shop/shop.tscn")
 @onready var current_view: Node = $CurrentView
 @onready var deck_button: CardPileOpener = %DeckButton
 @onready var deck_view: CardPileView = %DeckView
+@onready var health_ui: HealthUI = %HealthUI
 @onready var gold_ui: GoldUI = %GoldUI
 @onready var map: Map = $Map
 
@@ -44,6 +45,8 @@ func _change_view(scene: PackedScene) -> Node:
 
 
 func _setup_top_bar() -> void:
+	character.stats_changed.connect(health_ui.update_stats.bind(character))
+	health_ui.update_stats(character)
 	gold_ui.run_stats = stats
 	deck_button.card_pile = character.deck
 	deck_view.card_pile = character.deck
