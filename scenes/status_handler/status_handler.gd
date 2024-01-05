@@ -1,22 +1,32 @@
 class_name StatusHandler
 extends GridContainer
 
+signal statuses_applied(type: Status.Type)
+
+const STATUS_APPLY_INTERVAL := 0.25
 const STATUS_UI = preload("res://scenes/status_handler/status_ui.tscn")
 
+@export var status_owner: Node2D
 
-func _ready() -> void:
-	for child in get_children():
-		child.queue_free()
+
+func apply_statuses_by_type(type: Status.Type) -> void:
+	if type == Status.Type.EVENT_BASED:
+		return
+		
+	var status_queue: Array[Status] = get_all_statuses().filter(
+		func(status: Status):
+			return status.type == type
+	)
+	if status_queue.is_empty():
+		statuses_applied.emit(type)
+		return
 	
-	var test := load("res://statuses/exposed.tres")
-	await get_tree().create_timer(2).timeout
-	add_status(test)
-	await get_tree().create_timer(2).timeout
-	add_status(test)
-	await get_tree().create_timer(2).timeout
-	get_status(test.id).apply_status(null)
-	await get_tree().create_timer(2).timeout
-	get_status(test.id).apply_status(null)
+	var tween := create_tween()
+	for status: Status in status_queue:
+		tween.tween_callback(status.apply_status.bind(status_owner))
+		tween.tween_interval(STATUS_APPLY_INTERVAL)
+	
+	tween.finished.connect(func(): statuses_applied.emit(type))
 
 
 func add_status(status: Status) -> void:
@@ -28,11 +38,15 @@ func add_status(status: Status) -> void:
 		add_child(new_status_ui)
 		new_status_ui.status = status
 		new_status_ui.status.status_applied.connect(_on_status_applied)
+		# for event-based statuses we apply them immediately so they
+		# can connect to their appropriate signal(s)
+		if status.type == Status.Type.EVENT_BASED:
+			new_status_ui.status.apply_status(status_owner)
+		
 		return
 
 	# If it's unique and we already have it, we can return
 	if not status.can_expire and not stackable:
-		print("already have this unique status")
 		return
 	
 	# If it's duration-stackable, expand it
@@ -59,6 +73,14 @@ func get_status(id: String) -> Status:
 			return status_ui.status
 	
 	return null
+
+
+func get_all_statuses() -> Array[Status]:
+	var statuses: Array[Status] = []
+	for status_ui: StatusUI in get_children():
+		statuses.append(status_ui.status)
+		
+	return statuses
 
 
 func _on_status_applied(status: Status) -> void:

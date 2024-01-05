@@ -16,8 +16,7 @@ enum StackType {NONE, INTENSITY, DURATION}
 @export var stacks: int : set = set_stacks
 
 
-func apply_status(target: Node2D) -> void:
-	print("applied %s to %s" % [id, target])
+func apply_status(_target: Node) -> void:
 	status_applied.emit(self)
 
 

@@ -10,9 +10,14 @@ const WHITE_SPRITE_MATERIAL := preload("res://art/white_sprite_material.tres")
 @onready var arrow: Sprite2D = $Arrow
 @onready var stats_ui: StatsUI = $StatsUI as StatsUI
 @onready var intent_ui: IntentUI = $IntentUI as IntentUI
+@onready var status_handler: StatusHandler = $StatusHandler
 
 var enemy_action_picker: EnemyActionPicker
 var current_action: EnemyAction : set = set_current_action
+
+
+func _ready() -> void:
+	status_handler.status_owner = self
 
 
 func set_current_action(value: EnemyAction) -> void:
@@ -95,6 +100,7 @@ func take_damage(damage: int) -> void:
 			sprite_2d.material = null
 			
 			if stats.health <= 0:
+				Events.enemy_died.emit(self)
 				queue_free()
 	)
 

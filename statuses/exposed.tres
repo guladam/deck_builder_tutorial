@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="Status" load_steps=3 format=3 uid="uid://bi6g0rtcvhnib"]
+[gd_resource type="Resource" script_class="ExposedStatus" load_steps=3 format=3 uid="uid://bi6g0rtcvhnib"]
 
-[ext_resource type="Texture2D" uid="uid://d0edy7thj8ce6" path="res://art/heart.png" id="1_uuu47"]
-[ext_resource type="Script" path="res://custom_resources/status.gd" id="1_wnb7w"]
+[ext_resource type="Texture2D" uid="uid://2on3ucku1w42" path="res://art/expose.png" id="1_7qqjj"]
+[ext_resource type="Script" path="res://statuses/exposed.gd" id="2_mgige"]
 
 [resource]
-script = ExtResource("1_wnb7w")
+script = ExtResource("2_mgige")
 id = "exposed"
-icon = ExtResource("1_uuu47")
+icon = ExtResource("1_7qqjj")
 type = 0
 stack_type = 2
 can_expire = true

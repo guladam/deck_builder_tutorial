@@ -17,6 +17,7 @@ signal player_hit
 signal player_died
 
 # Enemy-related events
+signal enemy_died(enemy: Enemy)
 signal enemy_action_completed(enemy: Enemy)
 signal enemy_turn_ended
 

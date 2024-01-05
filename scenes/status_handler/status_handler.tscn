@@ -1,21 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwf6cannqfu18"]
+[gd_scene load_steps=2 format=3 uid="uid://bwf6cannqfu18"]
 
 [ext_resource type="Script" path="res://scenes/status_handler/status_handler.gd" id="1_erk7k"]
-[ext_resource type="PackedScene" uid="uid://7pul03ax06j" path="res://scenes/status_handler/status_ui.tscn" id="1_kpxto"]
 
 [node name="StatusHandler" type="GridContainer"]
 offset_bottom = 11.0
 columns = 6
 script = ExtResource("1_erk7k")
-
-[node name="StatusUI" parent="." instance=ExtResource("1_kpxto")]
-custom_minimum_size = Vector2(16, 11)
-layout_mode = 2
-
-[node name="StatusUI2" parent="." instance=ExtResource("1_kpxto")]
-custom_minimum_size = Vector2(16, 11)
-layout_mode = 2
-
-[node name="StatusUI3" parent="." instance=ExtResource("1_kpxto")]
-custom_minimum_size = Vector2(16, 11)
-layout_mode = 2
