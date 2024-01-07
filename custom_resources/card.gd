@@ -11,6 +11,7 @@ enum Target {SELF, SINGLE_ENEMY, ALL_ENEMIES, EVERYONE}
 @export var rarity: Rarity
 @export var target: Target
 @export var cost: int
+@export var exhausts: bool = false
 
 @export_group("Card Visuals")
 @export var icon: Texture

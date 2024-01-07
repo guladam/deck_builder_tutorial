@@ -63,13 +63,14 @@ position = Vector2(234, 62)
 stats = ExtResource("8_d4c2d")
 
 [node name="Player" parent="." instance=ExtResource("3_dpj45")]
-position = Vector2(45, 80)
+position = Vector2(45, 69)
 stats = ExtResource("4_fwb8a")
 
 [node name="CardTargetSelector" parent="." instance=ExtResource("3_vyv1n")]
 
-[node name="PlayerHandler" type="Node" parent="." node_paths=PackedStringArray("hand")]
+[node name="PlayerHandler" type="Node" parent="." node_paths=PackedStringArray("player", "hand")]
 script = ExtResource("8_3di7i")
+player = NodePath("../Player")
 hand = NodePath("../BattleUI/Hand")
 
 [node name="BattleUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
@@ -90,10 +91,10 @@ alignment = 1
 script = ExtResource("2_uaw60")
 
 [node name="ManaUI" parent="BattleUI" instance=ExtResource("11_2vu01")]
-offset_left = 30.0
-offset_top = -39.0
-offset_right = 48.0
-offset_bottom = -21.0
+offset_left = 5.0
+offset_top = -41.0
+offset_right = 23.0
+offset_bottom = -23.0
 
 [node name="Tooltip" parent="BattleUI" instance=ExtResource("12_qx741")]
 offset_top = 6.0

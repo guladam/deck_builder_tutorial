@@ -39,14 +39,11 @@ func start_turn() -> void:
 	acting_enemies.clear()
 	for enemy: Enemy in get_children():
 		acting_enemies.append(enemy)
-		
-	print("START TURN --> acting enemies: ", acting_enemies)
 
 	_start_next_enemy_turn()
 
 
 func _start_next_enemy_turn() -> void:
-	print("NEXT ENEMY --> acting enemies: ", acting_enemies)
 	if acting_enemies.is_empty():
 		Events.enemy_turn_ended.emit()
 		return
@@ -55,7 +52,6 @@ func _start_next_enemy_turn() -> void:
 
 
 func _on_enemy_statuses_applied(type: Status.Type, enemy: Enemy) -> void:
-	print("%s: %s" % [Status.Type.keys()[type], enemy])
 	match type:
 		Status.Type.START_OF_TURN:
 			enemy.do_turn()
@@ -65,9 +61,7 @@ func _on_enemy_statuses_applied(type: Status.Type, enemy: Enemy) -> void:
 
 
 func _on_enemy_died(enemy: Enemy) -> void:
-	print("ENEMY DIED --> ", enemy)
 	var is_enemy_turn := acting_enemies.size() > 0
-	print("Is Enemy Turn? --> ", acting_enemies.size())
 	acting_enemies.erase(enemy)
 	
 	if is_enemy_turn:

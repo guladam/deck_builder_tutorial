@@ -1,13 +1,13 @@
-[gd_resource type="Resource" script_class="Status" load_steps=3 format=3 uid="uid://cta2q0boeetka"]
+[gd_resource type="Resource" script_class="MuscleStatus" load_steps=3 format=3 uid="uid://cta2q0boeetka"]
 
-[ext_resource type="Script" path="res://custom_resources/status.gd" id="1_ndgn5"]
 [ext_resource type="Texture2D" uid="uid://cxmf6vp47bkih" path="res://art/muscle.png" id="1_ygvlh"]
+[ext_resource type="Script" path="res://statuses/muscle.gd" id="2_pbwgf"]
 
 [resource]
-script = ExtResource("1_ndgn5")
+script = ExtResource("2_pbwgf")
 id = "muscle"
 icon = ExtResource("1_ygvlh")
-type = 0
+type = 2
 stack_type = 1
 can_expire = false
 duration = 0
