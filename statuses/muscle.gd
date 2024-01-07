@@ -1,26 +1,18 @@
 class_name MuscleStatus
 extends Status
 
-var player: Player
+
+func initialize_status(target: Node) -> void:
+	status_changed.connect(_on_status_changed.bind(target))
+	_on_status_changed(target)
 
 
-func apply_status(target: Node) -> void:
-	player = target as Player
-	status_changed.connect(_on_status_changed)
-	_on_status_changed()
+func _on_status_changed(target: Node) -> void:
+	assert(target.get("modifier_handler"), "No modifiers on %s" % target)
 	
-	status_applied.emit(self)
-
-
-func _on_status_changed() -> void:
-	if not player:
-		return
-		
-	var dmg_dealt_modifier := player.modifier_handler.get_modifier(Modifier.Type.DMG_DEALT)
+	var dmg_dealt_modifier: Modifier = target.modifier_handler.get_modifier(Modifier.Type.DMG_DEALT)
+	assert(dmg_dealt_modifier, "No dmg dealt modifier on %s" % target)
 	
-	if not dmg_dealt_modifier:
-		return
-		
 	var muscle_modifier_value := dmg_dealt_modifier.get_value("muscle")
 	
 	if not muscle_modifier_value:

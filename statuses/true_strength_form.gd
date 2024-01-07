@@ -5,8 +5,6 @@ const MUSCLE_STATUS = preload("res://statuses/muscle.tres")
 
 
 func apply_status(target: Node) -> void:
-	print("applied true str form")
-	
 	var status_effect := StatusEffect.new()
 	var muscle := MUSCLE_STATUS.duplicate()
 	muscle.stacks = 2

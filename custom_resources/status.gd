@@ -16,6 +16,10 @@ enum StackType {NONE, INTENSITY, DURATION}
 @export var stacks: int : set = set_stacks
 
 
+func initialize_status(_target: Node) -> void:
+	pass
+
+
 func apply_status(_target: Node) -> void:
 	status_applied.emit(self)
 

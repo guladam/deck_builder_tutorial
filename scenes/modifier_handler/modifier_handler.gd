@@ -2,6 +2,14 @@ class_name ModifierHandler
 extends Node
 
 
+func has_modifier(type: Modifier.Type) -> bool:
+	for modifier: Modifier in get_children():
+		if modifier.type == type:
+			return true
+			
+	return false
+
+
 func get_modifier(type: Modifier.Type) -> Modifier:
 	for modifier: Modifier in get_children():
 		if modifier.type == type:

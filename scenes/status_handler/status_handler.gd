@@ -38,6 +38,7 @@ func add_status(status: Status) -> void:
 		add_child(new_status_ui)
 		new_status_ui.status = status
 		new_status_ui.status.status_applied.connect(_on_status_applied)
+		new_status_ui.status.initialize_status(status_owner)
 		# for event-based statuses we apply them immediately so they
 		# can connect to their appropriate signal(s)
 		if status.type == Status.Type.EVENT_BASED:
