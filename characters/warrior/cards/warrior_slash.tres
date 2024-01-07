@@ -11,7 +11,9 @@ type = 0
 rarity = 0
 target = 2
 cost = 2
+exhausts = false
 icon = ExtResource("1_uhc8e")
-tooltip_text = "[center]Deal [color=\"ff0000\"]4[/color] damage
+tooltip_text = "[center]Deal [color=\"ff0000\"]%s[/color] damage
 to all enemies.[/center]"
+tooltip_default_dynamic_values = Array[String](["4"])
 sound = ExtResource("3_4dvu8")
