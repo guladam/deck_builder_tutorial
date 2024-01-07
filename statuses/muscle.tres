@@ -6,9 +6,10 @@
 [resource]
 script = ExtResource("2_pbwgf")
 id = "muscle"
-icon = ExtResource("1_ygvlh")
 type = 2
 stack_type = 1
 can_expire = false
 duration = 0
 stacks = 2
+icon = ExtResource("1_ygvlh")
+tooltip = "Muscle: attacks deal %s more damage."

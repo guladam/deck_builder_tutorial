@@ -6,9 +6,10 @@
 [resource]
 script = ExtResource("2_x17k4")
 id = "true_strength_form"
-icon = ExtResource("1_gedav")
 type = 0
 stack_type = 0
 can_expire = false
 duration = 0
 stacks = 0
+icon = ExtResource("1_gedav")
+tooltip = "True Strength Form: at the start of its turn, gains 2 Muscle."

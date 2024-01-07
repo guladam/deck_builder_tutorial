@@ -6,9 +6,10 @@
 [resource]
 script = ExtResource("2_mgige")
 id = "exposed"
-icon = ExtResource("1_7qqjj")
 type = 0
 stack_type = 2
 can_expire = true
 duration = 1
 stacks = 0
+icon = ExtResource("1_7qqjj")
+tooltip = "Exposed: takes 50%% more damage for %s turns."

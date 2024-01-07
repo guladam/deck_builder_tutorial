@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkt76516lsbh5"]
+
+[ext_resource type="Script" path="res://scenes/ui/status_tooltip.gd" id="1_ch370"]
+[ext_resource type="Texture2D" uid="uid://2on3ucku1w42" path="res://art/expose.png" id="1_i8r6y"]
+
+[node name="StatusTooltip" type="HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+script = ExtResource("1_ch370")
+
+[node name="Icon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+texture = ExtResource("1_i8r6y")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Takes 50% more damage from attacks, for %s turns."
+vertical_alignment = 1
+autowrap_mode = 2

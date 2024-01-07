@@ -4,5 +4,8 @@
 
 [node name="StatusHandler" type="GridContainer"]
 offset_bottom = 11.0
+mouse_filter = 0
 columns = 6
 script = ExtResource("1_erk7k")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
