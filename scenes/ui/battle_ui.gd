@@ -29,7 +29,6 @@ func initialize_card_pile_ui() -> void:
 func set_char_stats(value: CharacterStats) -> void:
 	char_stats = value
 	mana_ui.char_stats = char_stats
-	hand.char_stats = char_stats
 
 
 func _on_player_hand_drawn() -> void:

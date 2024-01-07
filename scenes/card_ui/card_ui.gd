@@ -12,6 +12,7 @@ const RARITY_COLORS := {
 	Card.Rarity.RARE: Color.GOLD,
 }
 
+@export var player_modifiers: ModifierHandler
 @export var card: Card : set = set_card
 @export var char_stats: CharacterStats : set = set_char_stats
 
@@ -51,7 +52,7 @@ func play() -> void:
 	if not card:
 		return
 	
-	card.play(targets, char_stats)
+	card.play(targets, char_stats, player_modifiers)
 	queue_free()
 
 

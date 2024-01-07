@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=3 uid="uid://btoadxo20jn4"]
+
+[ext_resource type="Script" path="res://scenes/run/run.gd" id="1_y8ss3"]
+[ext_resource type="PackedScene" uid="uid://bi6nnwqbl0qqo" path="res://scenes/map/map.tscn" id="2_rq6d4"]
+[ext_resource type="PackedScene" uid="uid://bcdmoid8212ip" path="res://scenes/ui/card_pile_opener.tscn" id="2_ua7jt"]
+[ext_resource type="Texture2D" uid="uid://ss5c04pnvfbq" path="res://art/deck.png" id="3_kwf1m"]
+[ext_resource type="PackedScene" uid="uid://dws7irhbqmomu" path="res://scenes/ui/card_pile_view.tscn" id="4_56bxr"]
+[ext_resource type="PackedScene" uid="uid://6uus0vr6amco" path="res://scenes/ui/gold_ui.tscn" id="5_ybtdt"]
+[ext_resource type="PackedScene" uid="uid://bgv2atk5gusnu" path="res://scenes/ui/health_ui.tscn" id="6_7uaii"]
+
+[sub_resource type="Gradient" id="Gradient_lhw2h"]
+colors = PackedColorArray(0.215902, 0.215902, 0.215902, 1, 0.4, 0.220333, 0.204, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3hdle"]
+gradient = SubResource("Gradient_lhw2h")
+width = 50
+
+[node name="Run" type="Node"]
+script = ExtResource("1_y8ss3")
+
+[node name="Map" parent="." instance=ExtResource("2_rq6d4")]
+
+[node name="MapBackgroundLayer" type="CanvasLayer" parent="Map"]
+layer = -1
+
+[node name="MapBackground" type="TextureRect" parent="Map/MapBackgroundLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_3hdle")
+
+[node name="CurrentView" type="Node" parent="."]
+
+[node name="TopBar" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="DeckButton" parent="TopBar" node_paths=PackedStringArray("counter") instance=ExtResource("2_ua7jt")]
+unique_name_in_owner = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -19.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = 19.0
+grow_horizontal = 0
+counter = NodePath("Label")
+
+[node name="TextureRect" type="TextureRect" parent="TopBar/DeckButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kwf1m")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="TopBar/DeckButton"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -4.0
+offset_right = 8.0
+offset_bottom = 2.0
+grow_vertical = 0
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DeckView" parent="TopBar" instance=ExtResource("4_56bxr")]
+unique_name_in_owner = true
+visible = false
+
+[node name="Stats" type="HBoxContainer" parent="TopBar"]
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 3.0
+offset_bottom = 2.0
+
+[node name="HealthUI" parent="TopBar/Stats" instance=ExtResource("6_7uaii")]
+unique_name_in_owner = true
+layout_mode = 2
+show_max_hp = true
+
+[node name="GoldUI" parent="TopBar/Stats" instance=ExtResource("5_ybtdt")]
+unique_name_in_owner = true
+layout_mode = 2
