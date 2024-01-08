@@ -14,11 +14,11 @@ enum CharacterType {ALL, ASSASSIN, WARRIOR, WIZARD}
 @export_multiline var tooltip: String
 
 
-func initialize_relic() -> void:
+func initialize_relic(_owner: RelicUI) -> void:
 	pass
 
 
-func activate_relic() -> void:
+func activate_relic(_owner: RelicUI) -> void:
 	relic_activated.emit(self)
 
 

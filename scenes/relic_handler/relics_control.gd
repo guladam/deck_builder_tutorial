@@ -22,9 +22,14 @@ func _ready() -> void:
 	
 	for relic_ui: RelicUI in relics.get_children():
 		relic_ui.queue_free()
+		
+	relics.child_order_changed.connect(_on_relics_child_order_changed)
 
 
 func update() -> void:
+	if not left_button or not right_button:
+		return
+
 	num_of_relics = relics.get_child_count()
 	@warning_ignore("integer_division")
 	max_page = num_of_relics / RELICS_PER_PAGE
@@ -53,3 +58,7 @@ func _on_right_button_pressed() -> void:
 		current_page += 1
 		update()
 		_tween_to(relics.position.x - page_width)
+
+
+func _on_relics_child_order_changed() -> void:
+	update()

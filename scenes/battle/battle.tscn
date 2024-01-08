@@ -28,10 +28,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xyg5u"]
 size = Vector2(256, 100)
 
-[node name="Battle" type="Node2D"]
+[node name="Battle" type="Node2D" node_paths=PackedStringArray("relics")]
 script = ExtResource("1_4s751")
 battle_stats = ExtResource("2_ys5f7")
 char_stats = ExtResource("4_fwb8a")
+relics = NodePath("")
 music = ExtResource("3_nuoky")
 metadata/_edit_lock_ = true
 

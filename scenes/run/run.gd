@@ -12,6 +12,7 @@ const SHOP_SCENE := preload("res://scenes/shop/shop.tscn")
 @onready var health_ui: HealthUI = %HealthUI
 @onready var gold_ui: GoldUI = %GoldUI
 @onready var map: Map = $Map
+@onready var relic_handler: RelicHandler = %RelicHandler
 
 var stats: RunStats
 var character: CharacterStats
@@ -48,6 +49,9 @@ func _setup_top_bar() -> void:
 	character.stats_changed.connect(health_ui.update_stats.bind(character))
 	health_ui.update_stats(character)
 	gold_ui.run_stats = stats
+	
+	relic_handler.add_relic(character.starting_relic)
+	
 	deck_button.card_pile = character.deck
 	deck_view.card_pile = character.deck
 	deck_button.pressed.connect(deck_view.show_current_view.bind("Deck"))
@@ -73,6 +77,7 @@ func  _on_battle_room_entered(room: Room) -> void:
 	var battle_scene: Battle = _change_view(BATTLE_SCENE) as Battle
 	battle_scene.char_stats = character
 	battle_scene.battle_stats = room.battle_stats
+	battle_scene.relics = relic_handler
 	battle_scene.start_battle()
 
 
