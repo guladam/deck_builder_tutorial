@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Relic" load_steps=3 format=3 uid="uid://dbgnc5n5u6fnq"]
+
+[ext_resource type="Texture2D" uid="uid://bxa8pkakcodgw" path="res://art/tile_0082.png" id="1_as31e"]
+[ext_resource type="Script" path="res://custom_resources/relic.gd" id="1_ld6y5"]
+
+[resource]
+script = ExtResource("1_ld6y5")
+id = "explosive_barrel"
+type = 0
+character_type = 0
+starter_relic = false
+icon = ExtResource("1_as31e")
+tooltip = "At the start of your turn, deal 2 damage to all enemies."

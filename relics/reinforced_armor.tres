@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Relic" load_steps=3 format=3 uid="uid://ceran0g6a3cys"]
+
+[ext_resource type="Script" path="res://custom_resources/relic.gd" id="1_q6t4n"]
+[ext_resource type="Texture2D" uid="uid://dytq0eumwvky6" path="res://art/tile_0074.png" id="1_uo08w"]
+
+[resource]
+script = ExtResource("1_q6t4n")
+id = "reinforced_armor"
+type = 2
+character_type = 2
+starter_relic = false
+icon = ExtResource("1_uo08w")
+tooltip = "At the end of your turn, gain 3 block."
