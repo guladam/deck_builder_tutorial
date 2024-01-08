@@ -9,12 +9,6 @@ signal relic_tooltip_requested(relic: Relic)
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
-func _ready() -> void:
-	await get_tree().create_timer(2).timeout
-	flash()
-	relic_tooltip_requested.connect(func(r): print("show %s relic" % r))
-
-
 func set_relic(new_relic: Relic) -> void:
 	if not is_node_ready():
 		await ready

@@ -13,7 +13,7 @@ func apply_statuses_by_type(type: Status.Type) -> void:
 	if type == Status.Type.EVENT_BASED:
 		return
 		
-	var status_queue: Array[Status] = get_all_statuses().filter(
+	var status_queue: Array[Status] = _get_all_statuses().filter(
 		func(status: Status):
 			return status.type == type
 	)
@@ -33,17 +33,12 @@ func add_status(status: Status) -> void:
 	var stackable := status.stack_type != Status.StackType.NONE
 	
 	# Add it if it's new
-	if not has_status(status.id):
+	if not _has_status(status.id):
 		var new_status_ui: StatusUI = STATUS_UI.instantiate() as StatusUI
 		add_child(new_status_ui)
 		new_status_ui.status = status
 		new_status_ui.status.status_applied.connect(_on_status_applied)
 		new_status_ui.status.initialize_status(status_owner)
-		# for event-based statuses we apply them immediately so they
-		# can connect to their appropriate signal(s)
-		if status.type == Status.Type.EVENT_BASED:
-			new_status_ui.status.apply_status(status_owner)
-		
 		return
 
 	# If it's unique and we already have it, we can return
@@ -52,15 +47,15 @@ func add_status(status: Status) -> void:
 	
 	# If it's duration-stackable, expand it
 	if status.can_expire and status.stack_type == Status.StackType.DURATION:
-		get_status(status.id).duration += status.duration
+		_get_status(status.id).duration += status.duration
 		return
 	
 	# If it's stackable, stack it
 	if status.stack_type == Status.StackType.INTENSITY:
-		get_status(status.id).stacks += status.stacks
+		_get_status(status.id).stacks += status.stacks
 	
 
-func has_status(id: String) -> bool:
+func _has_status(id: String) -> bool:
 	for status_ui: StatusUI in get_children():
 		if status_ui.status.id == id:
 			return true
@@ -68,7 +63,7 @@ func has_status(id: String) -> bool:
 	return false
 
 
-func get_status(id: String) -> Status:
+func _get_status(id: String) -> Status:
 	for status_ui: StatusUI in get_children():
 		if status_ui.status.id == id:
 			return status_ui.status
@@ -76,7 +71,7 @@ func get_status(id: String) -> Status:
 	return null
 
 
-func get_all_statuses() -> Array[Status]:
+func _get_all_statuses() -> Array[Status]:
 	var statuses: Array[Status] = []
 	for status_ui: StatusUI in get_children():
 		statuses.append(status_ui.status)
@@ -91,4 +86,4 @@ func _on_status_applied(status: Status) -> void:
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_mouse"):
-		Events.status_tooltip_requested.emit(get_all_statuses())
+		Events.status_tooltip_requested.emit(_get_all_statuses())

@@ -1,0 +1,85 @@
+[gd_scene load_steps=7 format=3 uid="uid://dc62dcaeqb631"]
+
+[ext_resource type="Script" path="res://scenes/relic_handler/relic_handler.gd" id="1_c27hi"]
+[ext_resource type="Texture2D" uid="uid://d2rhnpyttvkdb" path="res://art/arrow_small.png" id="1_fcwf6"]
+[ext_resource type="Texture2D" uid="uid://cbtokojdppjrn" path="res://art/arrow_small_disabled.png" id="2_pwykd"]
+[ext_resource type="Script" path="res://scenes/relic_handler/relics_control.gd" id="3_3xydb"]
+[ext_resource type="PackedScene" uid="uid://cffojbaqb6aic" path="res://scenes/relic_handler/relic_ui.tscn" id="3_vyym5"]
+[ext_resource type="Resource" uid="uid://dbgnc5n5u6fnq" path="res://relics/explosive_barrel.tres" id="4_bsgcb"]
+
+[node name="RelicHandler" type="HBoxContainer"]
+offset_right = 120.0
+offset_bottom = 16.0
+script = ExtResource("1_c27hi")
+
+[node name="LeftButton" type="TextureButton" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("1_fcwf6")
+texture_pressed = ExtResource("1_fcwf6")
+texture_hover = ExtResource("1_fcwf6")
+texture_disabled = ExtResource("2_pwykd")
+stretch_mode = 5
+flip_h = true
+
+[node name="RelicsControl" type="Control" parent="." node_paths=PackedStringArray("left_button", "right_button")]
+clip_contents = true
+custom_minimum_size = Vector2(88, 0)
+layout_mode = 2
+script = ExtResource("3_3xydb")
+left_button = NodePath("../LeftButton")
+right_button = NodePath("../Rightbutton")
+
+[node name="Relics" type="HBoxContainer" parent="RelicsControl"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(88, 16)
+layout_mode = 0
+offset_right = 88.0
+offset_bottom = 16.0
+theme_override_constants/separation = 2
+
+[node name="RelicUI" parent="RelicsControl/Relics" instance=ExtResource("3_vyym5")]
+layout_mode = 2
+
+[node name="RelicUI2" parent="RelicsControl/Relics" instance=ExtResource("3_vyym5")]
+layout_mode = 2
+
+[node name="RelicUI3" parent="RelicsControl/Relics" instance=ExtResource("3_vyym5")]
+layout_mode = 2
+
+[node name="RelicUI4" parent="RelicsControl/Relics" instance=ExtResource("3_vyym5")]
+layout_mode = 2
+
+[node name="RelicUI5" parent="RelicsControl/Relics" instance=ExtResource("3_vyym5")]
+layout_mode = 2
+
+[node name="RelicUI6" parent="RelicsControl/Relics" instance=ExtResource("3_vyym5")]
+layout_mode = 2
+relic = ExtResource("4_bsgcb")
+
+[node name="RelicUI7" parent="RelicsControl/Relics" instance=ExtResource("3_vyym5")]
+layout_mode = 2
+relic = ExtResource("4_bsgcb")
+
+[node name="RelicUI8" parent="RelicsControl/Relics" instance=ExtResource("3_vyym5")]
+layout_mode = 2
+relic = ExtResource("4_bsgcb")
+
+[node name="RelicUI9" parent="RelicsControl/Relics" instance=ExtResource("3_vyym5")]
+layout_mode = 2
+relic = ExtResource("4_bsgcb")
+
+[node name="RelicUI10" parent="RelicsControl/Relics" instance=ExtResource("3_vyym5")]
+layout_mode = 2
+relic = ExtResource("4_bsgcb")
+
+[node name="Rightbutton" type="TextureButton" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("1_fcwf6")
+texture_pressed = ExtResource("1_fcwf6")
+texture_hover = ExtResource("1_fcwf6")
+texture_disabled = ExtResource("2_pwykd")
+stretch_mode = 5
