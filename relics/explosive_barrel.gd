@@ -9,4 +9,3 @@ func activate_relic(owner: RelicUI) -> void:
 	damage_effect.execute(enemies)
 	
 	owner.flash()
-	relic_activated.emit(self)

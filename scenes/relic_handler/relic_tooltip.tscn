@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=3 uid="uid://8f3j8enkvdko"]
+
+[ext_resource type="Script" path="res://scenes/relic_handler/relic_tooltip.gd" id="1_30m10"]
+[ext_resource type="Texture2D" uid="uid://bxa8pkakcodgw" path="res://art/tile_0082.png" id="1_oxtb2"]
+
+[node name="RelicTooltip" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_30m10")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.501961)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -30.5
+offset_right = 75.0
+offset_bottom = 30.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RelicIcon" type="TextureRect" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("1_oxtb2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RelicTooltip" type="RichTextLabel" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/line_separation = 3
+bbcode_enabled = true
+text = "Relic description Relic description Relic description Relic description Relic description Relic description "
+fit_content = true
+scroll_active = false
+
+[node name="BackButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -46.0
+offset_top = 5.0
+offset_right = -6.0
+offset_bottom = 20.0
+grow_horizontal = 0
+text = "Back"
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

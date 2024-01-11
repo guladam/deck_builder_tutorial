@@ -1,8 +1,6 @@
 class_name Relic
 extends Resource
 
-signal relic_activated(relic: Relic)
-
 enum Type {START_OF_TURN, START_OF_COMBAT, END_OF_TURN, END_OF_COMBAT, EVENT_BASED}
 enum CharacterType {ALL, ASSASSIN, WARRIOR, WIZARD}
 
@@ -19,7 +17,7 @@ func initialize_relic(_owner: RelicUI) -> void:
 
 
 func activate_relic(_owner: RelicUI) -> void:
-	relic_activated.emit(self)
+	pass
 
 
 func get_tooltip() -> String:

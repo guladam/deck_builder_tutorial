@@ -8,4 +8,3 @@ func activate_relic(owner: RelicUI) -> void:
 	block_effect.execute(player)
 	
 	owner.flash()
-	relic_activated.emit(self)

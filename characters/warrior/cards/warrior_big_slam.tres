@@ -14,5 +14,4 @@ cost = 2
 exhausts = true
 icon = ExtResource("1_dmghb")
 tooltip_text = "[center]Deal [color=\"ff0000\"]%s[/color] damage and apply 2 [color=\"ffdf00\"]Exposed[/color].[/center]"
-tooltip_default_dynamic_values = Array[String](["3"])
 sound = ExtResource("3_si47m")

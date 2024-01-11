@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="RechargableManaPotionRelic" load_steps=3 format=3 uid="uid://dc37dltx25yvg"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dc37dltx25yvg"]
 
 [ext_resource type="Texture2D" uid="uid://c2xhttrclo1r7" path="res://art/tile_0116.png" id="1_bai1k"]
 [ext_resource type="Script" path="res://relics/rechargable_mana_potion.gd" id="2_tmayl"]
@@ -10,4 +10,5 @@ type = 1
 character_type = 0
 starter_relic = false
 icon = ExtResource("1_bai1k")
-tooltip = "At the start of combar, gain 1 mana."
+tooltip = "[color=\"ffdf00\"]Rechargable Mana Potion[/color]
+At the start of combat, gain 1 mana."

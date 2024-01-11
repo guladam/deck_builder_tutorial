@@ -13,6 +13,7 @@ const SHOP_SCENE := preload("res://scenes/shop/shop.tscn")
 @onready var gold_ui: GoldUI = %GoldUI
 @onready var map: Map = $Map
 @onready var relic_handler: RelicHandler = %RelicHandler
+@onready var relic_tooltip: RelicTooltip = %RelicTooltip
 
 var stats: RunStats
 var character: CharacterStats
@@ -55,6 +56,7 @@ func _setup_top_bar() -> void:
 	gold_ui.run_stats = stats
 	
 	relic_handler.add_relic(character.starting_relic)
+	Events.relic_tooltip_requested.connect(relic_tooltip.show_tooltip)
 	
 	deck_button.card_pile = character.deck
 	deck_view.card_pile = character.deck

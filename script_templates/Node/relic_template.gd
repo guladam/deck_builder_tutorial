@@ -11,8 +11,6 @@ func initialize_relic(_owner: RelicUI) -> void:
 
 func activate_relic(_owner: RelicUI) -> void:
 	print("this happens at specific times based on the Relic.Type property")
-	print("we need to emit this signal when we're done")
-	relic_activated.emit(self)
 
 
 # we can provide unique tooltips per relic if we want to

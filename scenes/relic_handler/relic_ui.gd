@@ -1,8 +1,6 @@
 class_name RelicUI
 extends Control
 
-signal relic_tooltip_requested(relic: Relic)
-
 @export var relic: Relic : set = set_relic
 
 @onready var icon: TextureRect = $Icon
@@ -23,4 +21,4 @@ func flash() -> void:
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_mouse"):
-		relic_tooltip_requested.emit(relic)
+		Events.relic_tooltip_requested.emit(relic)
