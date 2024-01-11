@@ -9,4 +9,3 @@ func _on_player_hand_drawn(owner: RelicUI) -> void:
 	owner.flash()
 	var player := owner.get_tree().get_first_node_in_group("player") as Player
 	player.stats.mana += 1
-	print("gained mana once")

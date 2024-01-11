@@ -31,6 +31,10 @@ func start_run() -> void:
 	_setup_event_connections()
 	map.create_map()
 	map.unlock_floor(0)
+	
+	relic_handler.add_relic(preload("res://relics/rechargable_mana_potion.tres"))
+	relic_handler.add_relic(preload("res://relics/explosive_barrel.tres"))
+	relic_handler.add_relic(preload("res://relics/endless_healing_potion.tres"))
 
 
 func _change_view(scene: PackedScene) -> Node:
