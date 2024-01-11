@@ -20,3 +20,7 @@ func is_performable() -> bool:
 
 func perform_action() -> void:
 	pass
+
+
+func update_intent_text() -> void:
+	intent.current_text = intent.base_text
