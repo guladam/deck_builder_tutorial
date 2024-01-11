@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="Relic" load_steps=3 format=3 uid="uid://ceran0g6a3cys"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://ceran0g6a3cys"]
 
-[ext_resource type="Script" path="res://custom_resources/relic.gd" id="1_q6t4n"]
 [ext_resource type="Texture2D" uid="uid://dytq0eumwvky6" path="res://art/tile_0074.png" id="1_uo08w"]
+[ext_resource type="Script" path="res://relics/reinforced_armor.gd" id="2_xmti8"]
 
 [resource]
-script = ExtResource("1_q6t4n")
+script = ExtResource("2_xmti8")
 id = "reinforced_armor"
 type = 2
 character_type = 2

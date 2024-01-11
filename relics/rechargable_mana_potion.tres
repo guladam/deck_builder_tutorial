@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="Relic" load_steps=3 format=3 uid="uid://dc37dltx25yvg"]
+[gd_resource type="Resource" script_class="RechargableManaPotionRelic" load_steps=3 format=3 uid="uid://dc37dltx25yvg"]
 
 [ext_resource type="Texture2D" uid="uid://c2xhttrclo1r7" path="res://art/tile_0116.png" id="1_bai1k"]
-[ext_resource type="Script" path="res://custom_resources/relic.gd" id="2_b4mau"]
+[ext_resource type="Script" path="res://relics/rechargable_mana_potion.gd" id="2_tmayl"]
 
 [resource]
-script = ExtResource("2_b4mau")
+script = ExtResource("2_tmayl")
 id = "rechargable_mana_potion"
 type = 1
 character_type = 0

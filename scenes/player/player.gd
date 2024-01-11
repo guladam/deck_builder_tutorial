@@ -34,12 +34,12 @@ func update_stats() -> void:
 	stats_ui.update_stats(stats)
 
 
-func take_damage(damage: int) -> void:
+func take_damage(damage: int, which_modifier: Modifier.Type) -> void:
 	if stats.health <= 0:
 		return
 	
 	sprite_2d.material = WHITE_SPRITE_MATERIAL
-	var modified_damage := modifier_handler.get_modified_value(damage, Modifier.Type.DMG_TAKEN)
+	var modified_damage := modifier_handler.get_modified_value(damage, which_modifier)
 	
 	var tween := create_tween()
 	tween.tween_callback(Shaker.shake.bind(self, 16, 0.15))

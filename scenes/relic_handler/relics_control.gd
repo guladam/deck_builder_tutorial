@@ -27,7 +27,7 @@ func _ready() -> void:
 
 
 func update() -> void:
-	if not left_button or not right_button:
+	if not is_instance_valid(left_button) or not is_instance_valid(right_button):
 		return
 
 	num_of_relics = relics.get_child_count()

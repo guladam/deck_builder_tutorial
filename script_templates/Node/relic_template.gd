@@ -1,6 +1,5 @@
 # meta-name: Relic
 # meta-description: Create a Relic which can be acquired by the player.
-class_name MyAwesomeRelic
 extends Relic
 
 var member_var := 0

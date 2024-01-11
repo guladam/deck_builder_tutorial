@@ -59,13 +59,11 @@ layout_mode = 2
 
 [node name="HealthUI" parent="TopBar/HBoxContainer/Stats" instance=ExtResource("6_7uaii")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
 show_max_hp = true
 
 [node name="GoldUI" parent="TopBar/HBoxContainer/Stats" instance=ExtResource("5_ybtdt")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TopBar/HBoxContainer"]

@@ -27,6 +27,7 @@ func start_battle() -> void:
 	
 	battle_ui.char_stats = char_stats
 	player.stats = char_stats
+	player_handler.relics = relics
 	enemy_handler.setup_enemies(battle_stats)
 	enemy_handler.reset_enemy_actions.call_deferred()
 	battle_ui.initialize_card_pile_ui()
@@ -36,7 +37,7 @@ func start_battle() -> void:
 
 
 func _on_enemies_child_order_changed() -> void:
-	if enemy_handler.get_child_count() == 0:
+	if enemy_handler.get_child_count() == 0 and is_instance_valid(relics):
 		relics.activate_relics_by_type(Relic.Type.END_OF_COMBAT)
 
 
