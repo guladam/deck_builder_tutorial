@@ -30,6 +30,7 @@ signal battle_won
 signal map_exited(room: Room)
 
 # Shop-related events
+signal shop_entered(shop: Shop)
 signal shop_relic_bought(relic: Relic, gold_cost: int)
 signal shop_card_bought(card: Card, gold_cost: int)
 signal shop_exited

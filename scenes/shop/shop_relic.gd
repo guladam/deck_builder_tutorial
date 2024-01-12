@@ -13,6 +13,9 @@ const RELIC_UI = preload("res://scenes/relic_handler/relic_ui.tscn")
 
 
 func update(run_stats: RunStats) -> void:
+	if not relic_container or not price or not buy_button:
+		return
+
 	price_label.text = str(gold_cost)
 	
 	if run_stats.gold > gold_cost:

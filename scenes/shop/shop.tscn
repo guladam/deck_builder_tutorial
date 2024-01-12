@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cdj46h0wx7na"]
+[gd_scene load_steps=22 format=3 uid="uid://cdj46h0wx7na"]
 
 [ext_resource type="Script" path="res://scenes/shop/shop.gd" id="1_3ks6c"]
 [ext_resource type="Texture2D" uid="uid://bj3im6egs4wxx" path="res://art/tile_0086.png" id="2_7b48t"]
@@ -13,6 +13,8 @@
 [ext_resource type="Resource" uid="uid://ceran0g6a3cys" path="res://relics/reinforced_armor.tres" id="9_vssmu"]
 [ext_resource type="Resource" uid="uid://dbgnc5n5u6fnq" path="res://relics/explosive_barrel.tres" id="10_yn33n"]
 [ext_resource type="PackedScene" uid="uid://cc12360n5lh1n" path="res://scenes/ui/card_tooltip_popup.tscn" id="13_nvsr0"]
+[ext_resource type="PackedScene" uid="uid://cear47kpsa6ms" path="res://scenes/modifier_handler/modifier_handler.tscn" id="14_cc3wk"]
+[ext_resource type="Script" path="res://scenes/modifier_handler/modifier.gd" id="15_hr2pc"]
 
 [sub_resource type="Gradient" id="Gradient_e6iai"]
 offsets = PackedFloat32Array(0.239583, 1)
@@ -195,5 +197,11 @@ relic = ExtResource("10_yn33n")
 [node name="CardTooltipPopup" parent="UILayer" instance=ExtResource("13_nvsr0")]
 unique_name_in_owner = true
 visible = false
+
+[node name="ModifierHandler" parent="." instance=ExtResource("14_cc3wk")]
+
+[node name="ShopCostModifier" type="Node" parent="ModifierHandler"]
+script = ExtResource("15_hr2pc")
+type = 3
 
 [connection signal="pressed" from="UILayer/BackButton" to="." method="_on_back_button_pressed"]

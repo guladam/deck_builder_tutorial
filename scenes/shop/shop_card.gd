@@ -15,6 +15,9 @@ var current_card_ui: CardMenuUI
 
 
 func update(run_stats: RunStats) -> void:
+	if not card_container or not price or not buy_button:
+		return
+
 	price_label.text = str(gold_cost)
 	
 	if run_stats.gold > gold_cost:
