@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dws7irhbqmomu"]
+[gd_scene load_steps=6 format=3 uid="uid://dws7irhbqmomu"]
 
 [ext_resource type="PackedScene" uid="uid://covniifh0ij4j" path="res://scenes/ui/card_menu_ui.tscn" id="1_axewt"]
 [ext_resource type="Script" path="res://scenes/ui/card_pile_view.gd" id="1_fjqwr"]
 [ext_resource type="Resource" uid="uid://dyyfi3rcfxyug" path="res://characters/warrior/warrior_starting_deck.tres" id="2_1fhlg"]
+[ext_resource type="PackedScene" uid="uid://cc12360n5lh1n" path="res://scenes/ui/card_tooltip_popup.tscn" id="4_r5bux"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gcrwt"]
 font_size = 12
@@ -204,57 +205,6 @@ offset_bottom = 22.0
 grow_horizontal = 0
 text = "Back"
 
-[node name="TooltipPopup" type="Control" parent="."]
+[node name="CardTooltipPopup" parent="." instance=ExtResource("4_r5bux")]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="TooltipPopup"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 0.501961)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TooltipPopup"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TooltipCard" type="CenterContainer" parent="TooltipPopup/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
-
-[node name="CardMenuUI" parent="TooltipPopup/VBoxContainer/TooltipCard" instance=ExtResource("1_axewt")]
-layout_mode = 2
-
-[node name="CardDescription" type="RichTextLabel" parent="TooltipPopup/VBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/line_separation = 3
-bbcode_enabled = true
-text = "Card description Card description Card description Card description Card description"
-fit_content = true
-scroll_active = false
-
-[connection signal="gui_input" from="TooltipPopup" to="." method="_on_tooltip_popup_gui_input"]

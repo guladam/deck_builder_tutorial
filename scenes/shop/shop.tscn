@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cdj46h0wx7na"]
+[gd_scene load_steps=20 format=3 uid="uid://cdj46h0wx7na"]
 
 [ext_resource type="Script" path="res://scenes/shop/shop.gd" id="1_3ks6c"]
 [ext_resource type="Texture2D" uid="uid://bj3im6egs4wxx" path="res://art/tile_0086.png" id="2_7b48t"]
@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://dc37dltx25yvg" path="res://relics/rechargable_mana_potion.tres" id="8_knlo8"]
 [ext_resource type="Resource" uid="uid://ceran0g6a3cys" path="res://relics/reinforced_armor.tres" id="9_vssmu"]
 [ext_resource type="Resource" uid="uid://dbgnc5n5u6fnq" path="res://relics/explosive_barrel.tres" id="10_yn33n"]
+[ext_resource type="PackedScene" uid="uid://cc12360n5lh1n" path="res://scenes/ui/card_tooltip_popup.tscn" id="13_nvsr0"]
 
 [sub_resource type="Gradient" id="Gradient_e6iai"]
 offsets = PackedFloat32Array(0.239583, 1)
@@ -21,6 +22,21 @@ colors = PackedColorArray(0, 0, 0, 1, 0.26, 0.143217, 0.1326, 1)
 gradient = SubResource("Gradient_e6iai")
 fill_from = Vector2(0.525641, 1)
 fill_to = Vector2(0.529915, 0)
+
+[sub_resource type="Animation" id="Animation_q1q5y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShopKeeper:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_7b48t")]
+}
 
 [sub_resource type="Animation" id="Animation_pbybd"]
 resource_name = "blink"
@@ -37,21 +53,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [ExtResource("7_3tqiv"), ExtResource("2_7b48t")]
-}
-
-[sub_resource type="Animation" id="Animation_q1q5y"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ShopKeeper:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_7b48t")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e0nx6"]
@@ -190,5 +191,9 @@ relic = ExtResource("9_vssmu")
 [node name="ShopRelic3" parent="UILayer/ShopContent/Relics" instance=ExtResource("7_s7g4i")]
 layout_mode = 2
 relic = ExtResource("10_yn33n")
+
+[node name="CardTooltipPopup" parent="UILayer" instance=ExtResource("13_nvsr0")]
+unique_name_in_owner = true
+visible = false
 
 [connection signal="pressed" from="UILayer/BackButton" to="." method="_on_back_button_pressed"]
