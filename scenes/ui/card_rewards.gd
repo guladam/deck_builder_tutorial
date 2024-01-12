@@ -49,7 +49,7 @@ func _clear_rewards() -> void:
 	selected_card = null
 
 
-func set_rewards(new_cards) -> void:
+func set_rewards(new_cards: Array[Card]) -> void:
 	rewards = new_cards
 	
 	if not is_node_ready():

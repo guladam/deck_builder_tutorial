@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnn8bphgvyckb"]
+
+[ext_resource type="PackedScene" uid="uid://covniifh0ij4j" path="res://scenes/ui/card_menu_ui.tscn" id="1_4hldx"]
+[ext_resource type="Script" path="res://scenes/shop/shop_card.gd" id="1_xbnme"]
+[ext_resource type="Texture2D" uid="uid://blkrjt7i0gndg" path="res://art/gold.png" id="2_pb46p"]
+
+[node name="ShopCard" type="VBoxContainer"]
+custom_minimum_size = Vector2(40, 56)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 2
+script = ExtResource("1_xbnme")
+
+[node name="CardContainer" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+
+[node name="CardMenuUI" parent="CardContainer" instance=ExtResource("1_4hldx")]
+layout_mode = 2
+
+[node name="Price" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="PriceLabel" type="Label" parent="Price"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "999"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Price"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+texture = ExtResource("2_pb46p")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BuyButton" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+text = "Buy"
+
+[connection signal="pressed" from="BuyButton" to="." method="_on_buy_button_pressed"]

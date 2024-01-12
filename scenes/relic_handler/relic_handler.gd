@@ -31,7 +31,7 @@ func activate_relics_by_type(type: Relic.Type) -> void:
 
 
 func add_relic(relic: Relic) -> void:
-	if _has_relic(relic.id):
+	if has_relic(relic.id):
 		return
 	
 	var new_relic_ui: RelicUI = RELIC_UI.instantiate() as RelicUI
@@ -40,7 +40,7 @@ func add_relic(relic: Relic) -> void:
 	new_relic_ui.relic.initialize_relic(new_relic_ui)
 	
 
-func _has_relic(id: String) -> bool:
+func has_relic(id: String) -> bool:
 	for relic_ui: RelicUI in relics.get_children():
 		if relic_ui.relic.id == id and not relic_ui.is_queued_for_deletion():
 			return true

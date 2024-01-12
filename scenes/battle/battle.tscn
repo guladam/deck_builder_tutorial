@@ -28,11 +28,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xyg5u"]
 size = Vector2(256, 100)
 
-[node name="Battle" type="Node2D" node_paths=PackedStringArray("relics")]
+[node name="Battle" type="Node2D"]
 script = ExtResource("1_4s751")
 battle_stats = ExtResource("2_ys5f7")
 char_stats = ExtResource("4_fwb8a")
-relics = NodePath("")
 music = ExtResource("3_nuoky")
 metadata/_edit_lock_ = true
 
@@ -100,8 +99,8 @@ offset_right = 23.0
 offset_bottom = -23.0
 
 [node name="Tooltip" parent="BattleUI" instance=ExtResource("12_qx741")]
-offset_top = 6.0
-offset_bottom = 42.0
+offset_top = 20.0
+offset_bottom = 56.0
 
 [node name="EndTurnButton" type="Button" parent="BattleUI"]
 unique_name_in_owner = true

@@ -3,12 +3,12 @@
 [ext_resource type="Script" path="res://scenes/campfire/campfire.gd" id="1_t7piw"]
 [ext_resource type="Texture2D" uid="uid://e6utppbeeuul" path="res://art/line.png" id="2_5ciex"]
 
-[sub_resource type="Gradient" id="Gradient_e6iai"]
+[sub_resource type="Gradient" id="Gradient_waib2"]
 offsets = PackedFloat32Array(0.239583, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0.26, 0.143217, 0.1326, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_dvi62"]
-gradient = SubResource("Gradient_e6iai")
+gradient = SubResource("Gradient_waib2")
 fill_from = Vector2(0.525641, 1)
 fill_to = Vector2(0.529915, 0)
 

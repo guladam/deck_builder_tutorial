@@ -11,13 +11,6 @@ const WHITE_SPRITE_MATERIAL := preload("res://art/white_sprite_material.tres")
 @onready var modifier_handler: ModifierHandler = $ModifierHandler
 
 
-func _ready() -> void:
-	var exposed_status := StatusEffect.new()
-	exposed_status.status = preload("res://statuses/exposed.tres").duplicate()
-	exposed_status.status.duration = 2
-	exposed_status.execute([self])
-
-
 func set_character_stats(value: CharacterStats) -> void:
 	stats = value
 	
