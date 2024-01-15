@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=3 uid="uid://4gfivdwgpjal"]
+
+[ext_resource type="Script" path="res://scenes/win_screen/win_screen.gd" id="1_x1e2d"]
+[ext_resource type="Texture2D" uid="uid://cpydvk8mq66o5" path="res://art/tile_0087.png" id="2_40ix8"]
+
+[sub_resource type="Gradient" id="Gradient_viej5"]
+colors = PackedColorArray(0.201844, 0.118659, 0.0516602, 1, 0.0567877, 0.00125275, 0.0583082, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fyc5w"]
+gradient = SubResource("Gradient_viej5")
+width = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_eew74"]
+line_spacing = 10.0
+shadow_size = 4
+shadow_color = Color(0.878431, 0.564706, 0.580392, 0.282353)
+
+[node name="WinScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x1e2d")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_fyc5w")
+
+[node name="CharacterPortrait" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -103.0
+offset_right = 80.0
+offset_bottom = -33.0
+grow_vertical = 0
+texture = ExtResource("2_40ix8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.0
+offset_top = -31.0
+offset_right = 103.0
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="Message" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "The Warrior
+is victorious!"
+label_settings = SubResource("LabelSettings_eew74")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenuButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(55, 14)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Main Menu"
+
+[connection signal="pressed" from="VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
