@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2_tmayl")
+relic_name = "Mana Potion"
 id = "rechargable_mana_potion"
 type = 1
 character_type = 0

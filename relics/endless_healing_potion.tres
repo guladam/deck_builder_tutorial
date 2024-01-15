@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2_mna40")
+relic_name = "Healing Potion"
 id = "endless_healing_potion"
 type = 3
 character_type = 2

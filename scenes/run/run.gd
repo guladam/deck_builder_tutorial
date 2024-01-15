@@ -5,6 +5,7 @@ const BATTLE_SCENE := preload("res://scenes/battle/battle.tscn")
 const BATTLE_REWARD_SCENE := preload("res://scenes/battle_reward/battle_reward.tscn")
 const CAMPFIRE_SCENE := preload("res://scenes/campfire/campfire.tscn")
 const SHOP_SCENE := preload("res://scenes/shop/shop.tscn")
+const TREASURE_SCENE = preload("res://scenes/treasure/treasure.tscn")
 
 @onready var current_view: Node = $CurrentView
 @onready var deck_button: CardPileOpener = %DeckButton
@@ -73,6 +74,7 @@ func _setup_event_connections() -> void:
 	Events.campfire_exited.connect(_show_map)
 	Events.shop_exited.connect(_show_map)
 	Events.map_exited.connect(_on_map_exited)
+	Events.treasure_room_exited.connect(_on_treasure_room_exited)
 
 
 func  _on_battle_room_entered(room: Room) -> void:
@@ -101,9 +103,26 @@ func _on_battle_won() -> void:
 	var reward_scene := _change_view(BATTLE_REWARD_SCENE) as BattleReward
 	reward_scene.run_stats = stats
 	reward_scene.character_stats = character
+	reward_scene.relic_handler = relic_handler
 	
 	reward_scene.add_gold_reward(map.last_room.battle_stats.roll_gold_reward())
 	reward_scene.add_card_reward()
+
+
+func _on_treasure_room_entered() -> void:
+	var treasure_scene := _change_view(TREASURE_SCENE) as Treasure
+	treasure_scene.relic_handler = relic_handler
+	treasure_scene.char_stats = character
+	treasure_scene.generate_relic()
+
+
+func _on_treasure_room_exited(relic: Relic) -> void:
+	var reward_scene := _change_view(BATTLE_REWARD_SCENE) as BattleReward
+	reward_scene.run_stats = stats
+	reward_scene.character_stats = character
+	reward_scene.relic_handler = relic_handler
+	
+	reward_scene.add_relic_reward(relic)
 
 
 func _on_map_exited(room: Room) -> void:
@@ -111,7 +130,7 @@ func _on_map_exited(room: Room) -> void:
 		Room.Type.MONSTER:
 			_on_battle_room_entered(room)
 		Room.Type.TREASURE:
-			print("treasure found!")
+			_on_treasure_room_entered()
 		Room.Type.CAMPFIRE:
 			_on_campfire_entered()
 		Room.Type.SHOP:

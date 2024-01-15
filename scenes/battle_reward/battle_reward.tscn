@@ -71,7 +71,7 @@ theme_override_constants/separation = 3
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "Battle Rewards"
+text = "Rewards"
 label_settings = SubResource("LabelSettings_eu6ly")
 horizontal_alignment = 1
 

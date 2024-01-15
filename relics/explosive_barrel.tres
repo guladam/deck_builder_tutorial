@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2_j6ysq")
+relic_name = "Barrel"
 id = "explosive_barrel"
 type = 0
 character_type = 0

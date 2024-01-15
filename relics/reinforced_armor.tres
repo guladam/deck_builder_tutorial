@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2_xmti8")
+relic_name = "Armor"
 id = "reinforced_armor"
 type = 2
 character_type = 2
