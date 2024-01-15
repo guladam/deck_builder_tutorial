@@ -31,10 +31,10 @@ func generate_map() -> Array[Array]:
 		for i in FLOORS - 1:
 			current_j = _setup_connection(i, current_j)
 	
-	_setup_boss_room()
-
-	_setup_random_room_weights()
 	battle_stats_pool.setup()
+	
+	_setup_boss_room()
+	_setup_random_room_weights()
 	_setup_room_types()
 	
 	return map_data

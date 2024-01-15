@@ -21,6 +21,13 @@ func _ready() -> void:
 	Events.player_died.connect(_on_player_died)
 
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept"):
+		var damage_effect := DamageEffect.new()
+		damage_effect.amount = 10
+		damage_effect.execute(enemy_handler.get_children())
+
+
 func start_battle() -> void:
 	get_tree().paused = false
 	MusicPlayer.play(music, true)

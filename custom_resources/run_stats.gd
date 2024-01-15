@@ -1,7 +1,7 @@
 class_name RunStats
 extends Resource
 
-const STARTING_GOLD := 700
+const STARTING_GOLD := 70
 const BASE_CARD_REWARDS := 3
 const BASE_COMMON_WEIGHT := 6.0
 const BASE_UNCOMMON_WEIGHT := 3.7
