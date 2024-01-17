@@ -12,4 +12,4 @@ character_type = 0
 starter_relic = false
 icon = ExtResource("1_rsv5l")
 tooltip = "[color=\"ffdf00\"]Coupons[/color]
-All items in the shop are discounted by 50%%."
+All items in the shop are discounted by 50%."

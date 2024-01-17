@@ -8,7 +8,12 @@ const ASSASSIN_STATS := preload("res://characters/wizard/wizard.tres")
 @onready var title: Label = %Title
 @onready var description: Label = %Description
 @onready var character_portrait: TextureRect = %CharacterPortrait
-@onready var current_character := WARRIOR_STATS : set = set_current_character
+
+var current_character: CharacterStats : set = set_current_character
+
+
+func _ready() -> void:
+	set_current_character(WARRIOR_STATS)
 
 
 func set_current_character(new_character: CharacterStats) -> void:
@@ -20,9 +25,8 @@ func set_current_character(new_character: CharacterStats) -> void:
 
 func _on_start_button_pressed() -> void:
 	var new_run: Run = RUN_SCENE.instantiate() as Run
-	new_run.character = current_character.create_instance()
-
 	get_tree().root.add_child(new_run)	
+	new_run.character = current_character.create_instance()
 	new_run.start_run()
 	
 	queue_free()

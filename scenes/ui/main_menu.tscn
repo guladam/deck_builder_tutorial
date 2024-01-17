@@ -73,7 +73,8 @@ grow_vertical = 2
 theme_override_constants/separation = 6
 alignment = 1
 
-[node name="Continue" type="Button" parent="VBoxContainer"]
+[node name="ContinueButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 14)
 layout_mode = 2
 disabled = true
@@ -119,6 +120,6 @@ position = Vector2(240, 112)
 scale = Vector2(2, 2)
 texture = ExtResource("6_8q3wf")
 
-[connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="VBoxContainer/ContinueButton" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="VBoxContainer/NewRun" to="." method="_on_new_run_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

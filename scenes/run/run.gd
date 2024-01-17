@@ -1,6 +1,7 @@
 class_name Run
 extends Node
 
+const MAIN_MENU_SCENE = preload("res://scenes/ui/main_menu.tscn")
 const BATTLE_SCENE := preload("res://scenes/battle/battle.tscn")
 const BATTLE_REWARD_SCENE := preload("res://scenes/battle_reward/battle_reward.tscn")
 const CAMPFIRE_SCENE := preload("res://scenes/campfire/campfire.tscn")
@@ -16,16 +17,18 @@ const WIN_SCREEN_SCENE := preload("res://scenes/win_screen/win_screen.tscn")
 @onready var map: Map = $Map
 @onready var relic_handler: RelicHandler = %RelicHandler
 @onready var relic_tooltip: RelicTooltip = %RelicTooltip
+@onready var pause_menu: PauseMenu = $PauseMenu
 
 var stats: RunStats
 var character: CharacterStats
+var save_data: SaveGame
 
 
 func _ready() -> void:
-	if not character:
-		var warrior := load("res://characters/warrior/warrior.tres")
-		character = warrior.create_instance()
+	if character:
 		start_run()
+
+	pause_menu.save_and_quit.connect(_on_main_menu_requested)
 
 
 func start_run() -> void:
@@ -34,6 +37,24 @@ func start_run() -> void:
 	_setup_event_connections()
 	map.create_map()
 	map.unlock_floor(0)
+	
+	relic_handler.add_relic(preload("res://relics/coupons.tres"))
+	
+	save_data = SaveGame.new()
+	_save_run()
+
+
+func load_run() -> void:
+	save_data = SaveGame.load_data()
+	assert(save_data, "Couldn't load last save game")
+	
+	stats = save_data.run_stats
+	character = save_data.char_stats
+	character.deck = save_data.current_deck
+	character.health = save_data.current_health
+	relic_handler.add_relics(save_data.relics)
+	_setup_top_bar()
+	_setup_event_connections()
 
 
 func _change_view(scene: PackedScene) -> Node:
@@ -67,6 +88,7 @@ func _show_map() -> void:
 
 	map.show_map()
 	map.unlock_next_rooms()
+	_save_run()
 
 
 func _setup_event_connections() -> void:
@@ -86,6 +108,15 @@ func _show_regular_battle_rewards() -> void:
 	
 	reward_scene.add_gold_reward(map.last_room.battle_stats.roll_gold_reward())
 	reward_scene.add_card_reward()
+
+
+func _save_run():
+	save_data.run_stats = stats
+	save_data.char_stats = character
+	save_data.current_deck = character.deck
+	save_data.current_health = character.health
+	save_data.relics = relic_handler.get_all_relics()
+	save_data.save_data()
 
 
 func  _on_battle_room_entered(room: Room) -> void:
@@ -146,3 +177,9 @@ func _on_map_exited(room: Room) -> void:
 			_on_shop_entered()
 		Room.Type.BOSS:
 			_on_battle_room_entered(room)
+
+
+func _on_main_menu_requested() -> void:
+	_save_run()
+	get_tree().change_scene_to_packed(MAIN_MENU_SCENE)
+	queue_free()

@@ -30,15 +30,20 @@ func activate_relics_by_type(type: Relic.Type) -> void:
 	tween.finished.connect(func(): relics_activated.emit(type))
 
 
+func add_relics(relics_array: Array[Relic]) -> void:
+	for relic: Relic in relics_array:
+		add_relic(relic)
+
+
 func add_relic(relic: Relic) -> void:
 	if has_relic(relic.id):
 		return
 	
 	var new_relic_ui: RelicUI = RELIC_UI.instantiate() as RelicUI
 	relics.add_child(new_relic_ui)
-	new_relic_ui.relic = relic
+	new_relic_ui.relic = relic.duplicate()
 	new_relic_ui.relic.initialize_relic(new_relic_ui)
-	
+
 
 func has_relic(id: String) -> bool:
 	for relic_ui: RelicUI in relics.get_children():
@@ -46,6 +51,16 @@ func has_relic(id: String) -> bool:
 			return true
 
 	return false
+
+
+func get_all_relics() -> Array[Relic]:
+	var relic_ui_nodes := _get_all_relic_ui_nodes()
+	var relics_array: Array[Relic] = []
+	
+	for relic_ui: RelicUI in relic_ui_nodes:
+		relics_array.append(relic_ui.relic)
+	
+	return relics_array
 
 
 func _get_all_relic_ui_nodes() -> Array[RelicUI]:
