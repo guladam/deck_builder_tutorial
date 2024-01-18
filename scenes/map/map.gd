@@ -11,6 +11,7 @@ const MAP_LINE = preload("res://scenes/map/map_line.tscn")
 @onready var visuals: Node2D = $Visuals
 @onready var camera_2d: Camera2D = $Camera2D
 
+var map_data: Array[Array]
 var floors_climbed: int
 var last_room: Room
 var camera_edge_y: float
@@ -29,11 +30,26 @@ func _input(event: InputEvent) -> void:
 	camera_2d.position.y = clamp(camera_2d.position.y, -camera_edge_y, 0)
 
 
-func create_map() -> void:
+func generate_new_map() -> void:
 	floors_climbed = 0
-	var map_data := map_generator.generate_map()
+	map_data = map_generator.generate_map()
+	create_map()
+
+
+func load_map(map: Array[Array], floors_completed: int, last_room_climbed: Room) -> void:
+	floors_climbed = floors_completed
+	map_data = map
+	last_room = last_room_climbed
+	create_map()
 	
-	for current_floor in map_data:
+	if floors_climbed > 0:
+		unlock_next_rooms()
+	else:
+		unlock_floor()
+
+
+func create_map() -> void:
+	for current_floor: Array in map_data:
 		for room: Room in current_floor:
 			if room.next_rooms.size() > 0:
 				_spawn_room(room)
@@ -68,12 +84,15 @@ func hide_map() -> void:
 	camera_2d.enabled = false
 
 
-func _spawn_room(room) -> void:
+func _spawn_room(room: Room) -> void:
 	var new_map_room := MAP_ROOM.instantiate() as MapRoom
 	rooms.add_child(new_map_room)
 	new_map_room.room = room
 	new_map_room.selected.connect(_on_map_room_selected)
 	_connect_lines(room)
+	
+	if room.selected and room.row < floors_climbed:
+		new_map_room.show_selected()
 
 
 func _connect_lines(room: Room) -> void:
@@ -92,6 +111,6 @@ func _on_map_room_selected(room: Room) -> void:
 		if map_room.room.row == room.row:
 			map_room.available = false
 	
-	Events.map_exited.emit(room)
 	last_room = room
 	floors_climbed += 1
+	Events.map_exited.emit(room)

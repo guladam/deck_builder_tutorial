@@ -35,10 +35,8 @@ func start_run() -> void:
 	stats = RunStats.new()
 	_setup_top_bar()
 	_setup_event_connections()
-	map.create_map()
+	map.generate_new_map()
 	map.unlock_floor(0)
-	
-	relic_handler.add_relic(preload("res://relics/coupons.tres"))
 	
 	save_data = SaveGame.new()
 	_save_run()
@@ -46,7 +44,7 @@ func start_run() -> void:
 
 func load_run() -> void:
 	save_data = SaveGame.load_data()
-	assert(save_data, "Couldn't load last save game")
+	assert(save_data, "Couldn't load last save")
 	
 	stats = save_data.run_stats
 	character = save_data.char_stats
@@ -55,7 +53,11 @@ func load_run() -> void:
 	relic_handler.add_relics(save_data.relics)
 	_setup_top_bar()
 	_setup_event_connections()
-
+	
+	map.load_map(save_data.map_data, save_data.floors_climbed, save_data.last_room)
+	if save_data.last_room:
+		_on_map_exited(save_data.last_room)
+	
 
 func _change_view(scene: PackedScene) -> Node:
 	if current_view.get_child_count() > 0:
@@ -116,6 +118,9 @@ func _save_run():
 	save_data.current_deck = character.deck
 	save_data.current_health = character.health
 	save_data.relics = relic_handler.get_all_relics()
+	save_data.last_room = map.last_room
+	save_data.map_data = map.map_data.duplicate()
+	save_data.floors_climbed = map.floors_climbed
 	save_data.save_data()
 
 
@@ -177,9 +182,10 @@ func _on_map_exited(room: Room) -> void:
 			_on_shop_entered()
 		Room.Type.BOSS:
 			_on_battle_room_entered(room)
+	
+	_save_run()
 
 
 func _on_main_menu_requested() -> void:
-	_save_run()
 	get_tree().change_scene_to_packed(MAIN_MENU_SCENE)
 	queue_free()

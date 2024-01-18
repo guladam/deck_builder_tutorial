@@ -37,6 +37,11 @@ func set_room(new_data: Room) -> void:
 	sprite_2d.scale = ICONS[room.type][1]
 
 
+func show_selected() -> void:
+	line_2d.show()
+	line_2d.modulate = Color.WHITE
+
+
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if not available or not event.is_action_pressed("left_mouse"):
 		return
@@ -45,5 +50,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 	animation_player.play("select")
 
 
+# Called by the AnimationPLayer when the 
+# "select" animation finishes.
 func _on_map_room_selected() -> void:
 	selected.emit(room)

@@ -6,7 +6,6 @@ var relic_ui: RelicUI
 
 
 func initialize_relic(owner: RelicUI) -> void:
-	print("initialized coupons relics")
 	Events.shop_entered.connect(add_shop_modifier)
 	relic_ui = owner
 
