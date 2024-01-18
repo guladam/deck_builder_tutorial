@@ -17,6 +17,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
+RNG="*res://global/rng.gd"
 Events="*res://global/events.gd"
 Shaker="*res://global/shaker.gd"
 MusicPlayer="*res://global/music_player.tscn"

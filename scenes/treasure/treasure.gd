@@ -16,7 +16,7 @@ func generate_relic() -> void:
 			var already_had_it := relic_handler.has_relic(relic.id)
 			return can_appear and not already_had_it
 	)
-	found_relic = available_relics.pick_random()
+	found_relic = RNG.array_pick_random(available_relics)
 
 
 func _on_treasure_opened() -> void:

@@ -32,9 +32,12 @@ func _ready() -> void:
 
 
 func start_run() -> void:
+	RNG.initialize()
 	stats = RunStats.new()
+	
 	_setup_top_bar()
 	_setup_event_connections()
+	
 	map.generate_new_map()
 	map.unlock_floor(0)
 	
@@ -46,6 +49,7 @@ func load_run() -> void:
 	save_data = SaveGame.load_data()
 	assert(save_data, "Couldn't load last save")
 	
+	RNG.set_from_save_data(save_data.rng_seed, save_data.rng_state)
 	stats = save_data.run_stats
 	character = save_data.char_stats
 	character.deck = save_data.current_deck
@@ -113,6 +117,8 @@ func _show_regular_battle_rewards() -> void:
 
 
 func _save_run():
+	save_data.rng_seed = RNG.instance.seed
+	save_data.rng_state = RNG.instance.state
 	save_data.run_stats = stats
 	save_data.char_stats = character
 	save_data.current_deck = character.deck
@@ -150,6 +156,7 @@ func _on_battle_won() -> void:
 	if map.floors_climbed == MapGenerator.FLOORS:
 		var win_screen := _change_view(WIN_SCREEN_SCENE) as WinScreen
 		win_screen.character = character
+		SaveGame.delete_data()
 	else:
 		_show_regular_battle_rewards()
 
@@ -171,6 +178,8 @@ func _on_treasure_room_exited(relic: Relic) -> void:
 
 
 func _on_map_exited(room: Room) -> void:
+	_save_run()
+	
 	match room.type:
 		Room.Type.MONSTER:
 			_on_battle_room_entered(room)
@@ -182,8 +191,6 @@ func _on_map_exited(room: Room) -> void:
 			_on_shop_entered()
 		Room.Type.BOSS:
 			_on_battle_room_entered(room)
-	
-	_save_run()
 
 
 func _on_main_menu_requested() -> void:

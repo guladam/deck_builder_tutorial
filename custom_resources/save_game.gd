@@ -3,6 +3,8 @@ extends Resource
 
 const SAVE_PATH := "user://savegame.tres"
 
+@export var rng_seed: int
+@export var rng_state: int
 @export var run_stats: RunStats
 @export var char_stats: CharacterStats
 @export var current_deck: CardPile
