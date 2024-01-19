@@ -4,6 +4,7 @@ const CHAR_SELECTOR_SCENE := preload("res://scenes/ui/character_selector.tscn")
 const RUN_SCENE = preload("res://scenes/run/run.tscn")
 
 @export var run_init_data: RunInitData
+
 @onready var continue_button: Button = %ContinueButton
 
 

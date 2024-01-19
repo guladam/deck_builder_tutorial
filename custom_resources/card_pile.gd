@@ -32,6 +32,6 @@ func clear() -> void:
 
 func _to_string() -> String:
 	var _card_strings: PackedStringArray = []
-	for i in range(cards.size()):
+	for i in cards.size():
 		_card_strings.append("%s: %s" % [i+1, cards[i].id])
 	return "\n".join(_card_strings)

@@ -1,13 +1,13 @@
 class_name BattleReward
 extends Control
 
-enum Type {GOLD, NEW_CARD, RELIC}
-
 const REWARD_BUTTON = preload("res://scenes/ui/reward_button.tscn")
 const REWARD_BUTTON_DATA := {
 	Type.GOLD: [preload("res://art/gold.png"), "%s gold"],
 	Type.NEW_CARD: [preload("res://art/rarity.png"), "Add New Card"]
 }
+
+enum Type {GOLD, NEW_CARD, RELIC}
 
 @export var run_stats: RunStats
 @export var character_stats: CharacterStats
@@ -25,7 +25,7 @@ var card_rarity_weights := {
 
 
 func _ready() -> void:
-	for node in rewards.get_children():
+	for node: Node in rewards.get_children():
 		node.queue_free()
 	
 	card_rewards.card_reward_selected.connect(_on_card_reward_taken)
@@ -62,7 +62,7 @@ func _show_card_rewards() -> void:
 	var card_reward_array: Array[Card] = []
 	var available_cards := character_stats.draftable_cards.cards.duplicate(true)
 	
-	for i in range(run_stats.card_rewards):
+	for i in run_stats.card_rewards:
 		_setup_card_chances()
 		var roll := RNG.instance.randf_range(0.0, card_reward_total_weight)
 		

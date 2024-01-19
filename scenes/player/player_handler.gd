@@ -52,7 +52,7 @@ func draw_card() -> void:
 
 func draw_cards(amount: int) -> void:
 	var tween := create_tween()
-	for i in range(amount):
+	for i in amount:
 		tween.tween_callback(draw_card)
 		tween.tween_interval(HAND_DRAW_INTERVAL)
 	
@@ -63,7 +63,7 @@ func draw_cards(amount: int) -> void:
 
 func discard_cards() -> void:
 	var tween := create_tween()
-	for card_ui in hand.get_children():
+	for card_ui: CardUI in hand.get_children():
 		tween.tween_callback(character.discard.add_card.bind(card_ui.card))
 		tween.tween_callback(hand.discard_card.bind(card_ui))
 		tween.tween_interval(HAND_DISCARD_INTERVAL)

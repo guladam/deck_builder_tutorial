@@ -1,13 +1,13 @@
 class_name RunStats
 extends Resource
 
+signal gold_changed
+
 const STARTING_GOLD := 70
 const BASE_CARD_REWARDS := 3
 const BASE_COMMON_WEIGHT := 6.0
 const BASE_UNCOMMON_WEIGHT := 3.7
 const BASE_RARE_WEIGHT := 0.3
-
-signal gold_changed
 
 @export var gold := STARTING_GOLD : set = set_gold
 @export var card_rewards := BASE_CARD_REWARDS

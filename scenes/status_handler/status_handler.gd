@@ -34,7 +34,7 @@ func add_status(status: Status) -> void:
 	
 	# Add it if it's new
 	if not _has_status(status.id):
-		var new_status_ui: StatusUI = STATUS_UI.instantiate() as StatusUI
+		var new_status_ui := STATUS_UI.instantiate() as StatusUI
 		add_child(new_status_ui)
 		new_status_ui.status = status
 		new_status_ui.status.status_applied.connect(_on_status_applied)

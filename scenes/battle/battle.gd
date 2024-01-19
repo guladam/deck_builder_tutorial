@@ -6,10 +6,10 @@ extends Node2D
 @export var relics: RelicHandler
 @export var music: AudioStream
 
-@onready var battle_ui: BattleUI = $BattleUI as BattleUI
-@onready var player_handler: PlayerHandler = $PlayerHandler as PlayerHandler
-@onready var enemy_handler: EnemyHandler = $EnemyHandler as EnemyHandler
-@onready var player: Player = $Player as Player
+@onready var battle_ui: BattleUI = $BattleUI
+@onready var player_handler: PlayerHandler = $PlayerHandler
+@onready var enemy_handler: EnemyHandler = $EnemyHandler
+@onready var player: Player = $Player
 
 
 func _ready() -> void:

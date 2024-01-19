@@ -20,7 +20,7 @@ func setup_enemies(battle_stats: BattleStats) -> void:
 	var all_new_enemies := battle_stats.enemies.instantiate()
 	
 	for new_enemy: Node2D in all_new_enemies.get_children():
-		var new_enemy_child: Enemy = new_enemy.duplicate() as Enemy
+		var new_enemy_child := new_enemy.duplicate() as Enemy
 		add_child(new_enemy_child)
 		new_enemy_child.status_handler.statuses_applied.connect(_on_enemy_statuses_applied.bind(new_enemy_child))
 		

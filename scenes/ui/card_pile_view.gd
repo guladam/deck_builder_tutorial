@@ -14,7 +14,7 @@ const CARD_MENU_UI_SCENE := preload("res://scenes/ui/card_menu_ui.tscn")
 func _ready() -> void:
 	back_button.pressed.connect(hide)
 	
-	for card in cards.get_children():
+	for card: Node in cards.get_children():
 		card.queue_free()
 	
 	card_tooltip_popup.hide_tooltip()
@@ -29,7 +29,7 @@ func _input(event: InputEvent) -> void:
 
 
 func show_current_view(new_title: String, randomized: bool = false) -> void:
-	for card in cards.get_children():
+	for card: Node in cards.get_children():
 		card.queue_free()
 		
 	card_tooltip_popup.hide_tooltip()

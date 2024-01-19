@@ -34,5 +34,5 @@ func get_random_battle_for_tier(tier: int) -> BattleStats:
 
 
 func setup() -> void:
-	for i in range(3):
+	for i in 3:
 		_setup_weight_for_tier(i)

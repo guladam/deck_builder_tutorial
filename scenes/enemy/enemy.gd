@@ -8,8 +8,8 @@ const WHITE_SPRITE_MATERIAL := preload("res://art/white_sprite_material.tres")
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var arrow: Sprite2D = $Arrow
-@onready var stats_ui: StatsUI = $StatsUI as StatsUI
-@onready var intent_ui: IntentUI = $IntentUI as IntentUI
+@onready var stats_ui: StatsUI = $StatsUI
+@onready var intent_ui: IntentUI = $IntentUI
 @onready var status_handler: StatusHandler = $StatusHandler
 @onready var modifier_handler: ModifierHandler = $ModifierHandler
 
@@ -41,7 +41,7 @@ func setup_ai() -> void:
 	if enemy_action_picker:
 		enemy_action_picker.queue_free()
 		
-	var new_action_picker: EnemyActionPicker = stats.ai.instantiate()
+	var new_action_picker := stats.ai.instantiate() as EnemyActionPicker
 	add_child(new_action_picker)
 	enemy_action_picker = new_action_picker
 	enemy_action_picker.enemy = self

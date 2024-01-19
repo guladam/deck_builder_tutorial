@@ -29,7 +29,7 @@ func _get_points() -> Array:
 	var target := get_local_mouse_position()
 	var distance := (target - start)
 	
-	for i in range(ARC_POINTS):
+	for i in ARC_POINTS:
 		var t := (1.0 / ARC_POINTS) * i
 		var x := start.x + (distance.x / ARC_POINTS) * i
 		var y := start.y + ease_out_cubic(t) * distance.y

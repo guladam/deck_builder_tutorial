@@ -40,10 +40,10 @@ func _input(event: InputEvent) -> void:
 
 
 func _clear_rewards() -> void:
-	for card in cards.get_children():
+	for card: Node in cards.get_children():
 		card.queue_free()
 		
-	for card in tooltip_card.get_children():
+	for card: Node in tooltip_card.get_children():
 		card.queue_free()
 		
 	selected_card = null
@@ -81,7 +81,7 @@ func _hide_tooltip() -> void:
 
 	selected_card = null
 
-	for card in tooltip_card.get_children():
+	for card: Node in tooltip_card.get_children():
 		card.queue_free()
 	
 	tooltip_popup.hide()
