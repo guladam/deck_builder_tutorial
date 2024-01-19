@@ -1,20 +1,13 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=6 format=3 uid="uid://sbkc4o401k4l"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=4 format=3 uid="uid://sbkc4o401k4l"]
 
 [ext_resource type="Texture2D" uid="uid://cpydvk8mq66o5" path="res://art/tile_0087.png" id="1_8jkdb"]
 [ext_resource type="Script" path="res://custom_resources/character_stats.gd" id="1_d8ou5"]
-[ext_resource type="Resource" uid="uid://dpmgf25dwoaua" path="res://characters/warrior/warrior_draftable_cards.tres" id="2_ah2ol"]
 [ext_resource type="Resource" uid="uid://dyyfi3rcfxyug" path="res://characters/warrior/warrior_starting_deck.tres" id="3_d68oj"]
-[ext_resource type="Resource" uid="uid://mlqnn3hw51tt" path="res://relics/endless_healing_potion.tres" id="5_mraj1"]
 
 [resource]
 script = ExtResource("1_d8ou5")
-character_name = "Warrior"
-description = "Likes to slice things up."
-portrait = ExtResource("1_8jkdb")
 starting_deck = ExtResource("3_d68oj")
-draftable_cards = ExtResource("2_ah2ol")
 cards_per_turn = 4
 max_mana = 3
-starting_relic = ExtResource("5_mraj1")
 max_health = 35
 art = ExtResource("1_8jkdb")

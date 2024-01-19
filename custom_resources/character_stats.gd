@@ -1,17 +1,9 @@
 class_name CharacterStats
 extends Stats
 
-@export_group("Visuals")
-@export var character_name: String
-@export_multiline var description: String
-@export var portrait: Texture
-
-@export_group("Gameplay Data")
 @export var starting_deck: CardPile
-@export var draftable_cards: CardPile
 @export var cards_per_turn: int
 @export var max_mana: int
-@export var starting_relic: Relic
 
 var mana: int : set = set_mana
 var deck: CardPile
@@ -44,7 +36,7 @@ func create_instance() -> Resource:
 	instance.health = max_health
 	instance.block = 0
 	instance.reset_mana()
-	instance.deck = instance.starting_deck.duplicate(true)
+	instance.deck = instance.starting_deck.duplicate()
 	instance.draw_pile = CardPile.new()
 	instance.discard = CardPile.new()
 	return instance

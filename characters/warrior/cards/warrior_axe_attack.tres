@@ -8,11 +8,8 @@
 script = ExtResource("2_brwxd")
 id = "warrior_axe_attack"
 type = 0
-rarity = 0
 target = 1
 cost = 1
-exhausts = false
 icon = ExtResource("1_mnudp")
-tooltip_text = "[center]Deal [color=\"ff0000\"]%s[/color] damage.[/center]"
-tooltip_default_dynamic_values = Array[String](["6"])
+tooltip_text = "[center]Deal [color=\"ff0000\"]6[/color] damage.[/center]"
 sound = ExtResource("3_fudr5")
