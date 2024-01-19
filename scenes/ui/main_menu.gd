@@ -3,6 +3,7 @@ extends Control
 const CHAR_SELECTOR_SCENE := preload("res://scenes/ui/character_selector.tscn")
 const RUN_SCENE = preload("res://scenes/run/run.tscn")
 
+@export var run_init_data: RunInitData
 @onready var continue_button: Button = %ContinueButton
 
 
@@ -12,11 +13,8 @@ func _ready() -> void:
 
 
 func _on_continue_pressed() -> void:
-	var run: Run = RUN_SCENE.instantiate() as Run
-	get_tree().root.add_child(run)
-	run.load_run()
-	
-	queue_free()
+	run_init_data.run_init_type = RunInitData.Type.CONTINUED_RUN
+	get_tree().change_scene_to_packed(RUN_SCENE)
 
 
 func _on_new_run_pressed() -> void:

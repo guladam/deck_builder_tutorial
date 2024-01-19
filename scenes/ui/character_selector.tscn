@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dr8u1ww46vs0y"]
+[gd_scene load_steps=12 format=3 uid="uid://dr8u1ww46vs0y"]
 
 [ext_resource type="Texture2D" uid="uid://cpydvk8mq66o5" path="res://art/tile_0087.png" id="1_0mopi"]
 [ext_resource type="Script" path="res://scenes/ui/character_selector.gd" id="1_ajupd"]
 [ext_resource type="ButtonGroup" uid="uid://j0uc2jm44vn" path="res://scenes/ui/character_selector_button_group.tres" id="2_5rngv"]
 [ext_resource type="Texture2D" uid="uid://cqcal03735mv8" path="res://art/tile_0118.png" id="2_fn7v6"]
+[ext_resource type="Resource" uid="uid://db6tb870t0lae" path="res://scenes/run/run_init_data.tres" id="2_s4hyo"]
 [ext_resource type="Texture2D" uid="uid://pgj8vfpj6tc5" path="res://art/tile_0130.png" id="3_aq501"]
 [ext_resource type="Texture2D" uid="uid://bfvi02kojsa00" path="res://art/tile_0103.png" id="4_gtbhr"]
 
@@ -33,6 +34,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ajupd")
+run_init_data = ExtResource("2_s4hyo")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

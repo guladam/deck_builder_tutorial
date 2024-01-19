@@ -47,7 +47,7 @@ func add_relic(relic: Relic) -> void:
 
 func has_relic(id: String) -> bool:
 	for relic_ui: RelicUI in relics.get_children():
-		if relic_ui.relic.id == id and not relic_ui.is_queued_for_deletion():
+		if relic_ui.relic.id == id and is_instance_valid(relic_ui):
 			return true
 
 	return false

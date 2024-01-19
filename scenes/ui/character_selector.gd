@@ -5,6 +5,8 @@ const WARRIOR_STATS := preload("res://characters/warrior/warrior.tres")
 const WIZARD_STATS := preload("res://characters/assassin/assassin.tres")
 const ASSASSIN_STATS := preload("res://characters/wizard/wizard.tres")
 
+@export var run_init_data: RunInitData
+
 @onready var title: Label = %Title
 @onready var description: Label = %Description
 @onready var character_portrait: TextureRect = %CharacterPortrait
@@ -24,12 +26,9 @@ func set_current_character(new_character: CharacterStats) -> void:
 	
 
 func _on_start_button_pressed() -> void:
-	var new_run: Run = RUN_SCENE.instantiate() as Run
-	get_tree().root.add_child(new_run)	
-	new_run.character = current_character.create_instance()
-	new_run.start_run()
-	
-	queue_free()
+	run_init_data.run_init_type = RunInitData.Type.NEW_RUN
+	run_init_data.picked_character = current_character
+	get_tree().change_scene_to_packed(RUN_SCENE)
 
 
 func _on_warrior_button_pressed() -> void:

@@ -10,6 +10,10 @@ func initialize_relic(owner: RelicUI) -> void:
 	relic_ui = owner
 
 
+func deactivate_relic(_owner: RelicUI) -> void:
+	Events.shop_entered.disconnect(add_shop_modifier)
+
+
 func add_shop_modifier(shop: Shop) -> void:
 	relic_ui.flash()
 	

@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://3nntiov7y0hu"]
+[gd_scene load_steps=12 format=3 uid="uid://3nntiov7y0hu"]
 
 [ext_resource type="Script" path="res://scenes/ui/main_menu.gd" id="1_a30hr"]
 [ext_resource type="Texture2D" uid="uid://dpfqok8tuy4r7" path="res://art/tile_0084.png" id="1_lopot"]
 [ext_resource type="Texture2D" uid="uid://cwf6dyi56tgo" path="res://art/tile_0088.png" id="2_5q0t7"]
+[ext_resource type="Resource" uid="uid://db6tb870t0lae" path="res://scenes/run/run_init_data.tres" id="2_jy3gy"]
 [ext_resource type="Texture2D" uid="uid://cpydvk8mq66o5" path="res://art/tile_0087.png" id="3_k77es"]
 [ext_resource type="Texture2D" uid="uid://con6y7mc74c5a" path="res://art/tile_0120.png" id="4_xuvgb"]
 [ext_resource type="Texture2D" uid="uid://1u3b3hwqd8yh" path="res://art/tile_0110.png" id="5_272vn"]
@@ -28,6 +29,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_a30hr")
+run_init_data = ExtResource("2_jy3gy")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

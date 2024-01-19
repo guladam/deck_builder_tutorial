@@ -21,6 +21,13 @@ func activate_relic(_owner: RelicUI) -> void:
 	pass
 
 
+# This method should be implemented by event-based relics
+# which connect to the EventBus to make sure that they are
+# disconnected when a relic gets removed.
+func deactivate_relic(_owner: RelicUI) -> void:
+	pass
+
+
 func get_tooltip() -> String:
 	return tooltip
 

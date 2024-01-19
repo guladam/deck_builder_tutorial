@@ -9,6 +9,8 @@ const SHOP_SCENE := preload("res://scenes/shop/shop.tscn")
 const TREASURE_SCENE = preload("res://scenes/treasure/treasure.tscn")
 const WIN_SCREEN_SCENE := preload("res://scenes/win_screen/win_screen.tscn")
 
+@export var run_init_data: RunInitData
+
 @onready var current_view: Node = $CurrentView
 @onready var deck_button: CardPileOpener = %DeckButton
 @onready var deck_view: CardPileView = %DeckView
@@ -26,12 +28,25 @@ var save_data: SaveGame
 
 func _ready() -> void:
 	if character:
-		start_run()
+		_start_run()
 
-	pause_menu.save_and_quit.connect(_on_main_menu_requested)
+	pause_menu.save_and_quit.connect(func(): get_tree().change_scene_to_packed(MAIN_MENU_SCENE))
+	_initialize_run()
 
 
-func start_run() -> void:
+func _initialize_run() -> void:
+	if not run_init_data:
+		return
+		
+	match run_init_data.run_init_type:
+		RunInitData.Type.NEW_RUN:
+			character = run_init_data.picked_character.create_instance()
+			_start_run()
+		RunInitData.Type.CONTINUED_RUN:
+			_load_run()
+
+
+func _start_run() -> void:
 	RNG.initialize()
 	stats = RunStats.new()
 	
@@ -45,7 +60,21 @@ func start_run() -> void:
 	_save_run()
 
 
-func load_run() -> void:
+func _save_run():
+	save_data.rng_seed = RNG.instance.seed
+	save_data.rng_state = RNG.instance.state
+	save_data.run_stats = stats
+	save_data.char_stats = character
+	save_data.current_deck = character.deck
+	save_data.current_health = character.health
+	save_data.relics = relic_handler.get_all_relics()
+	save_data.last_room = map.last_room
+	save_data.map_data = map.map_data.duplicate()
+	save_data.floors_climbed = map.floors_climbed
+	save_data.save_data()
+
+
+func _load_run() -> void:
 	save_data = SaveGame.load_data()
 	assert(save_data, "Couldn't load last save")
 	
@@ -116,20 +145,6 @@ func _show_regular_battle_rewards() -> void:
 	reward_scene.add_card_reward()
 
 
-func _save_run():
-	save_data.rng_seed = RNG.instance.seed
-	save_data.rng_state = RNG.instance.state
-	save_data.run_stats = stats
-	save_data.char_stats = character
-	save_data.current_deck = character.deck
-	save_data.current_health = character.health
-	save_data.relics = relic_handler.get_all_relics()
-	save_data.last_room = map.last_room
-	save_data.map_data = map.map_data.duplicate()
-	save_data.floors_climbed = map.floors_climbed
-	save_data.save_data()
-
-
 func  _on_battle_room_entered(room: Room) -> void:
 	var battle_scene: Battle = _change_view(BATTLE_SCENE) as Battle
 	battle_scene.char_stats = character
@@ -191,8 +206,3 @@ func _on_map_exited(room: Room) -> void:
 			_on_shop_entered()
 		Room.Type.BOSS:
 			_on_battle_room_entered(room)
-
-
-func _on_main_menu_requested() -> void:
-	get_tree().change_scene_to_packed(MAIN_MENU_SCENE)
-	queue_free()
