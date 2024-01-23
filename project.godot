@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Deck Builder Tutorial"
-run/main_scene="res://scenes/battle/battle.tscn"
+run/main_scene="res://scenes/ui/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.png"
 

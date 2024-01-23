@@ -98,4 +98,3 @@ libraries = {
 }
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
-[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]

@@ -2,8 +2,8 @@ extends Control
 
 const RUN_SCENE := preload("res://scenes/run/run.tscn")
 const WARRIOR_STATS := preload("res://characters/warrior/warrior.tres")
-const WIZARD_STATS := preload("res://characters/assassin/assassin.tres")
-const ASSASSIN_STATS := preload("res://characters/wizard/wizard.tres")
+const WIZARD_STATS := preload("res://characters/wizard/wizard.tres")
+const ASSASSIN_STATS := preload("res://characters/assassin/assassin.tres")
 
 @export var run_init_data: RunInitData
 

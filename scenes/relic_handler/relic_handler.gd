@@ -69,3 +69,11 @@ func _get_all_relic_ui_nodes() -> Array[RelicUI]:
 		all_relics.append(relic_ui)
 		
 	return all_relics
+
+
+func _on_relics_child_exiting_tree(relic_ui: RelicUI) -> void:
+	if not relic_ui:
+		return
+	
+	if relic_ui.relic:
+		relic_ui.relic.deactivate_relic(relic_ui)

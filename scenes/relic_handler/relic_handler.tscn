@@ -83,3 +83,5 @@ texture_pressed = ExtResource("1_fcwf6")
 texture_hover = ExtResource("1_fcwf6")
 texture_disabled = ExtResource("2_pwykd")
 stretch_mode = 5
+
+[connection signal="child_exiting_tree" from="RelicsControl/Relics" to="." method="_on_relics_child_exiting_tree"]
