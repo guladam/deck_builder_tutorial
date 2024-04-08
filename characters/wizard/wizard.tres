@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=5 format=3 uid="uid://c7s5o1t2yjbim"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=6 format=3 uid="uid://c7s5o1t2yjbim"]
 
 [ext_resource type="Texture2D" uid="uid://dpfqok8tuy4r7" path="res://art/tile_0084.png" id="1_0pp14"]
 [ext_resource type="Script" path="res://custom_resources/character_stats.gd" id="1_po6w5"]
+[ext_resource type="Resource" uid="uid://dpmgf25dwoaua" path="res://characters/warrior/warrior_draftable_cards.tres" id="2_pvvv5"]
 [ext_resource type="Resource" uid="uid://dyyfi3rcfxyug" path="res://characters/warrior/warrior_starting_deck.tres" id="3_txuia"]
 [ext_resource type="Resource" uid="uid://mlqnn3hw51tt" path="res://relics/endless_healing_potion.tres" id="4_okiyj"]
 
@@ -11,6 +12,7 @@ character_name = "Wizard"
 description = "Years of Wisdom and recurring back pain."
 portrait = ExtResource("1_0pp14")
 starting_deck = ExtResource("3_txuia")
+draftable_cards = ExtResource("2_pvvv5")
 cards_per_turn = 5
 max_mana = 3
 starting_relic = ExtResource("4_okiyj")

@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c24y6l0ivlqp7" path="res://art/tile_0108.png" id="6_8q3wf"]
 
 [sub_resource type="Gradient" id="Gradient_j3w34"]
-colors = PackedColorArray(0.201844, 0.118659, 0.0516602, 1, 0.0567877, 0.00125275, 0.0583082, 1)
+colors = PackedColorArray(0.2, 0.117647, 0.0509804, 1, 0.054902, 0, 0.0588235, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_6pnu1"]
 gradient = SubResource("Gradient_j3w34")

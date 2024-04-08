@@ -14,5 +14,4 @@ cost = 3
 exhausts = false
 icon = ExtResource("1_yktnx")
 tooltip_text = "[center]At the start of your turn, gain 2 [color=\"ffdf00\"]Muscle[/color].[/center]"
-tooltip_default_dynamic_values = Array[String]([])
 sound = ExtResource("3_vxnss")

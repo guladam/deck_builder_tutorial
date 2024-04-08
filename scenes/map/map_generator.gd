@@ -55,8 +55,9 @@ func _generate_initial_grid() -> Array[Array]:
 			current_room.next_rooms = []
 			
 			# Boss room has a non-random Y
-			if j == FLOORS - 1:
-				current_room.position.y = (j + 1) * -Y_DIST
+			if i == FLOORS - 1:
+				print("is this ever called?")
+				current_room.position.y = i * -Y_DIST
 			
 			adjacent_rooms.append(current_room)
 			
