@@ -8,8 +8,7 @@ func get_default_tooltip() -> String:
 
 
 func get_updated_tooltip(_player_modifiers: ModifierHandler, _enemy_modifiers: ModifierHandler) -> String:
-	var modified_blk := base_block
-	return tooltip_text % modified_blk
+	return tooltip_text % base_block
 
 
 func apply_effects(targets: Array[Node], _modifiers: ModifierHandler) -> void:

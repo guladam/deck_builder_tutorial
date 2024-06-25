@@ -27,4 +27,4 @@ func set_reward_text(new_text: String) -> void:
 
 
 func _on_pressed() -> void:
-	queue_free.call_deferred()
+	queue_free()

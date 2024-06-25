@@ -5,6 +5,12 @@ enum Type {ATTACK, SKILL, POWER}
 enum Rarity {COMMON, UNCOMMON, RARE}
 enum Target {SELF, SINGLE_ENEMY, ALL_ENEMIES, EVERYONE}
 
+const RARITY_COLORS := {
+	Card.Rarity.COMMON: Color.GRAY,
+	Card.Rarity.UNCOMMON: Color.CORNFLOWER_BLUE,
+	Card.Rarity.RARE: Color.GOLD,
+}
+
 @export_group("Card Attributes")
 @export var id: String
 @export var type: Type
@@ -60,7 +66,4 @@ func get_default_tooltip() -> String:
 
 func get_updated_tooltip(_player_modifiers: ModifierHandler, _enemy_modifiers: ModifierHandler) -> String:
 	return tooltip_text
-
-
-func _to_string() -> String:
-	return id
+	

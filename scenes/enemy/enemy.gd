@@ -23,8 +23,7 @@ func _ready() -> void:
 
 func set_current_action(value: EnemyAction) -> void:
 	current_action = value
-	if current_action:
-		update_intent()
+	update_intent()
 
 
 func set_enemy_stats(value: EnemyStats) -> void:

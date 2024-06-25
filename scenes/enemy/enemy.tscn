@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://bb3rcs5nqntir" path="res://art/arrow.png" id="2_x2iwj"]
 [ext_resource type="PackedScene" uid="uid://ph0oi5od64u5" path="res://scenes/ui/stats_ui.tscn" id="3_qiomm"]
 [ext_resource type="PackedScene" uid="uid://b6p08ajglydq8" path="res://scenes/ui/intent_ui.tscn" id="5_xytk4"]
-[ext_resource type="PackedScene" uid="uid://bwf6cannqfu18" path="res://scenes/status_handler/status_handler.tscn" id="6_2lk1r"]
-[ext_resource type="PackedScene" uid="uid://cear47kpsa6ms" path="res://scenes/modifier_handler/modifier_handler.tscn" id="7_v5yri"]
-[ext_resource type="Script" path="res://scenes/modifier_handler/modifier.gd" id="8_pjn3u"]
+[ext_resource type="PackedScene" uid="uid://bwet1kdg2v1di" path="res://scenes/status_handler/status_handler.tscn" id="6_3dhyq"]
+[ext_resource type="PackedScene" uid="uid://ctvxie3ni1ik4" path="res://scenes/modifier_handler/modifier_handler.tscn" id="7_xbm7w"]
+[ext_resource type="PackedScene" uid="uid://bqefj5q31b84i" path="res://scenes/modifier_handler/modifier.tscn" id="8_akusk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3gsft"]
 
@@ -35,21 +35,18 @@ offset_bottom = 23.0
 offset_top = -24.0
 offset_bottom = -10.0
 
-[node name="StatusHandler" parent="." node_paths=PackedStringArray("status_owner") instance=ExtResource("6_2lk1r")]
-offset_left = -26.0
-offset_top = 23.0
-offset_right = -26.0
-offset_bottom = 23.0
-columns = 4
+[node name="StatusHandler" parent="." node_paths=PackedStringArray("status_owner") instance=ExtResource("6_3dhyq")]
+offset_left = -27.0
+offset_top = 25.0
+offset_right = -27.0
+offset_bottom = 25.0
 status_owner = NodePath("..")
 
-[node name="ModifierHandler" parent="." instance=ExtResource("7_v5yri")]
+[node name="ModifierHandler" parent="." instance=ExtResource("7_xbm7w")]
 
-[node name="DamageDealtModifier" type="Node" parent="ModifierHandler"]
-script = ExtResource("8_pjn3u")
+[node name="DamageDealtModifier" parent="ModifierHandler" instance=ExtResource("8_akusk")]
 
-[node name="DamageTakenModifier" type="Node" parent="ModifierHandler"]
-script = ExtResource("8_pjn3u")
+[node name="DamageTakenModifier" parent="ModifierHandler" instance=ExtResource("8_akusk")]
 type = 1
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -14,5 +14,4 @@ cost = 1
 exhausts = false
 icon = ExtResource("1_gn3qd")
 tooltip_text = "[center]Gain [color=\"0044ff\"]%s[/color] block.[/center]"
-tooltip_default_dynamic_values = Array[String](["5"])
 sound = ExtResource("3_g3rmi")

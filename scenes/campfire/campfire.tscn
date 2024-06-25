@@ -1,32 +1,35 @@
-[gd_scene load_steps=14 format=3 uid="uid://cdpoo7xy615t0"]
+[gd_scene load_steps=15 format=3 uid="uid://dfrdaou640irp"]
 
-[ext_resource type="Script" path="res://scenes/campfire/campfire.gd" id="1_t7piw"]
-[ext_resource type="Texture2D" uid="uid://e6utppbeeuul" path="res://art/line.png" id="2_5ciex"]
+[ext_resource type="Script" path="res://scenes/campfire/campfire.gd" id="1_i8fph"]
+[ext_resource type="Resource" uid="uid://sbkc4o401k4l" path="res://characters/warrior/warrior.tres" id="2_0gfpy"]
+[ext_resource type="Texture2D" uid="uid://djbldcvfo4swr" path="res://art/line.png" id="2_ykw02"]
 
-[sub_resource type="Gradient" id="Gradient_waib2"]
-offsets = PackedFloat32Array(0.239583, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.26, 0.143217, 0.1326, 1)
+[sub_resource type="Gradient" id="Gradient_lx464"]
+offsets = PackedFloat32Array(0.2125, 1)
+colors = PackedColorArray(0.0291667, 0.0291667, 0.0291667, 1, 0.258824, 0.145098, 0.133333, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_dvi62"]
-gradient = SubResource("Gradient_waib2")
-fill_from = Vector2(0.525641, 1)
-fill_to = Vector2(0.529915, 0)
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6orn2"]
+gradient = SubResource("Gradient_lx464")
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 8
 
-[sub_resource type="Gradient" id="Gradient_seo44"]
-offsets = PackedFloat32Array(0, 0.238281, 0.523438, 0.898438, 1)
-colors = PackedColorArray(0.983333, 1, 0, 1, 1, 0.617667, 0.26, 1, 0.898039, 0.231373, 0, 1, 0.396078, 0.0823529, 0, 1, 0.396078, 0.0823529, 0, 0)
+[sub_resource type="Gradient" id="Gradient_weiba"]
+offsets = PackedFloat32Array(0, 0.225962, 0.509615, 0.865385, 1)
+colors = PackedColorArray(0.984314, 1, 0, 1, 1, 0.619608, 0.258824, 1, 0.898039, 0.231373, 0, 1, 0.396078, 0.0823529, 0, 1, 0.396078, 0.0823529, 0, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_h8obl"]
-gradient = SubResource("Gradient_seo44")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7i0a1"]
+gradient = SubResource("Gradient_weiba")
 
-[sub_resource type="Curve" id="Curve_6xvfc"]
-_data = [Vector2(0, 0.35745), 0.0, 0.0, 0, 0, Vector2(0.116197, 1), 0.0, 0.0, 0, 0, Vector2(0.838028, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.450573), 0.0, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_63nsi"]
+_data = [Vector2(0, 0.351648), 0.0, 0.0, 0, 0, Vector2(0.177966, 1), 0.0, 0.0, 0, 0, Vector2(0.800847, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.516483), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_yuamv"]
-curve = SubResource("Curve_6xvfc")
+[sub_resource type="CurveTexture" id="CurveTexture_lmxxw"]
+curve = SubResource("Curve_63nsi")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hld7t"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1jtqt"]
 particle_flag_disable_z = true
 emission_shape = 1
 emission_sphere_radius = 25.0
@@ -41,18 +44,18 @@ linear_accel_min = 15.0
 linear_accel_max = 25.0
 damping_min = 20.0
 damping_max = 50.0
-scale_curve = SubResource("CurveTexture_yuamv")
-color_ramp = SubResource("GradientTexture1D_h8obl")
+scale_curve = SubResource("CurveTexture_lmxxw")
+color_ramp = SubResource("GradientTexture1D_7i0a1")
 
-[sub_resource type="LabelSettings" id="LabelSettings_l0cpl"]
+[sub_resource type="LabelSettings" id="LabelSettings_k52g7"]
 font_size = 12
 
-[sub_resource type="Animation" id="Animation_73k0l"]
+[sub_resource type="Animation" id="Animation_em2db"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("UILayer/UI:modulate")
+tracks/0/path = NodePath("ParticlesLayer/GPUParticles2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -64,7 +67,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ParticleLayer/FireParticles:modulate")
+tracks/1/path = NodePath("UILayer/UI:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -74,30 +77,29 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_th46r"]
+[sub_resource type="Animation" id="Animation_wekwb"]
 resource_name = "fade_out"
-length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("UILayer/UI:modulate")
+tracks/0/path = NodePath("ParticlesLayer/GPUParticles2D:modulate")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.3, 0.8),
+"transitions": PackedFloat32Array(1, 2),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ParticleLayer/FireParticles:modulate")
+tracks/1/path = NodePath("UILayer/UI:modulate")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.3, 0.8),
+"transitions": PackedFloat32Array(1, 2),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
@@ -108,7 +110,7 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.5),
+"times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -116,10 +118,10 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_0vmfh"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ikhwv"]
 _data = {
-"RESET": SubResource("Animation_73k0l"),
-"fade_out": SubResource("Animation_th46r")
+"RESET": SubResource("Animation_em2db"),
+"fade_out": SubResource("Animation_wekwb")
 }
 
 [node name="Campfire" type="Control"]
@@ -130,7 +132,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("1_t7piw")
+script = ExtResource("1_i8fph")
+char_stats = ExtResource("2_0gfpy")
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = 0
@@ -141,15 +144,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_dvi62")
+texture = SubResource("GradientTexture2D_6orn2")
 
-[node name="ParticleLayer" type="CanvasLayer" parent="."]
+[node name="ParticlesLayer" type="CanvasLayer" parent="."]
 
-[node name="FireParticles" type="GPUParticles2D" parent="ParticleLayer"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="ParticlesLayer"]
 position = Vector2(90, 100)
 amount = 128
-process_material = SubResource("ParticleProcessMaterial_hld7t")
-texture = ExtResource("2_5ciex")
+process_material = SubResource("ParticleProcessMaterial_1jtqt")
+texture = ExtResource("2_ykw02")
 lifetime = 1.5
 
 [node name="UILayer" type="CanvasLayer" parent="."]
@@ -160,17 +163,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = -32.0
-offset_right = 64.0
-offset_bottom = 32.0
+offset_left = 8.0
+offset_top = -22.0
+offset_right = 72.0
+offset_bottom = 22.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
 
 [node name="Title" type="Label" parent="UILayer/UI"]
 layout_mode = 2
 text = "Campfire"
-label_settings = SubResource("LabelSettings_l0cpl")
+label_settings = SubResource("LabelSettings_k52g7")
 horizontal_alignment = 1
 
 [node name="Spacer" type="Control" parent="UILayer/UI"]
@@ -189,7 +192,7 @@ horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_0vmfh")
+"": SubResource("AnimationLibrary_ikhwv")
 }
 
 [connection signal="pressed" from="UILayer/UI/RestButton" to="." method="_on_rest_button_pressed"]

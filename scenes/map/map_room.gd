@@ -38,7 +38,6 @@ func set_room(new_data: Room) -> void:
 
 
 func show_selected() -> void:
-	line_2d.show()
 	line_2d.modulate = Color.WHITE
 
 

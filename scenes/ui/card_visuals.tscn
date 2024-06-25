@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://b362c35jf6fmy"]
+
+[ext_resource type="Theme" uid="uid://c8cqncsqlplyu" path="res://main_theme.tres" id="1_hiimn"]
+[ext_resource type="StyleBox" uid="uid://b4b3e0d14kvmi" path="res://scenes/card_ui/card_base_stylebox.tres" id="2_nvr8g"]
+[ext_resource type="Script" path="res://scenes/ui/card_visuals.gd" id="2_uk7ay"]
+[ext_resource type="Resource" uid="uid://n3va254ct6b3" path="res://characters/warrior/cards/warrior_slash.tres" id="3_t04tx"]
+[ext_resource type="Texture2D" uid="uid://c6rme2o6dyaoj" path="res://art/tile_0104.png" id="3_wd32c"]
+[ext_resource type="Texture2D" uid="uid://du7r7v1iaahuo" path="res://art/rarity.png" id="4_w0uhs"]
+
+[node name="CardVisuals" type="Control"]
+custom_minimum_size = Vector2(25, 30)
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_hiimn")
+script = ExtResource("2_uk7ay")
+card = ExtResource("3_t04tx")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("2_nvr8g")
+
+[node name="Cost" type="Label" parent="."]
+layout_mode = 0
+offset_right = 10.0
+offset_bottom = 10.0
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_wd32c")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Rarity" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -8.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 8.0
+grow_horizontal = 0
+texture = ExtResource("4_w0uhs")
+expand_mode = 1
+stretch_mode = 5

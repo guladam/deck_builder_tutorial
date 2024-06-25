@@ -18,8 +18,10 @@ func set_status(new_status: Status) -> void:
 	stacks.visible = status.stack_type == Status.StackType.INTENSITY
 	custom_minimum_size = icon.size
 	
-	if duration.visible or stacks.visible:
+	if duration.visible:
 		custom_minimum_size = duration.size + duration.position
+	elif stacks.visible:
+		custom_minimum_size = stacks.size + stacks.position
 	
 	if not status.status_changed.is_connected(_on_status_changed):
 		status.status_changed.connect(_on_status_changed)

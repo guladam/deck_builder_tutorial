@@ -1,20 +1,16 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=6 format=3 uid="uid://dafa2h3m8oqda"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=4 format=3 uid="uid://dqohxugta8kvw"]
 
-[ext_resource type="Script" path="res://custom_resources/character_stats.gd" id="1_1s8po"]
-[ext_resource type="Texture2D" uid="uid://cwf6dyi56tgo" path="res://art/tile_0088.png" id="1_2qw8m"]
-[ext_resource type="Resource" uid="uid://dpmgf25dwoaua" path="res://characters/warrior/warrior_draftable_cards.tres" id="2_e1hll"]
-[ext_resource type="Resource" uid="uid://dyyfi3rcfxyug" path="res://characters/warrior/warrior_starting_deck.tres" id="3_as4fi"]
-[ext_resource type="Resource" uid="uid://dbgnc5n5u6fnq" path="res://relics/explosive_barrel.tres" id="5_n33cn"]
+[ext_resource type="Script" path="res://custom_resources/character_stats.gd" id="1_dd5x6"]
+[ext_resource type="Texture2D" uid="uid://cwf6dyi56tgo" path="res://art/tile_0088.png" id="1_qvpwy"]
+[ext_resource type="Resource" uid="uid://dyyfi3rcfxyug" path="res://characters/warrior/warrior_starting_deck.tres" id="3_4shk0"]
 
 [resource]
-script = ExtResource("1_1s8po")
+script = ExtResource("1_dd5x6")
 character_name = "Assassin"
-description = "Sneaky little boi."
-portrait = ExtResource("1_2qw8m")
-starting_deck = ExtResource("3_as4fi")
-draftable_cards = ExtResource("2_e1hll")
-cards_per_turn = 6
+description = "Sneaky lil' boi."
+portrait = ExtResource("1_qvpwy")
+starting_deck = ExtResource("3_4shk0")
+cards_per_turn = 5
 max_mana = 3
-starting_relic = ExtResource("5_n33cn")
-max_health = 23
-art = ExtResource("1_2qw8m")
+max_health = 24
+art = ExtResource("1_qvpwy")

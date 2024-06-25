@@ -30,7 +30,7 @@ func generate_map() -> Array[Array]:
 		var current_j := j
 		for i in FLOORS - 1:
 			current_j = _setup_connection(i, current_j)
-	
+			
 	battle_stats_pool.setup()
 	
 	_setup_boss_room()
@@ -56,8 +56,7 @@ func _generate_initial_grid() -> Array[Array]:
 			
 			# Boss room has a non-random Y
 			if i == FLOORS - 1:
-				print("is this ever called?")
-				current_room.position.y = i * -Y_DIST
+				current_room.position.y = (i + 1) * -Y_DIST
 			
 			adjacent_rooms.append(current_room)
 			
@@ -68,7 +67,7 @@ func _generate_initial_grid() -> Array[Array]:
 
 func _get_random_starting_points() -> Array[int]:
 	var y_coordinates: Array[int]
-	var unique_points: int
+	var unique_points: int = 0
 	
 	while unique_points < 2:
 		unique_points = 0
@@ -86,7 +85,7 @@ func _get_random_starting_points() -> Array[int]:
 
 func _setup_connection(i: int, j: int) -> int:
 	var next_room: Room
-	var current_room = map_data[i][j] as Room
+	var current_room := map_data[i][j] as Room
 	
 	while not next_room or _would_cross_existing_path(i, j, next_room):
 		var random_j := clampi(randi_range(j - 1, j + 1), 0, MAP_WIDTH - 1)
@@ -101,17 +100,21 @@ func _would_cross_existing_path(i: int, j: int, room: Room) -> bool:
 	var left_neighbour: Room
 	var right_neighbour: Room
 	
-	if j > 0: # no left neighbour at the left edge
+	# if j == 0, there's no left neighbour
+	if j > 0:
 		left_neighbour = map_data[i][j - 1]
-	if j < MAP_WIDTH - 1:  # no right neighbour at the right edge
+	# if j == MAP_WIDTH - 1, there's no right neighbour
+	if j < MAP_WIDTH - 1:
 		right_neighbour = map_data[i][j + 1]
-		
-	if right_neighbour and room.column > j: # can only cross in right dir if candidate is to the right
+	
+	# can't cross in right dir if right neighbour goes to left
+	if right_neighbour and room.column > j:
 		for next_room: Room in right_neighbour.next_rooms:
 			if next_room.column < room.column:
 				return true
-			
-	if left_neighbour and room.column < j: # can only cross if left dir if candidate is going to the left
+	
+	# can't cross in left dir if left neighbour goes to right
+	if left_neighbour and room.column < j:
 		for next_room: Room in left_neighbour.next_rooms:
 			if next_room.column > room.column:
 				return true
@@ -153,7 +156,7 @@ func _setup_room_types() -> void:
 		if room.next_rooms.size() > 0:
 				room.type = Room.Type.TREASURE
 				
-	# last floor is always a campfire
+	# last floor before the boss is always a campfire
 	for room: Room in map_data[13]:
 		if room.next_rooms.size() > 0:
 				room.type = Room.Type.CAMPFIRE
@@ -177,14 +180,24 @@ func _set_room_randomly(room_to_set: Room) -> void:
 	while campfire_below_4 or consecutive_campfire or consecutive_shop or campfire_on_13:
 		type_candidate = _get_random_room_type_by_weight()
 		
-		campfire_below_4 = type_candidate == Room.Type.CAMPFIRE and room_to_set.row < 3
-		consecutive_campfire = type_candidate == Room.Type.CAMPFIRE and _room_has_parent_of_type(room_to_set, Room.Type.CAMPFIRE)
-		consecutive_shop = type_candidate == Room.Type.SHOP and _room_has_parent_of_type(room_to_set, Room.Type.SHOP)
-		campfire_on_13 = type_candidate == Room.Type.CAMPFIRE and room_to_set.row == 12
+		var is_campfire := type_candidate == Room.Type.CAMPFIRE
+		var has_campfire_parent := _room_has_parent_of_type(room_to_set, Room.Type.CAMPFIRE)
+		var is_shop := type_candidate == Room.Type.SHOP
+		var has_shop_parent := _room_has_parent_of_type(room_to_set, Room.Type.SHOP)
+		
+		campfire_below_4 = is_campfire and room_to_set.row < 3
+		consecutive_campfire = is_campfire and has_campfire_parent
+		consecutive_shop = is_shop and has_shop_parent
+		campfire_on_13 = is_campfire and room_to_set.row == 12
 		
 	room_to_set.type = type_candidate
+	
 	if type_candidate == Room.Type.MONSTER:
-		var tier_for_monster_rooms := 0 if room_to_set.row <= 2 else 1
+		var tier_for_monster_rooms := 0
+		
+		if room_to_set.row > 2:
+			tier_for_monster_rooms = 1
+			
 		room_to_set.battle_stats = battle_stats_pool.get_random_battle_for_tier(tier_for_monster_rooms)
 
 

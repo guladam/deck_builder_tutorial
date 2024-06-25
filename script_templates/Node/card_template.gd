@@ -9,7 +9,7 @@ func get_default_tooltip() -> String:
 	return tooltip_text
 
 
-func get_updated_tooltip(_player_modifiers: ModifierHandler, _enemy_modifiers: ModifierHandler) -> String:
+func get_updated_tooltip(_player_modifiers: ModifierHandler, _enemy_modifiers: ModifierHandler) -> String: # step 7.1
 	return tooltip_text
 
 

@@ -24,3 +24,4 @@ func _on_status_changed(target: Node) -> void:
 		
 	muscle_modifier_value.flat_value = stacks
 	dmg_dealt_modifier.add_new_value(muscle_modifier_value)
+

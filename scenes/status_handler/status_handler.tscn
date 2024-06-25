@@ -1,11 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwf6cannqfu18"]
+[gd_scene load_steps=2 format=3 uid="uid://bwet1kdg2v1di"]
 
-[ext_resource type="Script" path="res://scenes/status_handler/status_handler.gd" id="1_erk7k"]
+[ext_resource type="Script" path="res://scenes/status_handler/status_handler.gd" id="1_7l2o8"]
 
 [node name="StatusHandler" type="GridContainer"]
-offset_bottom = 11.0
 mouse_filter = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
 columns = 6
-script = ExtResource("1_erk7k")
+script = ExtResource("1_7l2o8")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

@@ -36,7 +36,7 @@ func reset_enemy_actions() -> void:
 func start_turn() -> void:
 	if get_child_count() == 0:
 		return
-		
+	
 	acting_enemies.clear()
 	for enemy: Enemy in get_children():
 		acting_enemies.append(enemy)

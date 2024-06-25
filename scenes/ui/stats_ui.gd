@@ -3,7 +3,7 @@ extends HBoxContainer
 
 @onready var block: HBoxContainer = $Block
 @onready var block_label: Label = %BlockLabel
-@onready var health: HealthUI = $HealthUI
+@onready var health: HealthUI = $Health
 
 
 func update_stats(stats: Stats) -> void:

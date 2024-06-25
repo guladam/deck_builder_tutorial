@@ -9,9 +9,7 @@ const CARD_MENU_UI = preload("res://scenes/ui/card_menu_ui.tscn")
 
 @onready var cards: HBoxContainer = %Cards
 @onready var skip_card_reward: Button = %SkipCardReward
-@onready var tooltip_popup: Control = %TooltipPopup
-@onready var tooltip_card: CenterContainer = %TooltipCard
-@onready var card_description: RichTextLabel = %CardDescription
+@onready var card_tooltip_popup: CardTooltipPopup = $CardTooltipPopup
 @onready var take_button: Button = %TakeButton
 
 var selected_card: Card
@@ -19,7 +17,6 @@ var selected_card: Card
 
 func _ready() -> void:
 	_clear_rewards()
-	_hide_tooltip()
 	
 	take_button.pressed.connect(
 		func(): 
@@ -36,17 +33,21 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
-		_hide_tooltip()
+		card_tooltip_popup.hide_tooltip()
 
 
 func _clear_rewards() -> void:
 	for card: Node in cards.get_children():
 		card.queue_free()
 		
-	for card: Node in tooltip_card.get_children():
-		card.queue_free()
-		
+	card_tooltip_popup.hide_tooltip()
+
 	selected_card = null
+
+
+func _show_tooltip(card: Card) -> void:
+	selected_card = card
+	card_tooltip_popup.show_tooltip(card)
 
 
 func set_rewards(new_cards: Array[Card]) -> void:
@@ -61,32 +62,3 @@ func set_rewards(new_cards: Array[Card]) -> void:
 		cards.add_child(new_card)
 		new_card.card = card
 		new_card.tooltip_requested.connect(_show_tooltip)
-
-
-func _show_tooltip(card: Card) -> void:
-	selected_card = card
-	
-	var new_card := CARD_MENU_UI.instantiate() as CardMenuUI
-	tooltip_card.add_child(new_card)
-	new_card.card = card
-	new_card.tooltip_requested.connect(_hide_tooltip.unbind(1))
-	card_description.text = card.get_default_tooltip()
-	
-	tooltip_popup.show()
-
-
-func _hide_tooltip() -> void:
-	if not tooltip_popup.visible:
-		return
-
-	selected_card = null
-
-	for card: Node in tooltip_card.get_children():
-		card.queue_free()
-	
-	tooltip_popup.hide()
-
-
-func _on_tooltip_popup_gui_input(event: InputEvent) -> void:
-	if event.is_action_pressed("left_mouse"):
-		_hide_tooltip()

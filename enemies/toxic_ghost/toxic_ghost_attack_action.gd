@@ -2,7 +2,7 @@ extends EnemyAction
 
 const TOXIN = preload("res://common_cards/toxin.tres")
 
-@export var damage: int
+@export var damage := 8
 
 
 func perform_action() -> void:
@@ -12,7 +12,7 @@ func perform_action() -> void:
 	var player := target as Player
 	if not player:
 		return
-
+	
 	var tween := create_tween().set_trans(Tween.TRANS_QUINT)
 	var start := enemy.global_position
 	var end := target.global_position + Vector2.RIGHT * 32
@@ -22,8 +22,6 @@ func perform_action() -> void:
 	
 	damage_effect.amount = modified_dmg
 	damage_effect.sound = sound
-	
-	intent.current_text = intent.base_text
 	
 	tween.tween_property(enemy, "global_position", end, 0.4)
 	tween.tween_callback(damage_effect.execute.bind(target_array))
@@ -45,3 +43,4 @@ func update_intent_text() -> void:
 	var modified_dmg := player.modifier_handler.get_modified_value(damage, Modifier.Type.DMG_TAKEN)
 	var final_dmg := enemy.modifier_handler.get_modified_value(modified_dmg, Modifier.Type.DMG_DEALT)
 	intent.current_text = intent.base_text % final_dmg
+

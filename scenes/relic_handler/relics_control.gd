@@ -22,17 +22,16 @@ func _ready() -> void:
 	
 	for relic_ui: RelicUI in relics.get_children():
 		relic_ui.free()
-		
+
 	relics.child_order_changed.connect(_on_relics_child_order_changed)
 
 
 func update() -> void:
 	if not is_instance_valid(left_button) or not is_instance_valid(right_button):
 		return
-
+	
 	num_of_relics = relics.get_child_count()
-	@warning_ignore("integer_division")
-	max_page = num_of_relics / RELICS_PER_PAGE
+	max_page = ceili(num_of_relics / float(RELICS_PER_PAGE))
 	
 	left_button.disabled = current_page <= 1
 	right_button.disabled = current_page >= max_page

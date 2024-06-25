@@ -1,8 +1,8 @@
 class_name EnemyActionPicker
 extends Node
 
-@export var enemy: Enemy: set = set_enemy
-@export var target: Node2D: set = set_target
+@export var enemy: Enemy: set = _set_enemy
+@export var target: Node2D: set = _set_target
 
 @onready var total_weight := 0.0
 
@@ -53,14 +53,14 @@ func setup_chances() -> void:
 		action.accumulated_weight = total_weight
 
 
-func set_enemy(value: Enemy) -> void:
+func _set_enemy(value: Enemy) -> void:
 	enemy = value
 	
 	for action: EnemyAction in get_children():
 		action.enemy = enemy
 
 
-func set_target(value: Node2D) -> void:
+func _set_target(value: Node2D) -> void:
 	target = value
 	
 	for action: EnemyAction in get_children():

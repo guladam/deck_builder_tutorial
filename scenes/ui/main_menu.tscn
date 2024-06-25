@@ -1,25 +1,25 @@
-[gd_scene load_steps=12 format=3 uid="uid://3nntiov7y0hu"]
+[gd_scene load_steps=12 format=3 uid="uid://4tj0qise1som"]
 
-[ext_resource type="Script" path="res://scenes/ui/main_menu.gd" id="1_a30hr"]
-[ext_resource type="Texture2D" uid="uid://dpfqok8tuy4r7" path="res://art/tile_0084.png" id="1_lopot"]
-[ext_resource type="Texture2D" uid="uid://cwf6dyi56tgo" path="res://art/tile_0088.png" id="2_5q0t7"]
-[ext_resource type="Resource" uid="uid://db6tb870t0lae" path="res://scenes/run/run_init_data.tres" id="2_jy3gy"]
-[ext_resource type="Texture2D" uid="uid://cpydvk8mq66o5" path="res://art/tile_0087.png" id="3_k77es"]
-[ext_resource type="Texture2D" uid="uid://con6y7mc74c5a" path="res://art/tile_0120.png" id="4_xuvgb"]
-[ext_resource type="Texture2D" uid="uid://1u3b3hwqd8yh" path="res://art/tile_0110.png" id="5_272vn"]
-[ext_resource type="Texture2D" uid="uid://c24y6l0ivlqp7" path="res://art/tile_0108.png" id="6_8q3wf"]
+[ext_resource type="Script" path="res://scenes/ui/main_menu.gd" id="1_bck1p"]
+[ext_resource type="Texture2D" uid="uid://dpfqok8tuy4r7" path="res://art/tile_0084.png" id="1_uaqd2"]
+[ext_resource type="Resource" uid="uid://bd874b0h1q8n1" path="res://scenes/run/run_startup.tres" id="2_4poyw"]
+[ext_resource type="Texture2D" uid="uid://cwf6dyi56tgo" path="res://art/tile_0088.png" id="2_tcnoe"]
+[ext_resource type="Texture2D" uid="uid://cpydvk8mq66o5" path="res://art/tile_0087.png" id="3_vcouc"]
+[ext_resource type="Texture2D" uid="uid://con6y7mc74c5a" path="res://art/tile_0120.png" id="4_snr5i"]
+[ext_resource type="Texture2D" uid="uid://1u3b3hwqd8yh" path="res://art/tile_0110.png" id="5_pintp"]
+[ext_resource type="Texture2D" uid="uid://c24y6l0ivlqp7" path="res://art/tile_0108.png" id="6_6iwyb"]
 
-[sub_resource type="Gradient" id="Gradient_j3w34"]
+[sub_resource type="Gradient" id="Gradient_7af3e"]
 colors = PackedColorArray(0.2, 0.117647, 0.0509804, 1, 0.054902, 0, 0.0588235, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_6pnu1"]
-gradient = SubResource("Gradient_j3w34")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1kxac"]
+gradient = SubResource("Gradient_7af3e")
 width = 50
 
-[sub_resource type="LabelSettings" id="LabelSettings_plo6v"]
+[sub_resource type="LabelSettings" id="LabelSettings_rnxpd"]
 line_spacing = 10.0
 shadow_size = 4
-shadow_color = Color(0.878431, 0.564706, 0.580392, 0.282353)
+shadow_color = Color(0.54902, 0.443137, 0.376471, 0.333333)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -28,17 +28,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_a30hr")
-run_init_data = ExtResource("2_jy3gy")
+script = ExtResource("1_bck1p")
+run_startup = ExtResource("2_4poyw")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture1D_6pnu1")
+texture = SubResource("GradientTexture1D_1kxac")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
@@ -48,14 +48,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -105.0
-offset_top = -62.0
+offset_top = -57.0
 offset_right = 105.0
-offset_bottom = -18.0
+offset_bottom = -13.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "My Awesome
 Roguelike Deckbuilder"
-label_settings = SubResource("LabelSettings_plo6v")
+label_settings = SubResource("LabelSettings_rnxpd")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -69,59 +69,60 @@ anchor_bottom = 0.5
 offset_left = -30.0
 offset_top = -2.0
 offset_right = 30.0
-offset_bottom = 52.0
+offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 6
-alignment = 1
+theme_override_constants/separation = 8
 
-[node name="ContinueButton" type="Button" parent="VBoxContainer"]
+[node name="Continue" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(60, 14)
+custom_minimum_size = Vector2(0, 14)
 layout_mode = 2
-disabled = true
 text = "Continue"
 
 [node name="NewRun" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(60, 14)
+custom_minimum_size = Vector2(0, 14)
 layout_mode = 2
 text = "New Run"
 
 [node name="Exit" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(60, 14)
+custom_minimum_size = Vector2(0, 14)
 layout_mode = 2
 text = "Exit"
 
 [node name="Wizard" type="Sprite2D" parent="."]
-position = Vector2(17, 104)
+position = Vector2(20, 105)
 scale = Vector2(2, 2)
-texture = ExtResource("1_lopot")
+texture = ExtResource("1_uaqd2")
 
 [node name="Assassin" type="Sprite2D" parent="."]
-position = Vector2(46, 98)
+position = Vector2(49, 100)
 scale = Vector2(2, 2)
-texture = ExtResource("2_5q0t7")
+texture = ExtResource("2_tcnoe")
 
 [node name="Warrior" type="Sprite2D" parent="."]
-position = Vector2(33, 124)
+position = Vector2(37, 121)
 scale = Vector2(2, 2)
-texture = ExtResource("3_k77es")
+texture = ExtResource("3_vcouc")
 
 [node name="Bat" type="Sprite2D" parent="."]
-position = Vector2(221, 99)
+position = Vector2(204, 105)
 scale = Vector2(2, 2)
-texture = ExtResource("4_xuvgb")
+texture = ExtResource("4_snr5i")
+flip_h = true
 
 [node name="Crab" type="Sprite2D" parent="."]
-position = Vector2(218, 125)
+position = Vector2(220, 125)
 scale = Vector2(2, 2)
-texture = ExtResource("5_272vn")
+texture = ExtResource("5_pintp")
+flip_h = true
 
 [node name="Ghost" type="Sprite2D" parent="."]
-position = Vector2(240, 112)
+position = Vector2(233, 101)
 scale = Vector2(2, 2)
-texture = ExtResource("6_8q3wf")
+texture = ExtResource("6_6iwyb")
+flip_h = true
 
-[connection signal="pressed" from="VBoxContainer/ContinueButton" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="VBoxContainer/NewRun" to="." method="_on_new_run_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

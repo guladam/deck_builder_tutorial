@@ -11,5 +11,7 @@ func _on_rest_button_pressed() -> void:
 	animation_player.play("fade_out")
 
 
+# This is called from the AnimationPlayer
+# at the end of 'fade-out'.
 func _on_fade_out_finished() -> void:
 	Events.campfire_exited.emit()

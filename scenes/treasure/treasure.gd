@@ -5,7 +5,7 @@ extends Control
 @export var relic_handler: RelicHandler
 @export var char_stats: CharacterStats
 
-@onready var treasure_animation_player: AnimationPlayer = %TreasureAnimationPlayer
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
 var found_relic: Relic
 
 
@@ -19,13 +19,15 @@ func generate_relic() -> void:
 	found_relic = RNG.array_pick_random(available_relics)
 
 
+# Called from the AnimationPlayer, at the
+# end of the 'open' animation.
 func _on_treasure_opened() -> void:
 	Events.treasure_room_exited.emit(found_relic)
 
 
 func _on_treasure_chest_gui_input(event: InputEvent) -> void:
-	if treasure_animation_player.current_animation == "open":
+	if animation_player.current_animation == "open":
 		return
 	
 	if event.is_action_pressed("left_mouse"):
-		treasure_animation_player.play("open")
+		animation_player.play("open")

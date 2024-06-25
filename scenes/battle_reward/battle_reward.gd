@@ -1,20 +1,18 @@
 class_name BattleReward
 extends Control
 
+const CARD_REWARDS = preload("res://scenes/ui/card_rewards.tscn")
 const REWARD_BUTTON = preload("res://scenes/ui/reward_button.tscn")
-const REWARD_BUTTON_DATA := {
-	Type.GOLD: [preload("res://art/gold.png"), "%s gold"],
-	Type.NEW_CARD: [preload("res://art/rarity.png"), "Add New Card"]
-}
-
-enum Type {GOLD, NEW_CARD, RELIC}
+const GOLD_ICON := preload("res://art/gold.png")
+const GOLD_TEXT := "%s gold"
+const CARD_ICON := preload("res://art/rarity.png")
+const CARD_TEXT := "Add New Card"
 
 @export var run_stats: RunStats
 @export var character_stats: CharacterStats
 @export var relic_handler: RelicHandler
 
 @onready var rewards: VBoxContainer = %Rewards
-@onready var card_rewards: CardRewards = %CardRewards
 
 var card_reward_total_weight := 0.0
 var card_rarity_weights := {
@@ -27,22 +25,20 @@ var card_rarity_weights := {
 func _ready() -> void:
 	for node: Node in rewards.get_children():
 		node.queue_free()
-	
-	card_rewards.card_reward_selected.connect(_on_card_reward_taken)
 
 
 func add_gold_reward(amount: int) -> void:
 	var gold_reward := REWARD_BUTTON.instantiate() as RewardButton
-	gold_reward.reward_icon = REWARD_BUTTON_DATA[Type.GOLD][0]
-	gold_reward.reward_text = REWARD_BUTTON_DATA[Type.GOLD][1] % amount
+	gold_reward.reward_icon = GOLD_ICON
+	gold_reward.reward_text = GOLD_TEXT % amount
 	gold_reward.pressed.connect(_on_gold_reward_taken.bind(amount))
 	rewards.add_child.call_deferred(gold_reward)
 
 
 func add_card_reward() -> void:
 	var card_reward := REWARD_BUTTON.instantiate() as RewardButton
-	card_reward.reward_icon = REWARD_BUTTON_DATA[Type.NEW_CARD][0]
-	card_reward.reward_text = REWARD_BUTTON_DATA[Type.NEW_CARD][1]
+	card_reward.reward_icon = CARD_ICON
+	card_reward.reward_text = CARD_TEXT
 	card_reward.pressed.connect(_show_card_rewards)
 	rewards.add_child.call_deferred(card_reward)
 
@@ -59,8 +55,12 @@ func _show_card_rewards() -> void:
 	if not run_stats or not character_stats:
 		return
 	
+	var card_rewards := CARD_REWARDS.instantiate() as CardRewards
+	add_child(card_rewards)
+	card_rewards.card_reward_selected.connect(_on_card_reward_taken)
+	
 	var card_reward_array: Array[Card] = []
-	var available_cards := character_stats.draftable_cards.cards.duplicate(true)
+	var available_cards: Array[Card] = character_stats.draftable_cards.cards.duplicate(true)
 	
 	for i in run_stats.card_rewards:
 		_setup_card_chances()
@@ -76,7 +76,7 @@ func _show_card_rewards() -> void:
 
 	card_rewards.rewards = card_reward_array
 	card_rewards.show()
-	
+
 
 func _setup_card_chances() -> void:
 	card_reward_total_weight = run_stats.common_weight + run_stats.uncommon_weight + run_stats.rare_weight
@@ -121,5 +121,5 @@ func _on_relic_reward_taken(relic: Relic) -> void:
 	relic_handler.add_relic(relic)
 
 
-func _on_back_button_pressed() -> void:
+func _on_back_button_pressed() -> void: 
 	Events.battle_reward_exited.emit()

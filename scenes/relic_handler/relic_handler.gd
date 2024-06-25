@@ -10,6 +10,10 @@ const RELIC_UI = preload("res://scenes/relic_handler/relic_ui.tscn")
 @onready var relics: HBoxContainer = %Relics
 
 
+func _ready() -> void:
+	relics.child_exiting_tree.connect(_on_relics_child_exiting_tree)
+
+
 func activate_relics_by_type(type: Relic.Type) -> void:
 	if type == Relic.Type.EVENT_BASED:
 		return

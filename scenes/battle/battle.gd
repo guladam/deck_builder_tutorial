@@ -3,8 +3,8 @@ extends Node2D
 
 @export var battle_stats: BattleStats
 @export var char_stats: CharacterStats
-@export var relics: RelicHandler
 @export var music: AudioStream
+@export var relics: RelicHandler
 
 @onready var battle_ui: BattleUI = $BattleUI
 @onready var player_handler: PlayerHandler = $PlayerHandler
@@ -29,7 +29,7 @@ func start_battle() -> void:
 	player.stats = char_stats
 	player_handler.relics = relics
 	enemy_handler.setup_enemies(battle_stats)
-	enemy_handler.reset_enemy_actions.call_deferred()
+	enemy_handler.reset_enemy_actions()
 	
 	relics.relics_activated.connect(_on_relics_activated)
 	relics.activate_relics_by_type(Relic.Type.START_OF_COMBAT)

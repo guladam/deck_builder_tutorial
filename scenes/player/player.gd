@@ -11,6 +11,10 @@ const WHITE_SPRITE_MATERIAL := preload("res://art/white_sprite_material.tres")
 @onready var modifier_handler: ModifierHandler = $ModifierHandler
 
 
+func _ready() -> void:
+	status_handler.status_owner = self
+
+
 func set_character_stats(value: CharacterStats) -> void:
 	stats = value
 	

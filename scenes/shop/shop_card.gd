@@ -5,7 +5,7 @@ const CARD_MENU_UI = preload("res://scenes/ui/card_menu_ui.tscn")
 
 @export var card: Card : set = set_card
 
-@onready var card_container: MarginContainer = %CardContainer
+@onready var card_container: CenterContainer = %CardContainer
 @onready var price: HBoxContainer = %Price
 @onready var price_label: Label = %PriceLabel
 @onready var buy_button: Button = %BuyButton

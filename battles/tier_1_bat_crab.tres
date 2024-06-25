@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BattleStats" load_steps=3 format=3 uid="uid://d0rjtrdkgl628"]
+
+[ext_resource type="PackedScene" uid="uid://7mt3sinkny0l" path="res://battles/tier_1_bat_crab.tscn" id="1_74qdh"]
+[ext_resource type="Script" path="res://custom_resources/battle_stats.gd" id="1_hplv7"]
+
+[resource]
+script = ExtResource("1_hplv7")
+battle_tier = 1
+weight = 2.0
+gold_reward_min = 63
+gold_reward_max = 81
+enemies = ExtResource("1_74qdh")

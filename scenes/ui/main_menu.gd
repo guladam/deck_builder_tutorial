@@ -3,9 +3,9 @@ extends Control
 const CHAR_SELECTOR_SCENE := preload("res://scenes/ui/character_selector.tscn")
 const RUN_SCENE = preload("res://scenes/run/run.tscn")
 
-@export var run_init_data: RunInitData
+@export var run_startup: RunStartup
 
-@onready var continue_button: Button = %ContinueButton
+@onready var continue_button: Button = %Continue
 
 
 func _ready() -> void:
@@ -14,7 +14,7 @@ func _ready() -> void:
 
 
 func _on_continue_pressed() -> void:
-	run_init_data.run_init_type = RunInitData.Type.CONTINUED_RUN
+	run_startup.type = RunStartup.Type.CONTINUED_RUN
 	get_tree().change_scene_to_packed(RUN_SCENE)
 
 

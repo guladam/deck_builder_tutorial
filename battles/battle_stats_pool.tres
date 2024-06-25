@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="BattleStatsPool" load_steps=7 format=3 uid="uid://bcamfj71xd6x1"]
+[gd_resource type="Resource" script_class="BattleStatsPool" load_steps=7 format=3 uid="uid://by8ka073e8sah"]
 
-[ext_resource type="Script" path="res://custom_resources/battle_stats_pool.gd" id="1_0b7nw"]
-[ext_resource type="Resource" uid="uid://cuuiyfwaku0qs" path="res://battles/tier_0_bats_2.tres" id="1_m3lgj"]
-[ext_resource type="Resource" uid="uid://fac8mttp6u6m" path="res://battles/tier_0_crab.tres" id="2_rulho"]
-[ext_resource type="Resource" uid="uid://g15y0vtuysbb" path="res://battles/tier_1_bats_3.tres" id="3_ngd30"]
-[ext_resource type="Resource" uid="uid://bdv5sq5xskuui" path="res://battles/tier_1_crab_and_bat.tres" id="4_hgima"]
-[ext_resource type="Resource" uid="uid://bedaud1ckrrwh" path="res://battles/tier_2_toxic_ghost.tres" id="5_diiba"]
+[ext_resource type="Script" path="res://custom_resources/battle_stats_pool.gd" id="1_c0dve"]
+[ext_resource type="Resource" uid="uid://b8n7n2ldcvb0c" path="res://battles/tier_0_bats2.tres" id="1_udfgr"]
+[ext_resource type="Resource" uid="uid://btgxo6ksfx835" path="res://battles/tier_0_crab.tres" id="2_7sd42"]
+[ext_resource type="Resource" uid="uid://rscs8yna3uyj" path="res://battles/tier_1_bats3.tres" id="3_p408a"]
+[ext_resource type="Resource" uid="uid://d0rjtrdkgl628" path="res://battles/tier_1_bat_crab.tres" id="4_yjlu3"]
+[ext_resource type="Resource" uid="uid://d3e4osl3tc86v" path="res://battles/tier_2_toxic_ghost.tres" id="5_sb1gi"]
 
 [resource]
-script = ExtResource("1_0b7nw")
-pool = Array[Resource("res://custom_resources/battle_stats.gd")]([ExtResource("1_m3lgj"), ExtResource("2_rulho"), ExtResource("3_ngd30"), ExtResource("4_hgima"), ExtResource("5_diiba")])
+script = ExtResource("1_c0dve")
+pool = Array[Resource("res://custom_resources/battle_stats.gd")]([ExtResource("1_udfgr"), ExtResource("2_7sd42"), ExtResource("3_p408a"), ExtResource("4_yjlu3"), ExtResource("5_sb1gi")])

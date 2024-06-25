@@ -16,7 +16,7 @@ icon = ExtResource("3_snynw")
 
 [sub_resource type="Resource" id="Resource_1xroc"]
 script = ExtResource("4_a486a")
-base_text = ""
+base_text = "4"
 icon = ExtResource("7_2im00")
 
 [node name="BatEnemyAI" type="Node"]

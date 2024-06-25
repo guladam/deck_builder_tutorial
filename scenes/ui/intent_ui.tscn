@@ -22,7 +22,7 @@ texture = ExtResource("1_giyx2")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Number" type="Label" parent="."]
+[node name="Label" type="Label" parent="."]
 layout_mode = 2
 size_flags_vertical = 1
 text = "7"

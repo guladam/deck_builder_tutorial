@@ -18,7 +18,7 @@ func initialize_status(target: Node) -> void:
 
 	if not exposed_modifier_value:
 		exposed_modifier_value = ModifierValue.create_new_modifier("exposed", ModifierValue.Type.PERCENT_BASED)
-		exposed_modifier_value.percent_value = 0.5
+		exposed_modifier_value.percent_value = MODIFIER
 		dmg_taken_modifier.add_new_value(exposed_modifier_value)
 	
 	if not status_changed.is_connected(_on_status_changed):

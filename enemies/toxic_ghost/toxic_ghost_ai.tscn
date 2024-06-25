@@ -1,50 +1,49 @@
-[gd_scene load_steps=14 format=3 uid="uid://40rtx2312wcx"]
+[gd_scene load_steps=14 format=3 uid="uid://c4kjdbymx7u0a"]
 
-[ext_resource type="Script" path="res://scenes/enemy/enemy_action_picker.gd" id="1_tkkfc"]
-[ext_resource type="Script" path="res://enemies/toxic_ghost/toxic_ghost_muscle_buff_action.gd" id="2_12gxv"]
-[ext_resource type="Texture2D" uid="uid://cn2c1psh561cc" path="res://art/tile_0127.png" id="3_m28ce"]
-[ext_resource type="AudioStream" uid="uid://k8m4o3hlwm7l" path="res://art/enemy_block.ogg" id="3_pvc46"]
-[ext_resource type="Script" path="res://custom_resources/intent.gd" id="4_jgsgy"]
-[ext_resource type="Script" path="res://enemies/toxic_ghost/toxic_ghost_attack_action.gd" id="6_gpm0a"]
-[ext_resource type="Texture2D" uid="uid://c2q0b7utdsy56" path="res://art/attack_negative.png" id="7_72a6w"]
-[ext_resource type="AudioStream" uid="uid://de2ryat1pxq6" path="res://art/enemy_attack.ogg" id="8_8jvep"]
-[ext_resource type="Script" path="res://enemies/toxic_ghost/toxic_ghost_block_action.gd" id="9_a8ob3"]
-[ext_resource type="Texture2D" uid="uid://oe7v35ii8vrs" path="res://art/tile_0102.png" id="10_1hh14"]
+[ext_resource type="Script" path="res://scenes/enemy/enemy_action_picker.gd" id="1_5bnwn"]
+[ext_resource type="Script" path="res://enemies/toxic_ghost/toxic_ghost_muscle_buff_action.gd" id="2_i5hjy"]
+[ext_resource type="Texture2D" uid="uid://cn2c1psh561cc" path="res://art/tile_0127.png" id="3_wn3bc"]
+[ext_resource type="Script" path="res://custom_resources/intent.gd" id="4_fh8gu"]
+[ext_resource type="AudioStream" uid="uid://k8m4o3hlwm7l" path="res://art/enemy_block.ogg" id="5_p0wt6"]
+[ext_resource type="Script" path="res://enemies/toxic_ghost/toxic_ghost_attack_action.gd" id="6_cpx6d"]
+[ext_resource type="Texture2D" uid="uid://cul5qoemvh5nu" path="res://art/attack_negative.png" id="7_tt27l"]
+[ext_resource type="AudioStream" uid="uid://de2ryat1pxq6" path="res://art/enemy_attack.ogg" id="8_1btn0"]
+[ext_resource type="Script" path="res://enemies/toxic_ghost/toxic_ghost_block_action.gd" id="9_gs6um"]
+[ext_resource type="Texture2D" uid="uid://oe7v35ii8vrs" path="res://art/tile_0102.png" id="10_ptccm"]
 
-[sub_resource type="Resource" id="Resource_6rd67"]
-script = ExtResource("4_jgsgy")
+[sub_resource type="Resource" id="Resource_3vwu6"]
+script = ExtResource("4_fh8gu")
 base_text = ""
-icon = ExtResource("3_m28ce")
+icon = ExtResource("3_wn3bc")
 
-[sub_resource type="Resource" id="Resource_0gylj"]
-script = ExtResource("4_jgsgy")
+[sub_resource type="Resource" id="Resource_ge4s4"]
+script = ExtResource("4_fh8gu")
 base_text = "%s"
-icon = ExtResource("7_72a6w")
+icon = ExtResource("7_tt27l")
 
-[sub_resource type="Resource" id="Resource_yghas"]
-script = ExtResource("4_jgsgy")
+[sub_resource type="Resource" id="Resource_k3ixc"]
+script = ExtResource("4_fh8gu")
 base_text = ""
-icon = ExtResource("10_1hh14")
+icon = ExtResource("10_ptccm")
 
 [node name="ToxicGhostAI" type="Node"]
-script = ExtResource("1_tkkfc")
+script = ExtResource("1_5bnwn")
 
 [node name="MuscleBuffAction" type="Node" parent="."]
-script = ExtResource("2_12gxv")
-intent = SubResource("Resource_6rd67")
-sound = ExtResource("3_pvc46")
+script = ExtResource("2_i5hjy")
+intent = SubResource("Resource_3vwu6")
+sound = ExtResource("5_p0wt6")
 
 [node name="AttackAction" type="Node" parent="."]
-script = ExtResource("6_gpm0a")
-damage = 8
-intent = SubResource("Resource_0gylj")
-sound = ExtResource("8_8jvep")
+script = ExtResource("6_cpx6d")
+intent = SubResource("Resource_ge4s4")
+sound = ExtResource("8_1btn0")
 type = 1
 chance_weight = 6.5
 
 [node name="BlockAction" type="Node" parent="."]
-script = ExtResource("9_a8ob3")
-intent = SubResource("Resource_yghas")
-sound = ExtResource("3_pvc46")
+script = ExtResource("9_gs6um")
+intent = SubResource("Resource_k3ixc")
+sound = ExtResource("5_p0wt6")
 type = 1
 chance_weight = 3.5

@@ -1,5 +1,5 @@
 class_name CardPileOpener
-extends Button
+extends TextureButton
 
 @export var counter: Label
 @export var card_pile: CardPile : set = set_card_pile

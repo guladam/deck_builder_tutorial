@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://c8cqncsqlplyu" path="res://main_theme.tres" id="1_6mdvy"]
 [ext_resource type="Texture2D" uid="uid://oe7v35ii8vrs" path="res://art/tile_0102.png" id="2_3xkif"]
 [ext_resource type="Script" path="res://scenes/ui/stats_ui.gd" id="2_t62e8"]
-[ext_resource type="PackedScene" uid="uid://bgv2atk5gusnu" path="res://scenes/ui/health_ui.tscn" id="4_xxbxo"]
+[ext_resource type="PackedScene" uid="uid://b3dkx1dqlo0eo" path="res://scenes/ui/health_ui.tscn" id="4_mspg2"]
 
 [node name="StatsUI" type="HBoxContainer"]
 anchors_preset = 5
@@ -34,5 +34,5 @@ text = "6"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HealthUI" parent="." instance=ExtResource("4_xxbxo")]
+[node name="Health" parent="." instance=ExtResource("4_mspg2")]
 layout_mode = 2

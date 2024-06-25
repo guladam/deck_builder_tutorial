@@ -9,7 +9,7 @@ const STATUS_TOOLTIP = preload("res://scenes/ui/status_tooltip.tscn")
 func _ready() -> void:
 	for tooltip: StatusTooltip in status_tooltips.get_children():
 		tooltip.queue_free()
-
+		
 	Events.status_tooltip_requested.connect(show_view)
 
 

@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://cpydvk8mq66o5" path="res://art/tile_0087.png" id="1_0r2oj"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_il1gs"]
 [ext_resource type="PackedScene" uid="uid://ph0oi5od64u5" path="res://scenes/ui/stats_ui.tscn" id="2_wnqqm"]
-[ext_resource type="PackedScene" uid="uid://bwf6cannqfu18" path="res://scenes/status_handler/status_handler.tscn" id="4_sb65w"]
-[ext_resource type="PackedScene" uid="uid://cear47kpsa6ms" path="res://scenes/modifier_handler/modifier_handler.tscn" id="5_lene4"]
-[ext_resource type="Script" path="res://scenes/modifier_handler/modifier.gd" id="6_ircqk"]
+[ext_resource type="PackedScene" uid="uid://bwet1kdg2v1di" path="res://scenes/status_handler/status_handler.tscn" id="4_60v6k"]
+[ext_resource type="PackedScene" uid="uid://ctvxie3ni1ik4" path="res://scenes/modifier_handler/modifier_handler.tscn" id="5_v2emp"]
+[ext_resource type="PackedScene" uid="uid://bqefj5q31b84i" path="res://scenes/modifier_handler/modifier.tscn" id="6_jup6q"]
 
 [node name="Player" type="Node2D" groups=["player"]]
 script = ExtResource("1_il1gs")
@@ -17,22 +17,19 @@ texture = ExtResource("1_0r2oj")
 offset_top = 6.0
 offset_bottom = 22.0
 
-[node name="StatusHandler" parent="." node_paths=PackedStringArray("status_owner") instance=ExtResource("4_sb65w")]
-offset_left = -23.0
-offset_top = 21.0
-offset_right = -23.0
-offset_bottom = 32.0
+[node name="StatusHandler" parent="." node_paths=PackedStringArray("status_owner") instance=ExtResource("4_60v6k")]
+offset_left = -24.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 24.0
 status_owner = NodePath("..")
 
-[node name="ModifierHandler" parent="." instance=ExtResource("5_lene4")]
+[node name="ModifierHandler" parent="." instance=ExtResource("5_v2emp")]
 
-[node name="DamageDealtModifier" type="Node" parent="ModifierHandler"]
-script = ExtResource("6_ircqk")
+[node name="DamageDealtModifier" parent="ModifierHandler" instance=ExtResource("6_jup6q")]
 
-[node name="DamageTakenModifier" type="Node" parent="ModifierHandler"]
-script = ExtResource("6_ircqk")
+[node name="DamageTakenModifier" parent="ModifierHandler" instance=ExtResource("6_jup6q")]
 type = 1
 
-[node name="CardCostModifier" type="Node" parent="ModifierHandler"]
-script = ExtResource("6_ircqk")
+[node name="CardCostModifier" parent="ModifierHandler" instance=ExtResource("6_jup6q")]
 type = 2
