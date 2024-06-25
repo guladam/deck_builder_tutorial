@@ -12,8 +12,5 @@ func enter() -> void:
 		card_ui.play()
 
 
-func on_input(_event: InputEvent) -> void:
-	if played:
-		return
-
+func post_enter() -> void:
 	transition_requested.emit(self, CardState.State.BASE)
