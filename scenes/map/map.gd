@@ -92,6 +92,7 @@ func _spawn_room(room: Room) -> void:
 	var new_map_room := MAP_ROOM.instantiate() as MapRoom
 	rooms.add_child(new_map_room)
 	new_map_room.room = room
+	new_map_room.clicked.connect(_on_map_room_clicked)
 	new_map_room.selected.connect(_on_map_room_selected)
 	_connect_lines(room)
 	
@@ -110,11 +111,13 @@ func _connect_lines(room: Room) -> void:
 		lines.add_child(new_map_line)
 
 
-func _on_map_room_selected(room: Room) -> void:
+func _on_map_room_clicked(room: Room) -> void:
 	for map_room: MapRoom in rooms.get_children():
 		if map_room.room.row == room.row:
 			map_room.available = false
-	
+
+
+func _on_map_room_selected(room: Room) -> void:
 	last_room = room
 	floors_climbed += 1
 	Events.map_exited.emit(room)
