@@ -44,6 +44,9 @@ func add_card_reward() -> void:
 
 
 func add_relic_reward(relic: Relic) -> void:
+	if not relic:
+		return
+
 	var relic_reward := REWARD_BUTTON.instantiate() as RewardButton
 	relic_reward.reward_icon = relic.icon
 	relic_reward.reward_text = relic.relic_name

@@ -19,6 +19,9 @@ func set_from_save_data(which_seed: int, state: int) -> void:
 
 
 func array_pick_random(array: Array) -> Variant:
+	if array.is_empty():
+		return null
+
 	return array[instance.randi() % array.size()]
 
 
