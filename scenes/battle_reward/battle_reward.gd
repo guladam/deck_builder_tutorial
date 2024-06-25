@@ -60,7 +60,7 @@ func _show_card_rewards() -> void:
 	card_rewards.card_reward_selected.connect(_on_card_reward_taken)
 	
 	var card_reward_array: Array[Card] = []
-	var available_cards: Array[Card] = character_stats.draftable_cards.cards.duplicate(true)
+	var available_cards: Array[Card] = character_stats.draftable_cards.duplicate_cards()
 	
 	for i in run_stats.card_rewards:
 		_setup_card_chances()
