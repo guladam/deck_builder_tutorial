@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://cedsow628sq3y"]
+
+[ext_resource type="Texture2D" uid="uid://bxgrktox5it82" path="res://art/tile_0105.png" id="1_p0xvk"]
+[ext_resource type="Script" path="res://characters/warrior/cards/warrior_sharp_knife.gd" id="2_rjcfh"]
+[ext_resource type="AudioStream" uid="uid://dixklg6g4jnsq" path="res://art/slash.ogg" id="3_uxg0o"]
+
+[resource]
+script = ExtResource("2_rjcfh")
+id = "sharp_knife"
+type = 0
+rarity = 2
+target = 1
+cost = 1
+exhausts = false
+icon = ExtResource("1_p0xvk")
+tooltip_text = "[center]Deal [color=\"ff0000\"]%s[/color] damage. +%s damage this combat.[/center]"
+sound = ExtResource("3_uxg0o")

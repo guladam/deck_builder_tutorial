@@ -6,7 +6,6 @@
 
 [resource]
 script = ExtResource("3_1idfq")
-optional_sound = ExtResource("2_bd85j")
 id = "warrior_trickster"
 type = 1
 rarity = 1
@@ -15,3 +14,4 @@ cost = 0
 exhausts = false
 icon = ExtResource("1_huvsc")
 tooltip_text = "[center]Gain [color=\"0044ff\"]%s[/color] block. Draw 1 card.[/center]"
+sound = ExtResource("2_bd85j")
