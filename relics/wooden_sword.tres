@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://r6aixmaucd4b"]
+
+[ext_resource type="Texture2D" uid="uid://dojlh80rte165" path="res://art/tile_0107.png" id="1_ub7wh"]
+[ext_resource type="Script" path="res://relics/wooden_sword.gd" id="2_w5eni"]
+
+[resource]
+script = ExtResource("2_w5eni")
+relic_name = "Wooden Sword"
+id = "wooden_sword"
+type = 4
+character_type = 0
+starter_relic = false
+icon = ExtResource("1_ub7wh")
+tooltip = "Whenever you play 3 siklls during your turn, deal 5 damage to all enemies."
