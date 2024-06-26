@@ -31,7 +31,7 @@ shape = SubResource("RectangleShape2D_3gsft")
 offset_top = 7.0
 offset_bottom = 23.0
 
-[node name="IntentUI" parent="." instance=ExtResource("5_xytk4")]
+[node name="IntentUI" parent="." groups=["intent"] instance=ExtResource("5_xytk4")]
 offset_top = -24.0
 offset_bottom = -10.0
 

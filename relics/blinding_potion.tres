@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bkmq76jcysxaf"]
+
+[ext_resource type="Texture2D" uid="uid://clbji84e7ec6m" path="res://art/tile_0126.png" id="1_gw7ui"]
+[ext_resource type="Script" path="res://relics/blinding_potion.gd" id="2_n51e4"]
+
+[resource]
+script = ExtResource("2_n51e4")
+relic_name = "Blinding Potion"
+id = "blinding_potion"
+type = 1
+character_type = 0
+starter_relic = false
+icon = ExtResource("1_gw7ui")
+tooltip = "Gain 1 extra energy at the start of each turn. You no longer see enemy intents. "

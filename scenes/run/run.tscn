@@ -14,7 +14,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_68deg"]
 
-[node name="Run" type="Node"]
+[node name="Run" type="Node" groups=["run"]]
 script = ExtResource("1_bedv1")
 run_startup = ExtResource("2_wgfut")
 
