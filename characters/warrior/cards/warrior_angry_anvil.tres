@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://bcmktyqt2d7cm"]
+
+[ext_resource type="Texture2D" uid="uid://dytq0eumwvky6" path="res://art/tile_0074.png" id="1_3oe33"]
+[ext_resource type="Script" path="res://characters/warrior/cards/warrior_angry_anvil.gd" id="2_npntm"]
+[ext_resource type="AudioStream" uid="uid://df64e7qat73gs" path="res://art/block.ogg" id="3_oo1yl"]
+
+[resource]
+script = ExtResource("2_npntm")
+id = "warrior_angry_anvil"
+type = 1
+rarity = 1
+target = 0
+cost = 1
+exhausts = false
+icon = ExtResource("1_3oe33")
+tooltip_text = "[center]Gain [color=\"0044ff\"]%s[/color] block. Exhaust 1 random card.[/center]"
+sound = ExtResource("3_oo1yl")
