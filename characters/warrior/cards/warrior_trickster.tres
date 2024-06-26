@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://cjmd5p8y455xc"]
+
+[ext_resource type="Texture2D" uid="uid://bi6pfjs32f820" path="res://art/tile_0101.png" id="1_huvsc"]
+[ext_resource type="AudioStream" uid="uid://k8m4o3hlwm7l" path="res://art/enemy_block.ogg" id="2_bd85j"]
+[ext_resource type="Script" path="res://characters/warrior/cards/warrior_trickster.gd" id="3_1idfq"]
+
+[resource]
+script = ExtResource("3_1idfq")
+optional_sound = ExtResource("2_bd85j")
+id = "warrior_trickster"
+type = 1
+rarity = 1
+target = 0
+cost = 0
+exhausts = false
+icon = ExtResource("1_huvsc")
+tooltip_text = "[center]Gain [color=\"0044ff\"]%s[/color] block. Draw 1 card.[/center]"
