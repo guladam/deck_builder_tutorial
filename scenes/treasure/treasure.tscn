@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dl16ggyeuwg5c"]
+[gd_scene load_steps=23 format=3 uid="uid://dl16ggyeuwg5c"]
 
 [ext_resource type="Script" path="res://scenes/treasure/treasure.gd" id="1_0dgmn"]
 [ext_resource type="Texture2D" uid="uid://cp4iq5fd6j8be" path="res://art/background.png" id="2_g7pdp"]
@@ -8,28 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://dhmtctwb5ymhc" path="res://art/gold.png" id="4_3wkp5"]
 [ext_resource type="Texture2D" uid="uid://d007n5sscvumv" path="res://art/tile_0090.png" id="4_lw04s"]
 [ext_resource type="Resource" uid="uid://c8c1y85x2h5l" path="res://relics/reinforced_armor.tres" id="4_xb65p"]
+[ext_resource type="Resource" uid="uid://bkmq76jcysxaf" path="res://relics/blinding_potion.tres" id="5_5havh"]
 [ext_resource type="Texture2D" uid="uid://isan6btj7dwy" path="res://art/tile_0091.png" id="5_h2q1b"]
+[ext_resource type="Resource" uid="uid://b7xh51rkdccfy" path="res://relics/confusing_staff.tres" id="6_fkuuo"]
+[ext_resource type="Resource" uid="uid://r6aixmaucd4b" path="res://relics/wooden_sword.tres" id="7_oqlxp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8a2h2"]
 font_size = 12
-
-[sub_resource type="Animation" id="Animation_iws3o"]
-resource_name = "highlight"
-length = 2.0
-loop_mode = 1
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.05, 1.05), Vector2(1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_uiaoo"]
 length = 0.001
@@ -68,6 +53,24 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_iws3o"]
+resource_name = "highlight"
+length = 2.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.05, 1.05), Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_8kvkc"]
@@ -151,7 +154,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_0dgmn")
-treasure_relic_pool = Array[Resource("res://custom_resources/relic.gd")]([ExtResource("2_g8620"), ExtResource("3_b2sgi"), ExtResource("4_xb65p")])
+treasure_relic_pool = Array[Resource("res://custom_resources/relic.gd")]([ExtResource("2_g8620"), ExtResource("3_b2sgi"), ExtResource("4_xb65p"), ExtResource("5_5havh"), ExtResource("6_fkuuo"), ExtResource("7_oqlxp")])
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
