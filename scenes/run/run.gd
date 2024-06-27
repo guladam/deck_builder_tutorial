@@ -195,6 +195,12 @@ func _on_shop_entered() -> void:
 	shop.populate_shop()
 
 
+func _on_event_room_entered(room: Room) -> void:
+	var event_room := _change_view(room.event_scene) as EventRoom
+	event_room.character_stats = character
+	event_room.run_stats = stats
+
+
 func _on_battle_won() -> void:
 	if map.floors_climbed == MapGenerator.FLOORS:
 		var win_screen := _change_view(WIN_SCREEN_SCENE) as WinScreen
@@ -219,4 +225,4 @@ func _on_map_exited(room: Room) -> void:
 		Room.Type.BOSS:
 			_on_battle_room_entered(room)
 		Room.Type.EVENT:
-			_change_view(room.event_scene)
+			_on_event_room_entered(room)
