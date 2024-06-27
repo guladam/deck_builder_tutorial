@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EventRoomPool" load_steps=4 format=3 uid="uid://bncylsfojpqyu"]
+
+[ext_resource type="Script" path="res://custom_resources/event_room_pool.gd" id="1_nlwb2"]
+[ext_resource type="PackedScene" uid="uid://g8ya03t8eema" path="res://scenes/event_rooms/gamble_event.tscn" id="1_o8ygt"]
+[ext_resource type="PackedScene" uid="uid://qd2lt374xj2l" path="res://scenes/event_rooms/test_event_2.tscn" id="2_orxih"]
+
+[resource]
+script = ExtResource("1_nlwb2")
+event_rooms = Array[PackedScene]([ExtResource("1_o8ygt"), ExtResource("2_orxih")])

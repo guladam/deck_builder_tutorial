@@ -1,8 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://b33j64lkeq7i3"]
+[gd_scene load_steps=4 format=3 uid="uid://b33j64lkeq7i3"]
 
 [ext_resource type="Script" path="res://scenes/map/map_generator.gd" id="1_8r2dm"]
-[ext_resource type="Resource" uid="uid://bcamfj71xd6x1" path="res://battles/battle_stats_pool.tres" id="2_c86kp"]
+[ext_resource type="Resource" uid="uid://by8ka073e8sah" path="res://battles/battle_stats_pool.tres" id="2_c86kp"]
+[ext_resource type="Resource" uid="uid://bncylsfojpqyu" path="res://scenes/event_rooms/event_room_pool.tres" id="3_syeym"]
 
 [node name="MapGenerator" type="Node"]
 script = ExtResource("1_8r2dm")
 battle_stats_pool = ExtResource("2_c86kp")
+event_room_pool = ExtResource("3_syeym")

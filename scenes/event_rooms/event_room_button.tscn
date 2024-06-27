@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://br2rpgkb7gbxr"]
+
+[ext_resource type="Script" path="res://scenes/event_rooms/event_room_button.gd" id="1_00x4u"]
+
+[node name="EventRoomButton" type="Button"]
+text = "ok"
+script = ExtResource("1_00x4u")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

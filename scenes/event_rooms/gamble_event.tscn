@@ -1,0 +1,66 @@
+[gd_scene load_steps=4 format=3 uid="uid://g8ya03t8eema"]
+
+[ext_resource type="Script" path="res://scenes/event_rooms/gamble_event.gd" id="1_gxqxk"]
+[ext_resource type="Resource" uid="uid://c05cbhxh1h1wo" path="res://test_data/test_run_stats.tres" id="2_3qv8i"]
+[ext_resource type="PackedScene" uid="uid://br2rpgkb7gbxr" path="res://scenes/event_rooms/event_room_button.tscn" id="2_xqbom"]
+
+[node name="GambleEvent" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gxqxk")
+run_stats = ExtResource("2_3qv8i")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.041418, 0.0917935, 0.0344075, 0.815686)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Bet your 
+money"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FiftyButton" parent="VBoxContainer" instance=ExtResource("2_xqbom")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(110, 20)
+layout_mode = 2
+text = "bet 50g: 50% chance
+to win 100g"
+
+[node name="ThirtyButton" parent="VBoxContainer" instance=ExtResource("2_xqbom")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+text = "bet 50g: 30% chance
+to win 200g"
+
+[node name="SkipButton" parent="VBoxContainer" instance=ExtResource("2_xqbom")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+text = "Skip the bet"

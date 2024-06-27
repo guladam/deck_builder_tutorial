@@ -11,6 +11,8 @@ enum Type {NOT_ASSIGNED, MONSTER, TREASURE, CAMPFIRE, SHOP, BOSS, EVENT}
 @export var selected := false
 # This is only used by the MONSTER and BOSS types
 @export var battle_stats: BattleStats
+# This is only used by the EVENT room type
+@export var event_scene: PackedScene
 
 
 func _to_string() -> String:
