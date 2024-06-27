@@ -11,6 +11,10 @@ func _ready() -> void:
 	# These buttons automatically emit Events.event_room_exited when pressed.
 	# However, you can pass an optional Callable that executes BEFORE that happens.
 	example_button.event_button_callback = add_gold
+	
+	# If your EventRoom doesn't need buttons 
+	# make sure to emit this signal when you're done with everything
+	# Events.event_room_exited.emit()
 
 
 func add_gold() -> void:
