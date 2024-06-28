@@ -5,10 +5,12 @@
 
 [resource]
 script = ExtResource("2_w5eni")
+skills_required = 3
+damage = 5
 relic_name = "Wooden Sword"
 id = "wooden_sword"
 type = 4
 character_type = 0
 starter_relic = false
 icon = ExtResource("1_ub7wh")
-tooltip = "Whenever you play 3 siklls during your turn, deal 5 damage to all enemies."
+tooltip = "Whenever you play 3 skills during your turn, deal 5 damage to all enemies."

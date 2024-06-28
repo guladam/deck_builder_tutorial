@@ -30,7 +30,7 @@ func _on_card_played(card: Card) -> void:
 	
 	skills_this_turn += 1
 	
-	if skills_this_turn == skills_required:
+	if skills_this_turn % skills_required == 0:
 		var enemies := relic_ui.get_tree().get_nodes_in_group("enemies")
 		var damage_effect := DamageEffect.new()
 		damage_effect.amount = damage
