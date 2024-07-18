@@ -17,5 +17,11 @@ func _ready() -> void:
 	# Events.event_room_exited.emit()
 
 
+# If you want to do something once, AFTER injecting the dependencies
+# do it here.
+func setup() -> void:
+	pass
+
+
 func add_gold() -> void:
 	run_stats.gold += 50

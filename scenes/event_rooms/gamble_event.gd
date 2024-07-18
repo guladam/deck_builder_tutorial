@@ -5,7 +5,7 @@ extends EventRoom
 @onready var skip_button: EventRoomButton = %SkipButton
 
 
-func _ready() -> void:
+func setup() -> void:
 	skip_button.visible = run_stats.gold < 50
 	fifty_button.disabled = run_stats.gold < 50
 	thirty_button.disabled = run_stats.gold < 50

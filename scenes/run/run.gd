@@ -199,6 +199,7 @@ func _on_event_room_entered(room: Room) -> void:
 	var event_room := _change_view(room.event_scene) as EventRoom
 	event_room.character_stats = character
 	event_room.run_stats = stats
+	event_room.setup()
 
 
 func _on_battle_won() -> void:
