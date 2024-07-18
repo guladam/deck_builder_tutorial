@@ -191,3 +191,9 @@ https://github.com/guladam/deck_builder_tutorial/commit/1e0ad80a374d85bc7f00f585
 
 Hope you enjoyed adding some new content! 😊
 
+# Fixing a Bug with the GambleEvent
+
+There was a bug where the GambleEvent could crash on the _ready() callback as it tried to access the run_stats Resource before it was injected as a dependency.
+
+This can be fixed, by moving it to a separate setup() method, which is called manually by the Run class, AFTER setting those dependencies. You can find the fix in this commit:
+https://github.com/guladam/deck_builder_tutorial/commit/aec9f41cb8cc941bb8f385bbb3578c0e6684392e
