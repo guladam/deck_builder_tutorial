@@ -24,7 +24,7 @@ flip_h = true
 
 [node name="RelicsControl" type="Control" parent="." node_paths=PackedStringArray("left_button", "right_button")]
 clip_contents = true
-custom_minimum_size = Vector2(88, 0)
+custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 script = ExtResource("3_1h0c2")
 left_button = NodePath("../LeftButton")
@@ -32,9 +32,9 @@ right_button = NodePath("../RightButton")
 
 [node name="Relics" type="HBoxContainer" parent="RelicsControl"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(88, 16)
+custom_minimum_size = Vector2(90, 16)
 layout_mode = 0
-offset_right = 236.0
+offset_right = 430.0
 offset_bottom = 16.0
 theme_override_constants/separation = 2
 
@@ -69,9 +69,6 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="RelicUI11" parent="RelicsControl/Relics" instance=ExtResource("4_vgweh")]
-layout_mode = 2
-
-[node name="RelicUI12" parent="RelicsControl/Relics" instance=ExtResource("4_vgweh")]
 layout_mode = 2
 
 [node name="RightButton" type="TextureButton" parent="."]
