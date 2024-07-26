@@ -94,6 +94,7 @@ func _set_playable(value: bool) -> void:
 func _set_char_stats(value: CharacterStats) -> void:
 	char_stats = value
 	char_stats.stats_changed.connect(_on_char_stats_changed)
+	_on_char_stats_changed()
 
 
 func _on_drop_point_detector_area_entered(area: Area2D) -> void:
