@@ -20,7 +20,7 @@ var original_index := 0
 var parent: Control
 var tween: Tween
 var playable := true : set = _set_playable
-var disabled := false
+var disabled := true
 
 
 func _ready() -> void:
@@ -53,6 +53,11 @@ func get_active_enemy_modifiers() -> ModifierHandler:
 		return null
 	
 	return targets[0].modifier_handler
+
+
+func is_hovered() -> bool:
+	var rect := Rect2(Vector2.ZERO, self.size)
+	return rect.has_point(get_local_mouse_position())
 
 
 func request_tooltip() -> void:

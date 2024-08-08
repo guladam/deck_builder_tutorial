@@ -21,6 +21,13 @@ func discard_card(card: CardUI) -> void:
 	card.queue_free()
 
 
+func enable_hand() -> void:
+	for card: CardUI in get_children():
+		card.disabled = false
+		if card.is_hovered():
+			card.card_state_machine.on_mouse_entered()
+
+
 func disable_hand() -> void:
 	for card: CardUI in get_children():
 		card.disabled = true

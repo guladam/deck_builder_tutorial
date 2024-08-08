@@ -57,7 +57,9 @@ func draw_cards(amount: int) -> void:
 		tween.tween_interval(HAND_DRAW_INTERVAL)
 	
 	tween.finished.connect(
-		func(): Events.player_hand_drawn.emit()
+		func(): 
+			hand.enable_hand()
+			Events.player_hand_drawn.emit()
 	)
 
 
