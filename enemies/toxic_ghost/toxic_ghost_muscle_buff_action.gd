@@ -12,7 +12,6 @@ func is_performable() -> bool:
 	var hp_under_threshold := enemy.stats.health <= hp_threshold
 	
 	if usages == 0 or (usages == 1 and hp_under_threshold):
-		usages += 1
 		return true
 	
 	return false
@@ -22,6 +21,7 @@ func perform_action() -> void:
 	if not enemy or not target:
 		return
 	
+	usages += 1
 	var status_effect := StatusEffect.new()
 	var muscle := MUSCLE_STATUS.duplicate()
 	muscle.stacks = stacks_per_action
