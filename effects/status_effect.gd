@@ -9,5 +9,5 @@ func execute(targets: Array[Node]) -> void:
 		if not target:
 			continue
 		if target is Enemy or target is Player:
-			target.status_handler.add_status(status)
+			target.status_handler.add_status(status.duplicate())
 
