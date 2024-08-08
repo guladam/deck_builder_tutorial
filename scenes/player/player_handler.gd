@@ -50,7 +50,7 @@ func draw_card() -> void:
 	reshuffle_deck_from_discard()
 
 
-func draw_cards(amount: int) -> void:
+func draw_cards(amount: int, is_start_of_turn_draw: bool = false) -> void:
 	var tween := create_tween()
 	for i in range(amount):
 		tween.tween_callback(draw_card)
@@ -59,7 +59,8 @@ func draw_cards(amount: int) -> void:
 	tween.finished.connect(
 		func(): 
 			hand.enable_hand()
-			Events.player_hand_drawn.emit()
+			if is_start_of_turn_draw:
+				Events.player_hand_drawn.emit()
 	)
 
 
@@ -100,7 +101,7 @@ func _on_card_played(card: Card) -> void:
 func _on_statuses_applied(type: Status.Type) -> void:
 	match type:
 		Status.Type.START_OF_TURN:
-			draw_cards(character.cards_per_turn)
+			draw_cards(character.cards_per_turn, true)
 		Status.Type.END_OF_TURN:
 			discard_cards()
 
