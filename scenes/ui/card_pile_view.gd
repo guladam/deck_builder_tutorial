@@ -43,7 +43,7 @@ func _update_view(randomized: bool) -> void:
 	
 	var all_cards := card_pile.cards.duplicate()
 	if randomized:
-		RNG.array_shuffle(all_cards)
+		all_cards.shuffle()
 	
 	for card: Card in all_cards:
 		var new_card := CARD_MENU_UI_SCENE.instantiate() as CardMenuUI
